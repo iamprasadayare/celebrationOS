@@ -146,13 +146,13 @@ export function detectCategoryOverruns(summary: BudgetSummary): string[] {
  */
 export function formatCurrency(
   amount: number,
-  currencySymbol = '$',
+  currencySymbol = '₹',
   isMasked = false
 ): string {
   if (isMasked) {
     return '••••••';
   }
-  return `${currencySymbol}${Math.abs(amount).toLocaleString('en-US', {
+  return `${currencySymbol}${Math.abs(amount).toLocaleString('en-IN', {
     maximumFractionDigits: 0,
   })}`;
 }

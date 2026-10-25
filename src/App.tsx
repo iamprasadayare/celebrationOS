@@ -54,26 +54,26 @@ export default function App() {
   const [aiLatencyMs, setAiLatencyMs] = useState<number>(42);
   const [lastAiSource, setLastAiSource] = useState<'cache' | 'api'>('cache');
 
-  // Default initial Co-Pilot optimization matching Stitch mockup
+  // Default initial Co-Pilot optimization matching Stitch mockup with Indian INR values
   const [copilotResponse, setCopilotResponse] = useState<AICoPilotResponse | null>({
     type: 'optimization',
     headline: 'Optimization Plan',
     summary:
-      'Analyzed Udaipur vendor rates, seasonal floral availability, and print vs digital costs. Here is an optimized plan to save $2,000:',
+      'Analyzed Udaipur vendor rates, seasonal floral availability, and print vs digital costs. Here is an optimized plan to save ₹2,00,000:',
     proposals: [
       {
         id: 'prop_init_1',
         title: 'Floral Seasonality Swap',
-        amount: 1100,
-        description: 'Swap imported orchids for local Marigold & Mogra garlands across 14 tables.',
-        categoryToAdjust: 'Decor & Florals',
+        amount: 110000,
+        description: 'Swap imported orchids for local Marigold & Mogra garlands across 14 banquet tables.',
+        categoryToAdjust: 'Decor & Mandap',
         applied: false,
       },
       {
         id: 'prop_init_2',
-        title: 'Digital WhatsApp Invites',
-        amount: 900,
-        description: 'Replace luxury card stock with personalized RSVP web microsites + QR badges.',
+        title: 'Digital WhatsApp & Web Invites',
+        amount: 90000,
+        description: 'Replace heavy gold-foil card stock with personalized RSVP web microsites + QR badges.',
         categoryToAdjust: 'Logistics & Guest Transit',
         applied: false,
       },
@@ -272,7 +272,7 @@ export default function App() {
               paid: 0,
               status: idea.recommendedBudgetItem.allocated >= idea.recommendedBudgetItem.quotedOrActual ? 'under_budget' : 'over_budget',
               perHeadScalingRatio: 0.5,
-              notes: `Added from Personalized Ideas Studio: "${idea.title}"`,
+              notes: `Added from Ideas Studio: "${idea.title}"`,
             });
           }
         }
@@ -311,7 +311,7 @@ export default function App() {
   const handleCopilotPrompt = useCallback(
     async (promptText: string, actionType: AICoPilotResponse['type'] = 'optimization') => {
       setIsLoadingAi(true);
-      setAriaLiveMessage('AI Co-Pilot is analyzing event parameters...');
+      setAriaLiveMessage('AI Co-Pilot is analyzing celebration parameters...');
 
       try {
         const response = await queryCelebrationOSAI({
@@ -370,9 +370,9 @@ export default function App() {
         };
       });
 
-      setAriaLiveMessage(`Applied AI recommendation: ${proposal.title} (-$${proposal.amount.toLocaleString()}).`);
+      setAriaLiveMessage(`Applied AI recommendation: ${proposal.title} (-${activeEvent.currencySymbol}${proposal.amount.toLocaleString('en-IN')}).`);
     },
-    [updateCurrentEvent]
+    [updateCurrentEvent, activeEvent.currencySymbol]
   );
 
   // Apply all proposals from Co-Pilot
@@ -414,7 +414,7 @@ export default function App() {
   );
 
   return (
-    <div className="bg-[#faf8ff] min-h-screen text-[#131b2e] antialiased">
+    <div className="bg-[#fbf9f5] min-h-screen text-[#1f2421] antialiased selection:bg-[#ff5e14] selection:text-white">
       {/* Screen-reader Live Announcer */}
       <div aria-live="polite" aria-atomic="true" className="sr-only">
         {ariaLiveMessage}
@@ -457,14 +457,14 @@ export default function App() {
               <div className="flex-1 min-w-0 w-full flex flex-col gap-6">
                 {/* Fallback Resilience Notification Banner */}
                 {copilotResponse?.isFallback && (
-                  <div className="p-3.5 bg-[#f2fff8] border border-[#97f5cc] rounded-xl flex items-center justify-between gap-3 text-xs shadow-xs animate-in fade-in">
+                  <div className="p-3.5 bg-[#f0fdf4] border border-[#86efac] rounded-xl flex items-center justify-between gap-3 text-xs shadow-xs animate-in fade-in">
                     <div className="flex items-center gap-2 min-w-0">
-                      <span className="w-2 h-2 rounded-full bg-[#006c4e] animate-pulse shrink-0" />
-                      <span className="text-[#00513a] font-medium truncate">
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#00875a] animate-pulse shrink-0" />
+                      <span className="text-[#166534] font-semibold truncate">
                         {copilotResponse.fallbackNotice}
                       </span>
                     </div>
-                    <span className="shrink-0 px-2.5 py-0.5 rounded-full bg-[#97f5cc] text-[#00513a] font-bold text-[11px]">
+                    <span className="shrink-0 px-2.5 py-0.5 rounded-full bg-[#dcfce7] text-[#166534] font-bold text-[11px] border border-[#bbf7d0]">
                       Deterministic Mode
                     </span>
                   </div>
@@ -489,7 +489,7 @@ export default function App() {
                       summary={budgetSummary}
                       currencySymbol={activeEvent.currencySymbol}
                       privacyMask={privacyMask}
-                      onTriggerRebalance={() => handleCopilotPrompt('Cut $2,000 from current budget without sacrificing quality', 'optimization')}
+                      onTriggerRebalance={() => handleCopilotPrompt('Cut ₹2,00,000 from current budget without sacrificing guest hospitality', 'optimization')}
                       onAddItem={handleAddBudgetItem}
                       onDeleteItem={handleDeleteBudgetItem}
                       onUpdateItem={handleUpdateBudgetItem}

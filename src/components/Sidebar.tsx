@@ -58,23 +58,23 @@ export const Sidebar: React.FC<SidebarProps> = ({
   return (
     <aside
       aria-label="Application Navigation"
-      className="fixed left-0 top-0 h-full w-[250px] bg-[#ffffff] border-r border-[#c7c4d7] z-50 flex flex-col justify-between overflow-y-auto"
+      className="fixed left-0 top-0 h-full w-[250px] bg-[#ffffff] border-r border-[#e5ddcf] z-50 flex flex-col justify-between overflow-y-auto shadow-[2px_0_12px_rgba(255,94,20,0.03)]"
     >
       <div className="flex flex-col">
-        {/* Brand Header */}
-        <div className="h-16 px-4 border-b border-[#c7c4d7] flex items-center justify-between">
+        {/* Brand Header with Trending Saffron to Violet Gradient */}
+        <div className="h-16 px-4 border-b border-[#e5ddcf] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#4338ca] text-white flex items-center justify-center shadow-xs">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-[#ff5e14] via-[#ec4899] to-[#7c3aed] text-white flex items-center justify-center shadow-xs">
               <Sparkles className="w-4 h-4" />
             </div>
-            <span className="font-bold text-lg text-[#4338ca] tracking-tight">
+            <span className="font-bold text-lg bg-gradient-to-r from-[#6d28d9] via-[#ec4899] to-[#ff5e14] bg-clip-text text-transparent tracking-tight font-headline">
               CelebrationOS
             </span>
           </div>
           <button
             type="button"
             aria-label="Collapse navigation"
-            className="text-[#464554] hover:text-[#131b2e] p-1 rounded hover:bg-[#f2f3ff] transition-colors focus-visible:ring-2 focus-visible:ring-[#4338ca]"
+            className="text-[#544c60] hover:text-[#18122b] p-1 rounded hover:bg-[#fff1eb] transition-colors focus-visible:ring-2 focus-visible:ring-[#ff5e14]"
           >
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -82,36 +82,36 @@ export const Sidebar: React.FC<SidebarProps> = ({
 
         {/* Mode Switcher */}
         <div className="p-3">
-          <p className="px-1 mb-1.5 text-[11px] uppercase text-[#464554] tracking-wider font-semibold">
+          <p className="px-1 mb-1.5 text-[11px] uppercase text-[#544c60] tracking-wider font-bold">
             Active Event Mode
           </p>
           <div
             role="radiogroup"
             aria-label="Event Type Switcher"
-            className="grid grid-cols-3 gap-1 p-1 bg-[#f2f3ff] rounded-lg"
+            className="grid grid-cols-3 gap-1 p-1 bg-[#f8f4ed] rounded-xl border border-[#e5ddcf]"
           >
             <button
               type="button"
               role="radio"
               aria-checked={activeEvent.type === 'wedding'}
               onClick={() => onSelectEventType('wedding')}
-              className={`py-1 text-center text-xs rounded transition-all font-semibold ${
+              className={`py-1 text-center text-xs rounded-lg transition-all font-bold ${
                 activeEvent.type === 'wedding'
-                  ? 'bg-white text-[#2a14b4] font-bold shadow-xs'
-                  : 'text-[#464554] hover:text-[#131b2e] hover:bg-[#eaedff]'
+                  ? 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white shadow-xs'
+                  : 'text-[#544c60] hover:text-[#18122b] hover:bg-[#fff1eb]'
               }`}
             >
-              Wed
+              Shaadi
             </button>
             <button
               type="button"
               role="radio"
               aria-checked={activeEvent.type === 'birthday'}
               onClick={() => onSelectEventType('birthday')}
-              className={`py-1 text-center text-xs rounded transition-all font-semibold ${
+              className={`py-1 text-center text-xs rounded-lg transition-all font-bold ${
                 activeEvent.type === 'birthday'
-                  ? 'bg-white text-[#2a14b4] font-bold shadow-xs'
-                  : 'text-[#464554] hover:text-[#131b2e] hover:bg-[#eaedff]'
+                  ? 'bg-gradient-to-r from-[#ec4899] to-[#f43f5e] text-white shadow-xs'
+                  : 'text-[#544c60] hover:text-[#18122b] hover:bg-[#ffe4e6]'
               }`}
             >
               B'day
@@ -121,24 +121,24 @@ export const Sidebar: React.FC<SidebarProps> = ({
               role="radio"
               aria-checked={activeEvent.type === 'community'}
               onClick={() => onSelectEventType('community')}
-              className={`py-1 text-center text-xs rounded transition-all font-semibold ${
+              className={`py-1 text-center text-xs rounded-lg transition-all font-bold ${
                 activeEvent.type === 'community'
-                  ? 'bg-white text-[#2a14b4] font-bold shadow-xs'
-                  : 'text-[#464554] hover:text-[#131b2e] hover:bg-[#eaedff]'
+                  ? 'bg-gradient-to-r from-[#00875a] to-[#10b981] text-white shadow-xs'
+                  : 'text-[#544c60] hover:text-[#18122b] hover:bg-[#d1fae5]'
               }`}
             >
-              Public
+              Utsav
             </button>
           </div>
 
           {/* Quick Active Event Info Card */}
-          <div className="mt-2.5 px-3 py-2 rounded-lg bg-[#f2f3ff] border border-[#dae2fd] flex items-center gap-2.5">
-            {activeEvent.type === 'wedding' && <Heart className="w-4 h-4 text-[#4338ca] shrink-0" />}
-            {activeEvent.type === 'birthday' && <PartyPopper className="w-4 h-4 text-[#873b00] shrink-0" />}
-            {activeEvent.type === 'community' && <Users2 className="w-4 h-4 text-[#006c4e] shrink-0" />}
+          <div className="mt-2.5 px-3 py-2 rounded-xl bg-gradient-to-br from-[#fff1eb] to-[#fef3c7] border border-[#fed7aa] flex items-center gap-2.5">
+            {activeEvent.type === 'wedding' && <Heart className="w-4 h-4 text-[#e11d48] shrink-0" />}
+            {activeEvent.type === 'birthday' && <PartyPopper className="w-4 h-4 text-[#ec4899] shrink-0" />}
+            {activeEvent.type === 'community' && <Users2 className="w-4 h-4 text-[#00875a] shrink-0" />}
             <div className="truncate">
-              <p className="text-xs text-[#131b2e] font-bold truncate">{activeEvent.title}</p>
-              <p className="text-[11px] text-[#464554] truncate">{activeEvent.guestCount} Confirmed Guests</p>
+              <p className="text-xs text-[#18122b] font-bold truncate">{activeEvent.title}</p>
+              <p className="text-[11px] text-[#544c60] truncate">{activeEvent.guestCount} Confirmed Guests</p>
             </div>
           </div>
         </div>
@@ -148,10 +148,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <button
             type="button"
             onClick={() => onSelectTab('overview')}
-            className={`w-full flex items-center px-3 py-2 rounded-lg text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-[#4338ca] ${
+            className={`w-full flex items-center px-3 py-2 rounded-xl text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] ${
               activeTab === 'overview'
-                ? 'bg-[#4338ca] text-white shadow-xs'
-                : 'text-[#464554] hover:bg-[#e2e7ff] hover:text-[#131b2e]'
+                ? 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white shadow-xs'
+                : 'text-[#544c60] hover:bg-[#fff1eb] hover:text-[#ff5e14]'
             }`}
           >
             <LayoutDashboard className="w-4 h-4 mr-2.5" />
@@ -161,23 +161,23 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <button
             type="button"
             onClick={() => onSelectTab('budget')}
-            className={`w-full flex items-center px-3 py-2 rounded-lg text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-[#4338ca] ${
+            className={`w-full flex items-center px-3 py-2 rounded-xl text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] ${
               activeTab === 'budget'
-                ? 'bg-[#4338ca] text-white shadow-xs'
-                : 'text-[#464554] hover:bg-[#e2e7ff] hover:text-[#131b2e]'
+                ? 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white shadow-xs'
+                : 'text-[#544c60] hover:bg-[#fff1eb] hover:text-[#ff5e14]'
             }`}
           >
             <Wallet className="w-4 h-4 mr-2.5" />
-            <span>Budget Tracker</span>
+            <span>Budget & Kharcha</span>
           </button>
 
           <button
             type="button"
             onClick={() => onSelectTab('timeline')}
-            className={`w-full flex items-center px-3 py-2 rounded-lg text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-[#4338ca] ${
+            className={`w-full flex items-center px-3 py-2 rounded-xl text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] ${
               activeTab === 'timeline'
-                ? 'bg-[#4338ca] text-white shadow-xs'
-                : 'text-[#464554] hover:bg-[#e2e7ff] hover:text-[#131b2e]'
+                ? 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white shadow-xs'
+                : 'text-[#544c60] hover:bg-[#fff1eb] hover:text-[#ff5e14]'
             }`}
           >
             <Clock className="w-4 h-4 mr-2.5" />
@@ -187,10 +187,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <button
             type="button"
             onClick={() => onSelectTab('vendors')}
-            className={`w-full flex items-center px-3 py-2 rounded-lg text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-[#4338ca] ${
+            className={`w-full flex items-center px-3 py-2 rounded-xl text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] ${
               activeTab === 'vendors'
-                ? 'bg-[#4338ca] text-white shadow-xs'
-                : 'text-[#464554] hover:bg-[#e2e7ff] hover:text-[#131b2e]'
+                ? 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white shadow-xs'
+                : 'text-[#544c60] hover:bg-[#fff1eb] hover:text-[#ff5e14]'
             }`}
           >
             <CheckSquare className="w-4 h-4 mr-2.5" />
@@ -200,10 +200,10 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <button
             type="button"
             onClick={() => onSelectTab('ideas')}
-            className={`w-full flex items-center px-3 py-2 rounded-lg text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-[#4338ca] ${
+            className={`w-full flex items-center px-3 py-2 rounded-xl text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] ${
               activeTab === 'ideas'
-                ? 'bg-[#4338ca] text-white shadow-xs'
-                : 'text-[#464554] hover:bg-[#e2e7ff] hover:text-[#131b2e]'
+                ? 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white shadow-xs'
+                : 'text-[#544c60] hover:bg-[#fff1eb] hover:text-[#ff5e14]'
             }`}
           >
             <Palette className="w-4 h-4 mr-2.5" />
@@ -213,29 +213,29 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <button
             type="button"
             onClick={() => onSelectTab('diagnostics')}
-            className={`w-full flex items-center justify-between px-3 py-2 rounded-lg text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-[#4338ca] ${
+            className={`w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] ${
               activeTab === 'diagnostics'
-                ? 'bg-[#4338ca] text-white shadow-xs'
-                : 'text-[#464554] hover:bg-[#e2e7ff] hover:text-[#131b2e]'
+                ? 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white shadow-xs'
+                : 'text-[#544c60] hover:bg-[#fff1eb] hover:text-[#ff5e14]'
             }`}
           >
             <div className="flex items-center">
               <ShieldCheck className="w-4 h-4 mr-2.5" />
               <span>Diagnostics</span>
             </div>
-            <span className="px-1.5 py-0.5 rounded-full bg-[#97f5cc] text-[#00513a] text-[10px] font-bold">
+            <span className="px-2 py-0.5 rounded-full bg-[#d1fae5] text-[#065f46] text-[10px] font-bold border border-[#a7f3d0]">
               12/12
             </span>
           </button>
         </nav>
       </div>
 
-      {/* Footer Settings & New Event Button */}
-      <div className="p-3 border-t border-[#c7c4d7] flex flex-col gap-2.5 bg-white">
+      {/* Footer Settings & New Event Button with Popping Saffron */}
+      <div className="p-3 border-t border-[#e5ddcf] flex flex-col gap-2.5 bg-[#ffffff]">
         <div className="flex items-center justify-between px-1">
           <label
             htmlFor="high-contrast-toggle"
-            className="text-xs text-[#464554] flex items-center gap-1.5 cursor-pointer font-medium"
+            className="text-xs text-[#544c60] flex items-center gap-1.5 cursor-pointer font-semibold"
           >
             <span>Contrast AA</span>
           </label>
@@ -245,17 +245,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
             checked={highContrast}
             onChange={onToggleHighContrast}
             aria-label="Toggle High Contrast AA Accessibility Mode"
-            className="w-4 h-4 rounded text-[#4338ca] focus:ring-[#4338ca] cursor-pointer"
+            className="w-4 h-4 rounded text-[#ff5e14] focus:ring-[#ff5e14] cursor-pointer"
           />
         </div>
 
         <div className="flex items-center justify-between px-1">
           <label
             htmlFor="privacy-mask-toggle"
-            className="text-xs text-[#464554] flex items-center gap-1.5 cursor-pointer font-medium"
+            className="text-xs text-[#544c60] flex items-center gap-1.5 cursor-pointer font-semibold"
           >
-            {privacyMask ? <EyeOff className="w-3.5 h-3.5 text-[#632900]" /> : <Eye className="w-3.5 h-3.5" />}
-            <span>Privacy Mask</span>
+            {privacyMask ? <EyeOff className="w-3.5 h-3.5 text-[#ff5e14]" /> : <Eye className="w-3.5 h-3.5" />}
+            <span>Privacy Mask (₹)</span>
           </label>
           <input
             id="privacy-mask-toggle"
@@ -263,7 +263,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
             checked={privacyMask}
             onChange={onTogglePrivacyMask}
             aria-label="Toggle Privacy Mask for financial screen-sharing"
-            className="w-4 h-4 rounded text-[#4338ca] focus:ring-[#4338ca] cursor-pointer"
+            className="w-4 h-4 rounded text-[#ff5e14] focus:ring-[#ff5e14] cursor-pointer"
           />
         </div>
 
@@ -271,7 +271,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           type="button"
           onClick={onOpenNewEventWizard}
           aria-label="Launch AI New Event Creation Wizard"
-          className="w-full mt-1 flex items-center justify-center gap-1.5 h-10 px-3 rounded-lg bg-[#4338ca] text-white text-xs font-semibold hover:bg-[#372abf] transition-colors focus-visible:ring-2 focus-visible:ring-[#4338ca] shadow-xs"
+          className="w-full mt-1 flex items-center justify-center gap-1.5 h-10 px-3 rounded-xl bg-gradient-to-r from-[#ff5e14] via-[#ff7a00] to-[#ffa000] hover:from-[#ea580c] hover:to-[#f97316] text-white text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] shadow-[0_2px_10px_rgba(255,94,20,0.3)] active:scale-98"
         >
           <Plus className="w-4 h-4" />
           <span>New Event Wizard</span>

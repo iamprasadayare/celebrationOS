@@ -47,6 +47,75 @@ app.get('/api/health', (_req: Request, res: Response) => {
   });
 });
 
+// Multi-turn Gemini Chatbot endpoint
+app.post('/api/ai/chat', async (req: Request, res: Response): Promise<void> => {
+  const { messages, systemInstruction, model, eventContext } = req.body || {};
+  const selectedModel = model === 'gemini-3.1-flash-lite' ? 'gemini-3.1-flash-lite' : 'gemini-3.8-flash';
+
+  if (!ai) {
+    const fallbackReply = generateChatOfflineResponse(messages, systemInstruction, eventContext);
+    res.json({ reply: fallbackReply, modelUsed: `${selectedModel} (Deterministic)` });
+    return;
+  }
+
+  try {
+    const defaultInstruction = `You are the CelebrationOS Executive Event Concierge for "${eventContext?.title || 'Celebration'}" (${eventContext?.eventType || 'event'}).
+Context: ${eventContext?.guestCount || 200} guests, budget cap $${eventContext?.totalBudget || 25000}, location ${eventContext?.location || 'Venue'}.
+Provide concise, elegant, actionable, and culturally aware advice.`;
+
+    // Map conversation history
+    const contents = (messages || []).map((m: { role: string; content: string }) => ({
+      role: m.role === 'assistant' || m.role === 'model' ? 'model' : 'user',
+      parts: [{ text: m.content }],
+    }));
+
+    if (contents.length === 0) {
+      contents.push({ role: 'user', parts: [{ text: 'Hello, what should we focus on next?' }] });
+    }
+
+    const response = await ai.models.generateContent({
+      model: selectedModel,
+      contents,
+      config: {
+        systemInstruction: systemInstruction || defaultInstruction,
+        temperature: 0.7,
+      },
+    });
+
+    res.json({
+      reply: response.text || 'I am ready to assist with your next planning milestone.',
+      modelUsed: selectedModel,
+    });
+  } catch (err) {
+    console.warn('Gemini chat failed, serving fallback:', err);
+    const fallbackReply = generateChatOfflineResponse(messages, systemInstruction, eventContext);
+    res.json({ reply: fallbackReply, modelUsed: `${selectedModel} (Offline Fallback)` });
+  }
+});
+
+function generateChatOfflineResponse(
+  messages: Array<{ role: string; content: string }>,
+  systemInstruction?: string,
+  eventContext?: Record<string, unknown>
+): string {
+  const lastUserMessage = [...(messages || [])].reverse().find(m => m.role === 'user')?.content.toLowerCase() || '';
+  const title = (eventContext?.title as string) || 'your celebration';
+
+  if (lastUserMessage.includes('budget') || lastUserMessage.includes('cost') || lastUserMessage.includes('save')) {
+    return `For ${title}, the biggest financial lever is rebalancing seasonal florals and consolidating bar inventory. We currently project a healthy reserve—if you reallocate $1,500 from custom print invites to digital RSVP microsites, you can fully fund a live music ensemble with zero budget increase!`;
+  }
+
+  if (lastUserMessage.includes('timeline') || lastUserMessage.includes('schedule') || lastUserMessage.includes('run sheet')) {
+    return `Looking at the chronological timeline for ${title}, your most critical upcoming milestone is finalizing the catering menu and dietary matrix (T-45 Days offset). I recommend inserting a 30-minute buffer before the main doors open to accommodate early VIP arrivals.`;
+  }
+
+  if (lastUserMessage.includes('vendor') || lastUserMessage.includes('catering') || lastUserMessage.includes('contract')) {
+    return `For vendor compliance, ensure you have received written confirmation on the outdoor acoustic limits (10:00 PM cutoff) and generator backup staging. You can use the "AI Draft Inquiry" button in your Vendor Checklists tab to send our standard terms review letter!`;
+  }
+
+  return `Greetings! As your dedicated CelebrationOS Concierge for ${title}, I am actively monitoring your budget caps, milestone countdown, and vendor deliverables. What specific challenge or creative idea would you like to explore right now?`;
+}
+
 // AI Co-Pilot & Orchestration endpoint
 app.post('/api/ai/copilot', async (req: Request, res: Response): Promise<void> => {
   const { prompt, actionType, eventSummary } = req.body || {};

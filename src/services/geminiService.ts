@@ -169,20 +169,20 @@ function generateClientFallback(actionType: string, event: EventPlan): AICoPilot
     return {
       type: 'optimization',
       headline: 'Optimization Plan',
-      summary: 'Analyzed Udaipur vendor rates, seasonal floral availability, and print vs digital costs. Here is an optimized plan to save $2,000:',
+      summary: 'Analyzed Udaipur vendor rates, seasonal floral availability, and print vs digital costs. Here is an optimized plan to save ₹2,00,000:',
       proposals: [
         {
           id: 'opt_cl_1',
           title: 'Floral Seasonality Swap',
-          amount: 1100,
-          description: 'Swap imported orchids for local Marigold & Mogra garlands across 14 tables.',
+          amount: 110000,
+          description: 'Swap imported blooms for local Marigold & Mogra garlands across 14 banquet tables.',
           categoryToAdjust: 'Decor & Florals',
           applied: false,
         },
         {
           id: 'opt_cl_2',
           title: 'Digital WhatsApp Invites',
-          amount: 900,
+          amount: 90000,
           description: 'Replace luxury card stock with personalized RSVP web microsites + QR badges.',
           categoryToAdjust: 'Logistics & Guest Transit',
           applied: false,
@@ -195,12 +195,12 @@ function generateClientFallback(actionType: string, event: EventPlan): AICoPilot
     return {
       type: 'optimization',
       headline: 'Birthday Budget Rebalance',
-      summary: 'Identified $350 in beverage and decor savings while preserving premium guest experience:',
+      summary: 'Identified ₹35,000 in beverage and decor savings while preserving premium guest experience:',
       proposals: [
         {
           id: 'opt_bday_1',
           title: 'Batch Signature Welcome Cocktails',
-          amount: 220,
+          amount: 22000,
           description: 'Pre-batch 2 signature cocktail bowls instead of single-pour open mixology bar.',
           categoryToAdjust: 'Catering & Cocktails',
           applied: false,
@@ -208,7 +208,7 @@ function generateClientFallback(actionType: string, event: EventPlan): AICoPilot
         {
           id: 'opt_bday_2',
           title: 'DIY Polaroid Memory Gallery',
-          amount: 130,
+          amount: 13000,
           description: 'Provide rental instax cameras and fairy-light wire instead of photo booth rental.',
           categoryToAdjust: 'Photo Booth & Keepsakes',
           applied: false,
@@ -220,12 +220,12 @@ function generateClientFallback(actionType: string, event: EventPlan): AICoPilot
   return {
     type: 'optimization',
     headline: 'Community Festival Budget Realignment',
-    summary: 'Identified $950 in municipal and volunteer logistics savings through civic co-sponsorship:',
+    summary: 'Identified ₹95,000 in municipal and volunteer logistics savings through civic co-sponsorship:',
     proposals: [
       {
         id: 'opt_comm_1',
         title: 'Municipal Sound Co-Sponsorship',
-        amount: 600,
+        amount: 60000,
         description: 'Partner with local cultural council for educational stage permit fee waiver.',
         categoryToAdjust: 'Permits & Municipal Compliance',
         applied: false,
@@ -233,7 +233,7 @@ function generateClientFallback(actionType: string, event: EventPlan): AICoPilot
       {
         id: 'opt_comm_2',
         title: 'Bulk Solar Battery Loaner',
-        amount: 350,
+        amount: 35000,
         description: 'Utilize regional clean energy grant battery trailer in lieu of secondary generator rental.',
         categoryToAdjust: 'Stage, AV & Generator Power',
         applied: false,

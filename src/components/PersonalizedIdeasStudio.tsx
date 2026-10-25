@@ -38,15 +38,15 @@ export const PersonalizedIdeasStudio: React.FC<PersonalizedIdeasStudioProps> = (
     : ideas.filter((i) => i.category === selectedCategory);
 
   return (
-    <div className="bg-[#ffffff] p-4 sm:p-6 rounded-xl border border-[#c7c4d7] shadow-xs flex flex-col justify-between">
+    <div className="bg-[#ffffff] p-4 sm:p-6 rounded-2xl border border-[#e5ddcf] shadow-[0_2px_12px_rgba(255,94,20,0.03)] flex flex-col justify-between">
       <div>
         {/* Header & Refresh */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3">
           <div>
-            <h2 className="text-lg font-bold text-[#131b2e] font-headline">
+            <h2 className="text-lg font-bold text-[#18122b] font-headline">
               Personalized Ideas Studio
             </h2>
-            <p className="text-xs text-[#464554] mt-0.5">
+            <p className="text-xs text-[#544c60] mt-0.5">
               Contextual GenAI recommendations for {guestCount} guests in {location}
             </p>
           </div>
@@ -55,10 +55,10 @@ export const PersonalizedIdeasStudio: React.FC<PersonalizedIdeasStudioProps> = (
             onClick={onRefreshIdeas}
             disabled={isLoading}
             aria-label="Refresh ideas using Gemini AI"
-            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-[#f2f3ff] text-[#131b2e] hover:bg-[#eaedff] text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-[#4338ca] shrink-0 self-start sm:self-auto border border-[#c7c4d7] disabled:opacity-60"
+            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl bg-[#fff1eb] text-[#c2410c] hover:bg-[#fed7aa] text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] shrink-0 self-start sm:self-auto border border-[#fed7aa] disabled:opacity-60"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-[#4338ca]' : ''}`} />
-            <span>{isLoading ? 'Generating...' : 'Refresh'}</span>
+            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-[#ff5e14]' : ''}`} />
+            <span>{isLoading ? 'Crafting Ideas...' : 'Refresh Ideas'}</span>
           </button>
         </div>
 
@@ -67,10 +67,10 @@ export const PersonalizedIdeasStudio: React.FC<PersonalizedIdeasStudioProps> = (
           <button
             type="button"
             onClick={() => setSelectedCategory('all')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold transition-colors whitespace-nowrap ${
+            className={`px-3 py-1 rounded-full text-[11px] font-bold transition-colors whitespace-nowrap ${
               selectedCategory === 'all'
-                ? 'bg-[#4338ca] text-white'
-                : 'bg-[#f2f3ff] text-[#464554] hover:bg-[#eaedff]'
+                ? 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white shadow-xs'
+                : 'bg-[#f8f4ed] text-[#544c60] hover:bg-[#fff1eb] border border-[#e5ddcf]'
             }`}
           >
             All Categories
@@ -78,43 +78,43 @@ export const PersonalizedIdeasStudio: React.FC<PersonalizedIdeasStudioProps> = (
           <button
             type="button"
             onClick={() => setSelectedCategory('theme_decor')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold transition-colors whitespace-nowrap ${
+            className={`px-3 py-1 rounded-full text-[11px] font-bold transition-colors whitespace-nowrap ${
               selectedCategory === 'theme_decor'
-                ? 'bg-[#4338ca] text-white'
-                : 'bg-[#f2f3ff] text-[#464554] hover:bg-[#eaedff]'
+                ? 'bg-gradient-to-r from-[#ff5e14] to-[#ff8a00] text-white shadow-xs'
+                : 'bg-[#f8f4ed] text-[#544c60] hover:bg-[#fff1eb] border border-[#e5ddcf]'
             }`}
           >
-            Theme & Decor
+            Mandap & Decor
           </button>
           <button
             type="button"
             onClick={() => setSelectedCategory('food_beverage')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold transition-colors whitespace-nowrap ${
+            className={`px-3 py-1 rounded-full text-[11px] font-bold transition-colors whitespace-nowrap ${
               selectedCategory === 'food_beverage'
-                ? 'bg-[#4338ca] text-white'
-                : 'bg-[#f2f3ff] text-[#464554] hover:bg-[#eaedff]'
+                ? 'bg-gradient-to-r from-[#00875a] to-[#10b981] text-white shadow-xs'
+                : 'bg-[#f8f4ed] text-[#544c60] hover:bg-[#d1fae5] border border-[#e5ddcf]'
             }`}
           >
-            Food & Beverage
+            Chaat & Banquet
           </button>
           <button
             type="button"
             onClick={() => setSelectedCategory('entertainment_icebreakers')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold transition-colors whitespace-nowrap ${
+            className={`px-3 py-1 rounded-full text-[11px] font-bold transition-colors whitespace-nowrap ${
               selectedCategory === 'entertainment_icebreakers'
-                ? 'bg-[#4338ca] text-white'
-                : 'bg-[#f2f3ff] text-[#464554] hover:bg-[#eaedff]'
+                ? 'bg-gradient-to-r from-[#ec4899] to-[#f43f5e] text-white shadow-xs'
+                : 'bg-[#f8f4ed] text-[#544c60] hover:bg-[#ffe4e6] border border-[#e5ddcf]'
             }`}
           >
-            Entertainment
+            Sangeet & Entertainment
           </button>
           <button
             type="button"
             onClick={() => setSelectedCategory('cost_eco_swaps')}
-            className={`px-2.5 py-0.5 rounded-full text-[11px] font-semibold transition-colors whitespace-nowrap ${
+            className={`px-3 py-1 rounded-full text-[11px] font-bold transition-colors whitespace-nowrap ${
               selectedCategory === 'cost_eco_swaps'
-                ? 'bg-[#4338ca] text-white'
-                : 'bg-[#f2f3ff] text-[#464554] hover:bg-[#eaedff]'
+                ? 'bg-gradient-to-r from-[#d97706] to-[#f59e0b] text-white shadow-xs'
+                : 'bg-[#f8f4ed] text-[#544c60] hover:bg-[#fef3c7] border border-[#e5ddcf]'
             }`}
           >
             Cost & Eco Swaps
@@ -127,29 +127,29 @@ export const PersonalizedIdeasStudio: React.FC<PersonalizedIdeasStudioProps> = (
             return (
               <article
                 key={idea.id}
-                className="p-3.5 rounded-lg bg-[#f2f3ff] border border-[#eaedff] flex flex-col sm:flex-row sm:items-center justify-between gap-3 group hover:bg-[#eaedff]/60 transition-colors"
+                className="p-3.5 rounded-xl bg-[#f8f4ed] border border-[#e5ddcf] flex flex-col sm:flex-row sm:items-center justify-between gap-3 group hover:bg-[#fff1eb]/60 hover:border-[#fed7aa] transition-all"
               >
                 <div className="space-y-1 min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <h3 className="text-xs font-bold text-[#131b2e] font-headline">
+                    <h3 className="text-xs font-bold text-[#18122b] font-headline">
                       {idea.title}
                     </h3>
                     {idea.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
-                        className="px-2 py-0.5 rounded-full bg-[#ffffff] border border-[#dae2fd] text-[#4338ca] text-[10px] font-semibold"
+                        className="px-2 py-0.5 rounded-full bg-[#ffffff] border border-[#fed7aa] text-[#c2410c] text-[10px] font-bold shadow-2xs"
                       >
                         {tag}
                       </span>
                     ))}
                   </div>
 
-                  <p className="text-xs text-[#464554] line-clamp-2">
+                  <p className="text-xs text-[#544c60] line-clamp-2">
                     {idea.description}
                   </p>
 
-                  <p className={`font-mono-data text-xs font-semibold ${
-                    idea.costImpactDollars < 0 ? 'text-[#006c4e]' : 'text-[#873b00]'
+                  <p className={`font-mono-data text-xs font-bold ${
+                    idea.costImpactDollars < 0 ? 'text-[#00875a]' : 'text-[#c2410c]'
                   }`}>
                     {idea.impactSummary}
                   </p>
@@ -160,15 +160,15 @@ export const PersonalizedIdeasStudio: React.FC<PersonalizedIdeasStudioProps> = (
                   onClick={() => onAddIdeaToPlan(idea)}
                   disabled={idea.applied}
                   aria-label={`Add idea "${idea.title}" to active Budget and Timeline`}
-                  className={`inline-flex items-center justify-center gap-1 h-8 px-3 rounded-lg text-xs font-semibold transition-colors shrink-0 ${
+                  className={`inline-flex items-center justify-center gap-1 h-8 px-3 rounded-xl text-xs font-bold transition-all shrink-0 ${
                     idea.applied
-                      ? 'bg-[#97f5cc] text-[#007353] cursor-default'
-                      : 'bg-[#e2e7ff] hover:bg-[#4338ca] hover:text-white text-[#2a14b4]'
+                      ? 'bg-[#d1fae5] text-[#065f46] border border-[#a7f3d0] cursor-default'
+                      : 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white hover:from-[#581c87] hover:to-[#4338ca] shadow-xs'
                   }`}
                 >
                   {idea.applied ? (
                     <>
-                      <Check className="w-3.5 h-3.5" />
+                      <Check className="w-3.5 h-3.5 text-[#059669]" />
                       <span>Added ✓</span>
                     </>
                   ) : (
@@ -185,9 +185,9 @@ export const PersonalizedIdeasStudio: React.FC<PersonalizedIdeasStudioProps> = (
       </div>
 
       {/* Footer Model attribution */}
-      <p className="mt-4 pt-3 border-t border-[#eaedff] text-[11px] text-[#464554] flex items-center gap-1.5">
-        <Brain className="w-3.5 h-3.5 text-[#4338ca] shrink-0" />
-        <span>Generated using {location} vendor inventory models & regional seasonal schedules.</span>
+      <p className="mt-4 pt-3 border-t border-[#f0eae1] text-[11px] text-[#544c60] flex items-center gap-1.5 font-medium">
+        <Brain className="w-3.5 h-3.5 text-[#ff5e14] shrink-0" />
+        <span>Generated using {location} vendor inventory models & Rajasthani seasonal harvest schedules.</span>
       </p>
     </div>
   );

@@ -10,7 +10,6 @@ import {
   X,
   Calendar,
   Users,
-  DollarSign,
   MapPin,
   Heart,
   PartyPopper,
@@ -32,8 +31,8 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
   const [title, setTitle] = useState('');
   const [location, setLocation] = useState('');
   const [targetDate, setTargetDate] = useState('2026-11-20');
-  const [guestCount, setGuestCount] = useState(150);
-  const [budgetCap, setBudgetCap] = useState(20000);
+  const [guestCount, setGuestCount] = useState(250);
+  const [budgetCap, setBudgetCap] = useState(2500000); // ₹25 Lakhs
   const [customVision, setCustomVision] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
 
@@ -46,10 +45,10 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
     // Simulate AI synthesis delay
     await new Promise((r) => setTimeout(r, 600));
 
-    const finalTitle = title.trim() || (eventType === 'wedding' ? 'Kavya & Rohan’s Wedding' : eventType === 'birthday' ? 'Leo’s 40th Gala' : 'Oakridge Neighborhood Fair');
-    const finalLocation = location.trim() || 'Heritage Waterfront Pavilion';
+    const finalTitle = title.trim() || (eventType === 'wedding' ? 'Kavya & Rohan’s Shaadi' : eventType === 'birthday' ? 'Aarav’s 25th Milestone Birthday' : 'Bengaluru Community Utsav');
+    const finalLocation = location.trim() || 'Royal Orchid Palace, Jaipur';
 
-    // Generate comprehensive synchronized event plan
+    // Generate comprehensive synchronized event plan in INR (₹)
     const newPlan: EventPlan = {
       id: `evt_custom_${Date.now()}`,
       type: eventType,
@@ -58,13 +57,13 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
       location: finalLocation,
       guestCount: Number(guestCount),
       baselineBudgetCap: Number(budgetCap),
-      currencySymbol: '$',
+      currencySymbol: '₹',
       contextNote: customVision.trim() || 'Custom celebratory experience orchestrated with CelebrationOS AI.',
       budgetItems: [
         {
           id: `b_new_1`,
           category: 'Venue & Facilities',
-          name: `${finalLocation} Grand Hall`,
+          name: `${finalLocation} Courtyard & Grand Lawn`,
           allocated: Math.round(budgetCap * 0.35),
           quotedOrActual: Math.round(budgetCap * 0.34),
           paid: Math.round(budgetCap * 0.15),
@@ -74,7 +73,7 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
         {
           id: `b_new_2`,
           category: 'Catering & Bar',
-          name: 'Artisan Banquet & Specialty Beverage Service',
+          name: 'Royal Banquet & Live Chaat Counter',
           allocated: Math.round(budgetCap * 0.32),
           quotedOrActual: Math.round(budgetCap * 0.33),
           paid: Math.round(budgetCap * 0.1),
@@ -84,7 +83,7 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
         {
           id: `b_new_3`,
           category: 'Decor & Florals',
-          name: 'Custom Themed Staging & Lighting',
+          name: 'Floral Mandap & Marigold Staging',
           allocated: Math.round(budgetCap * 0.16),
           quotedOrActual: Math.round(budgetCap * 0.15),
           paid: Math.round(budgetCap * 0.05),
@@ -94,7 +93,7 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
         {
           id: `b_new_4`,
           category: 'Entertainment & Production',
-          name: 'Live Music Ensemble & Master of Ceremonies',
+          name: 'Dhol Troupe, DJ & Sangeet Sound Truss',
           allocated: Math.round(budgetCap * 0.12),
           quotedOrActual: Math.round(budgetCap * 0.11),
           paid: Math.round(budgetCap * 0.08),
@@ -104,7 +103,7 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
         {
           id: `b_new_5`,
           category: 'Logistics & Guest Experience',
-          name: 'Welcome Signage, Favors & Shuttles',
+          name: 'Mithai Gift Hampers & AC Shuttles',
           allocated: Math.round(budgetCap * 0.05),
           quotedOrActual: Math.round(budgetCap * 0.05),
           paid: 0,
@@ -124,16 +123,16 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
         },
         {
           id: `t_new_2`,
-          title: 'Approve Food & Tasting Menu with Caterer',
+          title: 'Approve Banquet Food & Chaat Tasting Menu',
           phase: '1_month_out',
           daysBeforeEvent: 45,
           priority: 'high',
           completed: false,
-          assignedVendorOrLead: 'Lead Chef',
+          assignedVendorOrLead: 'Lead Caterer',
         },
         {
           id: `t_new_3`,
-          title: 'Review Production & Sound Layout Walkthrough',
+          title: 'Review Sangeet Light & Dance Floor Acoustics',
           phase: '1_month_out',
           daysBeforeEvent: 30,
           priority: 'medium',
@@ -142,7 +141,7 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
         },
         {
           id: `t_new_4`,
-          title: 'Lock Final Headcount & Table Chart',
+          title: 'Lock Final Headcount & Seating Chart',
           phase: 'week_of',
           daysBeforeEvent: 10,
           priority: 'high',
@@ -151,10 +150,10 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
         },
         {
           id: `t_new_5`,
-          title: 'Event Kickoff & Guest Welcome Doors Open',
+          title: 'Baraat Arrival & Guest Welcome Doors Open',
           phase: 'day_of',
           daysBeforeEvent: 0,
-          dueTimeOfDay: '05:00 PM',
+          dueTimeOfDay: '04:30 PM',
           priority: 'high',
           completed: false,
           assignedVendorOrLead: 'Stage Lead',
@@ -173,12 +172,12 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
           checklist: [
             { id: 'vc_n1_1', label: 'Contract Executed', completed: true, type: 'contract' },
             { id: 'vc_n1_2', label: 'Deposit Paid', completed: true, type: 'deposit' },
-            { id: 'vc_n1_3', label: 'Sound Curfew Verified', completed: true, type: 'safety_or_backup' },
+            { id: 'vc_n1_3', label: 'Sound Curfew Verified (10 PM)', completed: true, type: 'safety_or_backup' },
           ],
         },
         {
           id: `v_new_2`,
-          name: 'Gourmet Artisans Culinary',
+          name: 'Shree Krishna Caterers',
           serviceCategory: 'Catering & Beverage',
           capAmount: Math.round(budgetCap * 0.32),
           depositAmount: Math.round(budgetCap * 0.1),
@@ -187,29 +186,29 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
           complianceCertified: true,
           checklist: [
             { id: 'vc_n2_1', label: 'Menu Signed', completed: true, type: 'contract' },
-            { id: 'vc_n2_2', label: 'Dietary Plan Confirmed', completed: false, type: 'custom' },
+            { id: 'vc_n2_2', label: 'Jain/Vegan Diet Counter Confirmed', completed: false, type: 'custom' },
           ],
         },
       ],
       personalizedIdeas: [
         {
           id: `idea_new_1`,
-          title: 'Interactive Guest Welcome Wall',
+          title: 'Traditional Floral Rangoli Entrance',
           category: 'theme_decor',
-          tags: ['Personalized', 'Photo Moment'],
-          description: 'A custom entrance display inviting each attendee to sign and discover table allocations.',
-          costImpactDollars: -250,
-          impactSummary: 'Impact: -$250 decor savings',
+          tags: ['Saffron & Marigold', 'Heritage'],
+          description: 'A grand petal floor welcome with brass urlis and floating diya lights.',
+          costImpactDollars: -25000,
+          impactSummary: 'Impact: -₹25,000 decor savings',
           applied: false,
         },
         {
           id: `idea_new_2`,
-          title: 'Zero-Waste Locally Sourced Favors',
-          category: 'cost_eco_swaps',
-          tags: ['Eco-Friendly', 'Artisanal'],
-          description: 'Miniature locally made organic honey or flower seed packets in recycled jute pouches.',
-          costImpactDollars: -150,
-          impactSummary: 'Impact: -$150 favor savings',
+          title: 'Artisanal Clay Matka Chilled Thandai Bar',
+          category: 'food_beverage',
+          tags: ['Traditional Eco', 'Crowd Favorite'],
+          description: 'Refreshing kesar thandai and spiced buttermilk served in biodegradable earthen kulhads.',
+          costImpactDollars: 15000,
+          impactSummary: 'Impact: +₹15,000 welcome drink add-on',
           applied: false,
         },
       ],
@@ -221,18 +220,18 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 bg-[#131b2e]/50 backdrop-blur-xs flex items-center justify-center p-4">
-      <div className="bg-white rounded-2xl border border-[#c7c4d7] shadow-xl w-full max-w-xl p-6 animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] overflow-y-auto">
-        <div className="flex items-center justify-between pb-3 border-b border-[#eaedff]">
+    <div className="fixed inset-0 z-50 bg-[#18122b]/50 backdrop-blur-xs flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl border border-[#e5ddcf] shadow-xl w-full max-w-xl p-6 animate-in fade-in zoom-in-95 duration-150 max-h-[90vh] overflow-y-auto">
+        <div className="flex items-center justify-between pb-3 border-b border-[#f0eae1]">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#4338ca] text-white flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#ff5e14] to-[#7c3aed] text-white flex items-center justify-center shadow-xs">
               <Sparkles className="w-4 h-4" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-[#131b2e] font-headline">
-                New Event Wizard with AI
+              <h2 className="text-base font-bold text-[#18122b] font-headline">
+                New Event Wizard with AI (₹ INR)
               </h2>
-              <p className="text-xs text-[#464554]">
+              <p className="text-xs text-[#544c60]">
                 Generate a synchronized Budget, Timeline, Vendor checklist, and Ideas Studio.
               </p>
             </div>
@@ -241,7 +240,7 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
             type="button"
             onClick={onClose}
             aria-label="Close modal"
-            className="text-[#464554] hover:text-[#131b2e] p-1 rounded hover:bg-[#f2f3ff]"
+            className="text-[#544c60] hover:text-[#18122b] p-1 rounded-lg hover:bg-[#fff1eb]"
           >
             <X className="w-4 h-4" />
           </button>
@@ -250,30 +249,30 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
         <form onSubmit={handleGenerate} className="mt-4 space-y-4">
           {/* Event Mode Selection */}
           <div>
-            <label className="block text-xs font-bold text-[#131b2e] mb-2">Event Category</label>
+            <label className="block text-xs font-bold text-[#18122b] mb-2">Event Category</label>
             <div className="grid grid-cols-3 gap-2">
               <button
                 type="button"
                 onClick={() => setEventType('wedding')}
                 className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center gap-1.5 ${
                   eventType === 'wedding'
-                    ? 'border-[#4338ca] bg-[#e2e7ff] text-[#4338ca] font-bold shadow-xs'
-                    : 'border-[#c7c4d7] hover:bg-[#f2f3ff] text-[#464554]'
+                    ? 'border-[#ff5e14] bg-[#fff1eb] text-[#c2410c] font-bold shadow-xs'
+                    : 'border-[#e5ddcf] hover:bg-[#f8f4ed] text-[#544c60]'
                 }`}
               >
-                <Heart className="w-5 h-5" />
-                <span className="text-xs">Wedding</span>
+                <Heart className="w-5 h-5 text-[#ff5e14]" />
+                <span className="text-xs">Shaadi / Wedding</span>
               </button>
               <button
                 type="button"
                 onClick={() => setEventType('birthday')}
                 className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center gap-1.5 ${
                   eventType === 'birthday'
-                    ? 'border-[#4338ca] bg-[#e2e7ff] text-[#4338ca] font-bold shadow-xs'
-                    : 'border-[#c7c4d7] hover:bg-[#f2f3ff] text-[#464554]'
+                    ? 'border-[#ec4899] bg-[#ffe4e6] text-[#9f1239] font-bold shadow-xs'
+                    : 'border-[#e5ddcf] hover:bg-[#f8f4ed] text-[#544c60]'
                 }`}
               >
-                <PartyPopper className="w-5 h-5" />
+                <PartyPopper className="w-5 h-5 text-[#ec4899]" />
                 <span className="text-xs">Milestone Birthday</span>
               </button>
               <button
@@ -281,12 +280,12 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
                 onClick={() => setEventType('community')}
                 className={`p-3 rounded-xl border text-center transition-all flex flex-col items-center gap-1.5 ${
                   eventType === 'community'
-                    ? 'border-[#4338ca] bg-[#e2e7ff] text-[#4338ca] font-bold shadow-xs'
-                    : 'border-[#c7c4d7] hover:bg-[#f2f3ff] text-[#464554]'
+                    ? 'border-[#00875a] bg-[#d1fae5] text-[#065f46] font-bold shadow-xs'
+                    : 'border-[#e5ddcf] hover:bg-[#f8f4ed] text-[#544c60]'
                 }`}
               >
-                <Users2 className="w-5 h-5" />
-                <span className="text-xs">Community / Fest</span>
+                <Users2 className="w-5 h-5 text-[#00875a]" />
+                <span className="text-xs">Community Utsav</span>
               </button>
             </div>
           </div>
@@ -294,74 +293,74 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
           {/* Title & Location */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-[#131b2e] mb-1">Event Title</label>
+              <label className="block text-xs font-bold text-[#18122b] mb-1">Event Title</label>
               <input
                 type="text"
                 required
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder={eventType === 'wedding' ? "e.g. Liam & Chloe's Coastal Wedding" : "e.g. Jordan's 40th Rooftop Soiree"}
-                className="w-full h-10 px-3 text-xs rounded-lg border border-[#c7c4d7] focus:ring-2 focus:ring-[#4338ca] focus:outline-none"
+                placeholder={eventType === 'wedding' ? "e.g. Liam & Chloe's Shaadi" : "e.g. Rajiv's 50th Birthday Bash"}
+                className="w-full h-10 px-3 text-xs rounded-xl border border-[#e5ddcf] focus:ring-2 focus:ring-[#ff5e14] focus:outline-none"
               />
             </div>
             <div>
-              <label className="block text-xs font-semibold text-[#131b2e] mb-1">Target Location / Venue</label>
+              <label className="block text-xs font-bold text-[#18122b] mb-1">Target Location / City</label>
               <div className="relative flex items-center">
-                <MapPin className="w-3.5 h-3.5 text-[#464554] absolute left-3" />
+                <MapPin className="w-3.5 h-3.5 text-[#ff5e14] absolute left-3" />
                 <input
                   type="text"
                   required
                   value={location}
                   onChange={(e) => setLocation(e.target.value)}
-                  placeholder="e.g. Carmel Valley Estate, CA"
-                  className="w-full h-10 pl-8 pr-3 text-xs rounded-lg border border-[#c7c4d7] focus:ring-2 focus:ring-[#4338ca] focus:outline-none"
+                  placeholder="e.g. Oberoi Udaivilas, Udaipur"
+                  className="w-full h-10 pl-8 pr-3 text-xs rounded-xl border border-[#e5ddcf] focus:ring-2 focus:ring-[#ff5e14] focus:outline-none"
                 />
               </div>
             </div>
           </div>
 
-          {/* Date, Guests, Budget */}
+          {/* Date, Guests, Budget in INR */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label className="block text-xs font-semibold text-[#131b2e] mb-1">Event Date</label>
+              <label className="block text-xs font-bold text-[#18122b] mb-1">Event Date</label>
               <div className="relative flex items-center">
-                <Calendar className="w-3.5 h-3.5 text-[#464554] absolute left-3" />
+                <Calendar className="w-3.5 h-3.5 text-[#ff5e14] absolute left-3" />
                 <input
                   type="date"
                   required
                   value={targetDate}
                   onChange={(e) => setTargetDate(e.target.value)}
-                  className="w-full h-10 pl-8 pr-2 text-xs rounded-lg border border-[#c7c4d7] focus:ring-2 focus:ring-[#4338ca] focus:outline-none bg-white"
+                  className="w-full h-10 pl-8 pr-2 text-xs rounded-xl border border-[#e5ddcf] focus:ring-2 focus:ring-[#ff5e14] focus:outline-none bg-white font-medium"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-xs font-semibold text-[#131b2e] mb-1">Expected Guests</label>
+              <label className="block text-xs font-bold text-[#18122b] mb-1">Expected Guests</label>
               <div className="relative flex items-center">
-                <Users className="w-3.5 h-3.5 text-[#464554] absolute left-3" />
+                <Users className="w-3.5 h-3.5 text-[#ff5e14] absolute left-3" />
                 <input
                   type="number"
                   min={10}
-                  max={2000}
+                  max={5000}
                   required
                   value={guestCount}
                   onChange={(e) => setGuestCount(Number(e.target.value))}
-                  className="w-full h-10 pl-8 pr-3 text-xs rounded-lg border border-[#c7c4d7] focus:ring-2 focus:ring-[#4338ca] focus:outline-none"
+                  className="w-full h-10 pl-8 pr-3 text-xs rounded-xl border border-[#e5ddcf] focus:ring-2 focus:ring-[#ff5e14] focus:outline-none font-mono-data"
                 />
               </div>
             </div>
             <div>
-              <label className="block text-xs font-semibold text-[#131b2e] mb-1">Budget Cap ($)</label>
+              <label className="block text-xs font-bold text-[#18122b] mb-1">Budget Cap (₹ INR)</label>
               <div className="relative flex items-center">
-                <DollarSign className="w-3.5 h-3.5 text-[#464554] absolute left-3" />
+                <span className="font-bold text-[#ff5e14] absolute left-3 text-sm">₹</span>
                 <input
                   type="number"
-                  min={1000}
-                  step={500}
+                  min={10000}
+                  step={50000}
                   required
                   value={budgetCap}
                   onChange={(e) => setBudgetCap(Number(e.target.value))}
-                  className="w-full h-10 pl-8 pr-3 text-xs rounded-lg border border-[#c7c4d7] focus:ring-2 focus:ring-[#4338ca] focus:outline-none"
+                  className="w-full h-10 pl-7 pr-3 text-xs rounded-xl border border-[#e5ddcf] focus:ring-2 focus:ring-[#ff5e14] focus:outline-none font-mono-data font-bold"
                 />
               </div>
             </div>
@@ -369,33 +368,33 @@ export const NewEventWizardModal: React.FC<NewEventWizardModalProps> = ({
 
           {/* Custom Vision Prompt */}
           <div>
-            <label className="block text-xs font-semibold text-[#131b2e] mb-1">
+            <label className="block text-xs font-bold text-[#18122b] mb-1">
               Custom Vision & Priorities (Optional)
             </label>
             <textarea
               rows={2}
               value={customVision}
               onChange={(e) => setCustomVision(e.target.value)}
-              placeholder="e.g. Sunset outdoor cocktail hour, sustainable plant-based menu, live jazz trio, zero-waste focus."
-              className="w-full p-2.5 text-xs rounded-lg border border-[#c7c4d7] focus:ring-2 focus:ring-[#4338ca] focus:outline-none"
+              placeholder="e.g. Sangeet with live dhol, Rajasthani royal buffet, organic marigold decor, zero-waste favors."
+              className="w-full p-2.5 text-xs rounded-xl border border-[#e5ddcf] focus:ring-2 focus:ring-[#ff5e14] focus:outline-none"
             />
           </div>
 
-          <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-[#eaedff]">
+          <div className="flex items-center justify-end gap-2.5 pt-3 border-t border-[#f0eae1]">
             <button
               type="button"
               onClick={onClose}
-              className="h-9 px-4 rounded-lg border border-[#c7c4d7] text-xs font-medium text-[#464554] hover:bg-[#f2f3ff]"
+              className="h-10 px-4 rounded-xl border border-[#e5ddcf] text-xs font-semibold text-[#544c60] hover:bg-[#f8f4ed]"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isGenerating}
-              className="inline-flex items-center gap-1.5 h-9 px-5 rounded-lg bg-[#4338ca] hover:bg-[#372abf] text-white text-xs font-semibold transition-all focus-visible:ring-2 focus-visible:ring-[#4338ca] shadow-xs disabled:opacity-60"
+              className="inline-flex items-center gap-1.5 h-10 px-5 rounded-xl bg-gradient-to-r from-[#ff5e14] to-[#ff8a00] hover:from-[#ea580c] hover:to-[#f97316] text-white text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] shadow-xs disabled:opacity-60"
             >
               <Sparkles className={`w-3.5 h-3.5 ${isGenerating ? 'animate-spin' : ''}`} />
-              <span>{isGenerating ? 'Orchestrating Event Plan...' : 'Generate Plan with AI'}</span>
+              <span>{isGenerating ? 'Orchestrating Plan...' : 'Generate Plan with AI'}</span>
             </button>
           </div>
         </form>

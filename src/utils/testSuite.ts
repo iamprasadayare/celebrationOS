@@ -273,24 +273,24 @@ export async function runCelebrationOSTests(): Promise<TestResult[]> {
       const sampleGenAIResponse = {
         type: 'optimization',
         headline: 'Optimization Plan',
-        summary: 'Identified $2,000 in seasonal and vendor optimizations.',
+        summary: 'Identified ₹2,00,000 in seasonal floral and digital invite optimizations.',
         proposals: [
-          { id: 'p1', title: 'Floral Seasonality Swap', amount: 1100, description: 'Swap imported blooms for local Mogra garlands.', categoryToAdjust: 'Decor & Florals' },
-          { id: 'p2', title: 'Digital WhatsApp Invites', amount: 900, description: 'Digital RSVP web microsite.', categoryToAdjust: 'Logistics & Guest Transit' },
+          { id: 'p1', title: 'Floral Seasonality Swap', amount: 110000, description: 'Swap imported blooms for local Mogra garlands.', categoryToAdjust: 'Decor & Florals' },
+          { id: 'p2', title: 'Digital WhatsApp Invites', amount: 90000, description: 'Digital RSVP web microsite + QR badges.', categoryToAdjust: 'Logistics & Guest Transit' },
         ],
       };
       const parsed = validateGeminiResponse(sampleGenAIResponse);
 
       const passed = parsed.type === 'optimization' &&
                      parsed.proposals?.length === 2 &&
-                     parsed.proposals[0].amount === 1100 &&
-                     parsed.proposals[1].amount === 900;
+                     parsed.proposals[0].amount === 110000 &&
+                     parsed.proposals[1].amount === 90000;
 
       return {
         passed,
-        expected: 'Valid AICoPilotResponse with 2 proposals ($1,100 and $900)',
-        received: `Type: ${parsed.type}, Proposals: ${parsed.proposals?.length}, Total: $${(parsed.proposals?.[0].amount || 0) + (parsed.proposals?.[1].amount || 0)}`,
-        details: 'Successfully validated and typed structured LLM response output.',
+        expected: 'Valid AICoPilotResponse with 2 proposals (₹1,10,000 and ₹90,000)',
+        received: `Type: ${parsed.type}, Proposals: ${parsed.proposals?.length}, Total: ₹${((parsed.proposals?.[0].amount || 0) + (parsed.proposals?.[1].amount || 0)).toLocaleString('en-IN')}`,
+        details: 'Successfully validated and typed structured LLM response output in INR.',
       };
     }
   );
@@ -329,11 +329,11 @@ export async function runCelebrationOSTests(): Promise<TestResult[]> {
     'Efficiency',
     'Tests deterministic key formulation for sessionStorage retrieval.',
     () => {
-      const key1 = generatePromptCacheKey('optimize', 'wedding', 'Cut $2,000 from budget', 25000, 250);
-      const key2 = generatePromptCacheKey('optimize', 'wedding', 'Cut $2,000 from budget', 25000, 250);
-      const keyDifferent = generatePromptCacheKey('optimize', 'wedding', 'Cut $2,000 from budget', 30000, 250);
+      const key1 = generatePromptCacheKey('optimize', 'wedding', 'Cut ₹2,00,000 from budget', 2500000, 250);
+      const key2 = generatePromptCacheKey('optimize', 'wedding', 'Cut ₹2,00,000 from budget', 2500000, 250);
+      const keyDifferent = generatePromptCacheKey('optimize', 'wedding', 'Cut ₹2,00,000 from budget', 3000000, 250);
 
-      const passed = key1 === key2 && key1 !== keyDifferent && key1.startsWith('cos_cache_optimize_wedding_25000_250');
+      const passed = key1 === key2 && key1 !== keyDifferent && key1.startsWith('cos_cache_optimize_wedding_2500000_250');
 
       return {
         passed,

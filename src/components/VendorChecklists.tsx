@@ -25,7 +25,7 @@ interface VendorChecklistsProps {
 
 export const VendorChecklists: React.FC<VendorChecklistsProps> = ({
   vendors,
-  currencySymbol,
+  currencySymbol = '₹',
   privacyMask,
   onOpenEmailDrafter,
   onToggleChecklistItem,
@@ -44,15 +44,15 @@ export const VendorChecklists: React.FC<VendorChecklistsProps> = ({
   const readinessPercent = totalChecks > 0 ? Math.round((clearedChecks / totalChecks) * 100) : 100;
 
   return (
-    <div className="bg-[#ffffff] p-4 sm:p-6 rounded-xl border border-[#c7c4d7] shadow-xs flex flex-col justify-between">
+    <div className="bg-[#ffffff] p-4 sm:p-6 rounded-2xl border border-[#e5ddcf] shadow-[0_2px_12px_rgba(255,94,20,0.03)] flex flex-col justify-between">
       <div>
         {/* Header & AI Inquiry Draft */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3">
           <div>
-            <h2 className="text-lg font-bold text-[#131b2e] font-headline">
+            <h2 className="text-lg font-bold text-[#18122b] font-headline">
               Vendor Checklists & Deliverables
             </h2>
-            <p className="text-xs text-[#464554] mt-0.5">
+            <p className="text-xs text-[#544c60] mt-0.5">
               Contract execution, payment milestones, and safety verifications
             </p>
           </div>
@@ -60,10 +60,10 @@ export const VendorChecklists: React.FC<VendorChecklistsProps> = ({
             type="button"
             onClick={() => onOpenEmailDrafter()}
             aria-label="Launch AI Vendor Inquiry & Negotiation Email Drafter"
-            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-[#f2f3ff] text-[#131b2e] hover:bg-[#eaedff] text-xs font-semibold transition-colors focus-visible:ring-2 focus-visible:ring-[#4338ca] shrink-0 self-start sm:self-auto border border-[#c7c4d7]"
+            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl bg-gradient-to-r from-[#fff1eb] to-[#fef3c7] hover:from-[#fed7aa] hover:to-[#fde68a] text-[#c2410c] border border-[#fed7aa] text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] shrink-0 self-start sm:self-auto shadow-xs"
           >
-            <Mail className="w-4 h-4 text-[#4338ca]" />
-            <span>AI Draft Inquiry</span>
+            <Mail className="w-4 h-4 text-[#ff5e14]" />
+            <span>AI Draft Terms</span>
           </button>
         </div>
 
@@ -73,18 +73,18 @@ export const VendorChecklists: React.FC<VendorChecklistsProps> = ({
             return (
               <article
                 key={vendor.id}
-                className="p-3.5 rounded-lg bg-[#f2f3ff] border border-[#eaedff] flex flex-col justify-between"
+                className="p-3.5 rounded-xl bg-[#f8f4ed] border border-[#e5ddcf] flex flex-col justify-between hover:border-[#fed7aa] transition-all"
               >
                 <div>
                   <div className="flex items-start justify-between gap-1.5">
-                    <h3 className="text-xs font-bold text-[#131b2e] leading-tight font-headline">
+                    <h3 className="text-xs font-bold text-[#18122b] leading-tight font-headline">
                       {vendor.name}
                     </h3>
-                    <span className="font-mono-data text-[11px] font-bold text-[#4338ca] shrink-0">
+                    <span className="font-mono-data text-[11px] font-bold text-[#6d28d9] shrink-0 bg-[#ede9fe] px-2 py-0.5 rounded-full border border-[#ddd6fe]">
                       {formatCurrency(vendor.capAmount, currencySymbol, privacyMask)} Cap
                     </span>
                   </div>
-                  <p className="text-[11px] text-[#464554] mt-0.5">
+                  <p className="text-[11px] text-[#544c60] mt-0.5 font-medium">
                     {vendor.serviceCategory}
                   </p>
                 </div>
@@ -101,13 +101,13 @@ export const VendorChecklists: React.FC<VendorChecklistsProps> = ({
                         className="flex items-center gap-1.5 text-left group hover:opacity-90 transition-opacity"
                       >
                         {item.completed ? (
-                          <span className="flex items-center gap-1.5 text-[#006c4e] font-medium">
-                            <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                          <span className="flex items-center gap-1.5 text-[#00875a] font-semibold">
+                            <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-[#059669]" />
                             <span>{item.label}</span>
                           </span>
                         ) : (
-                          <span className="flex items-center gap-1.5 text-[#873b00] font-semibold">
-                            <Clock className="w-3.5 h-3.5 shrink-0 text-[#632900]" />
+                          <span className="flex items-center gap-1.5 text-[#c2410c] font-bold">
+                            <Clock className="w-3.5 h-3.5 shrink-0 text-[#ff5e14]" />
                             <span>{item.label}</span>
                           </span>
                         )}
@@ -122,10 +122,10 @@ export const VendorChecklists: React.FC<VendorChecklistsProps> = ({
       </div>
 
       {/* Footer Readiness */}
-      <div className="mt-4 pt-3 border-t border-[#eaedff] flex items-center justify-between text-[#464554] text-xs">
-        <span className="font-medium">Overall Verification Readiness</span>
-        <span className="font-mono-data font-bold text-[#006c4e] flex items-center gap-1">
-          <ShieldCheck className="w-3.5 h-3.5" />
+      <div className="mt-4 pt-3 border-t border-[#f0eae1] flex items-center justify-between text-[#544c60] text-xs">
+        <span className="font-semibold">Overall Verification Readiness</span>
+        <span className="font-mono-data font-bold text-[#00875a] flex items-center gap-1.5">
+          <ShieldCheck className="w-3.5 h-3.5 text-[#059669]" />
           <span>{clearedChecks} of {totalChecks} Checks Cleared ({readinessPercent}%)</span>
         </span>
       </div>

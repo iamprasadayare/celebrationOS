@@ -7,41 +7,59 @@
 
 @layer base {
   :root {
-    --surface: #faf8ff;
-    --surface-dim: #d2d9f4;
-    --surface-bright: #faf8ff;
+    /* Popping, Trending Indian Festive Editorial Palette */
+    --surface: #fbf9f5;
+    --surface-dim: #f0eae1;
+    --surface-bright: #ffffff;
     --surface-container-lowest: #ffffff;
-    --surface-container-low: #f2f3ff;
-    --surface-container: #eaedff;
-    --surface-container-high: #e2e7ff;
-    --surface-container-highest: #dae2fd;
-    --on-surface: #131b2e;
-    --on-surface-variant: #464554;
-    --outline: #777586;
-    --outline-variant: #c7c4d7;
-    --primary: #2a14b4;
+    --surface-container-low: #f8f4ed;
+    --surface-container: #f2ece1;
+    --surface-container-high: #eae1d2;
+    --surface-container-highest: #e0d4c2;
+    --on-surface: #18122b;
+    --on-surface-variant: #544c60;
+    --outline: #948b9f;
+    --outline-variant: #e5ddcf;
+
+    /* Popping Royal Violet & Vibrant Saffron */
+    --primary: #581c87;
     --on-primary: #ffffff;
-    --primary-container: #4338ca;
-    --on-primary-container: #c1beff;
-    --secondary: #006c4e;
+    --primary-container: #6d28d9;
+    --on-primary-container: #ede9fe;
+
+    /* Festive Marigold Saffron */
+    --saffron: #ff5e14;
+    --saffron-container: #fff1eb;
+    --on-saffron-container: #9a2c00;
+
+    /* Shubh Emerald Green */
+    --secondary: #00875a;
     --on-secondary: #ffffff;
-    --secondary-container: #97f5cc;
-    --on-secondary-container: #007353;
-    --tertiary: #632900;
-    --tertiary-container: #873b00;
-    --tertiary-fixed: #ffdbca;
-    --on-tertiary-fixed: #331200;
-    --error: #ba1a1a;
-    --error-container: #ffdad6;
-    --on-error-container: #93000a;
+    --secondary-container: #d1fae5;
+    --on-secondary-container: #065f46;
+
+    /* Royal Champagne & Gold */
+    --tertiary: #b45309;
+    --tertiary-container: #fef3c7;
+    --on-tertiary-container: #78350f;
+
+    /* Gulabi Rose / Crimson */
+    --error: #e11d48;
+    --error-container: #ffe4e6;
+    --on-error-container: #9f1239;
   }
 
   body {
-    background-color: #faf8ff;
-    color: #131b2e;
+    background-color: #fbf9f5;
+    color: #18122b;
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
     -webkit-font-smoothing: antialiased;
+    background-image: 
+      radial-gradient(at 10% 10%, rgba(255, 94, 20, 0.04) 0px, transparent 50%),
+      radial-gradient(at 90% 15%, rgba(109, 40, 217, 0.05) 0px, transparent 50%),
+      radial-gradient(at 50% 90%, rgba(0, 168, 107, 0.03) 0px, transparent 50%);
+    background-attachment: fixed;
   }
 
   h1, h2, h3, h4, .font-headline {
@@ -55,23 +73,40 @@
   }
 }
 
+/* Trending Gradient & Glow Utilities */
+.festive-gradient-primary {
+  background: linear-gradient(135deg, #6d28d9 0%, #4f46e5 100%);
+}
+
+.festive-gradient-saffron {
+  background: linear-gradient(135deg, #ff5e14 0%, #ff8a00 100%);
+}
+
+.festive-gradient-badge {
+  background: linear-gradient(135deg, #fff1eb 0%, #fef3c7 100%);
+}
+
+.festive-card-glow {
+  box-shadow: 0 4px 20px -2px rgba(109, 40, 217, 0.05), 0 2px 6px -1px rgba(255, 94, 20, 0.04);
+}
+
 /* High Contrast Mode for WCAG AAA accessibility */
 .high-contrast {
   --surface: #ffffff;
   --surface-container-lowest: #ffffff;
-  --surface-container-low: #f0f0f0;
-  --surface-container: #e0e0e0;
-  --surface-container-high: #d0d0d0;
+  --surface-container-low: #f4f4f4;
+  --surface-container: #e6e6e6;
+  --surface-container-high: #d4d4d4;
   --surface-container-highest: #c0c0c0;
   --on-surface: #000000;
   --on-surface-variant: #1a1a1a;
   --outline: #000000;
   --outline-variant: #333333;
-  --primary: #000080;
-  --primary-container: #1b1b87;
-  --secondary: #00552b;
-  --secondary-container: #5fe39a;
-  --on-secondary-container: #002b15;
+  --primary: #4c1d95;
+  --primary-container: #581c87;
+  --secondary: #047857;
+  --secondary-container: #a7f3d0;
+  --on-secondary-container: #064e3b;
 }
 
 .high-contrast aside,
@@ -96,9 +131,9 @@
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(119, 117, 134, 0.25);
+  background: rgba(148, 139, 159, 0.3);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(119, 117, 134, 0.45);
+  background: rgba(148, 139, 159, 0.5);
 }
