@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_dashboard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{colors:{"surface":"#faf8ff","on-tertiary-container":"#ffb389","outline":"#777586","on-error-container":"#93000a","on-error":"#ffffff","on-surface-variant":"#464554","inverse-surface":"#283044","inverse-on-surface":"#eef0ff","secondary-fixed-dim":"#7bd8b1","surface-container-highest":"#dae2fd","surface-container-lowest":"#ffffff","on-primary-fixed-variant":"#372abf","surface-dim":"#d2d9f4","on-surface":"#131b2e","on-secondary":"#ffffff","surface-container-low":"#f2f3ff","error-container":"#ffdad6","tertiary-fixed":"#ffdbca","on-background":"#131b2e","surface-tint":"#5148d7","outline-variant":"#c7c4d7","primary-fixed":"#e3dfff","primary":"#2a14b4","surface-variant":"#dae2fd","secondary-fixed":"#97f5cc","tertiary":"#632900","error":"#ba1a1a","tertiary-container":"#873b00","on-secondary-container":"#007353","background":"#faf8ff","surface-bright":"#faf8ff","on-primary-container":"#c1beff","surface-container-high":"#e2e7ff","on-primary-fixed":"#100069","on-tertiary-fixed-variant":"#763300","tertiary-fixed-dim":"#ffb68e","on-secondary-fixed":"#002115","secondary-container":"#97f5cc","on-tertiary-fixed":"#331200","inverse-primary":"#c3c0ff","on-tertiary":"#ffffff","secondary":"#006c4e","on-primary":"#ffffff","surface-container":"#eaedff","primary-fixed-dim":"#c3c0ff","primary-container":"#4338ca","on-secondary-fixed-variant":"#00513a"},borderRadius:{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},spacing:{"space-xs":"0.25rem","margin-mobile":"1rem","space-sm":"0.5rem","margin":"2rem","space-lg":"1.5rem","gutter-mobile":"1rem","space-xl":"2.5rem","gutter":"1.5rem","space-md":"1rem"},fontFamily:{"body-lg":["Inter"],"display-lg":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"body-md":["Inter"],"mono-data":["Inter"],"display-lg-mobile":["Plus Jakarta Sans"],"headline-md":["Plus Jakarta Sans"],"body-sm":["Inter"],"label-md":["Inter"],"label-sm":["Inter"],"headline-lg-mobile":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"]},fontSize:{"body-lg":["16px",{"lineHeight":"26px","fontWeight":"400"}],"display-lg":["40px",{"lineHeight":"48px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.015em","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"22px","fontWeight":"400"}],"mono-data":["13px",{"lineHeight":"18px","letterSpacing":"-0.01em","fontWeight":"500"}],"display-lg-mobile":["32px",{"lineHeight":"40px","letterSpacing":"-0.02em","fontWeight":"700"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"18px","fontWeight":"400"}],"label-md":["13px",{"lineHeight":"16px","fontWeight":"500"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-sm":["16px",{"lineHeight":"24px","fontWeight":"600"}]}}}}</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased"><aside class="fixed left-0 top-0 h-full w-[250px] bg-surface-container-lowest border-r border-outline-variant z-50 flex flex-col justify-between overflow-y-auto"><div class="flex flex-col"><div class="h-16 px-space-md border-b border-outline-variant flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center"><span class="material-symbols-outlined text-[18px]">auto_awesome</span></div><span class="font-headline-md text-headline-sm text-primary-container tracking-tight font-bold">CelebrationOS</span></div><button aria-label="Collapse navigation" class="text-on-surface-variant hover:text-on-surface p-1 rounded hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">keyboard_double_arrow_left</span></button></div><div class="p-space-sm"><p class="px-space-xs mb-1.5 font-label-sm text-label-sm uppercase text-on-surface-variant tracking-wider font-semibold">Active Event Mode</p><div aria-label="Event Type Switcher" class="grid grid-cols-3 gap-1 p-1 bg-surface-container-low rounded-lg" role="radiogroup"><button aria-checked="true" class="py-1 text-center font-label-sm text-label-sm rounded bg-surface-container-lowest text-primary font-bold shadow-[0_1px_4px_rgba(0,0,0,0.06)]" role="radio" type="button">Wed</button><button aria-checked="false" class="py-1 text-center font-label-sm text-label-sm rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" role="radio" type="button">B'day</button><button aria-checked="false" class="py-1 text-center font-label-sm text-label-sm rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" role="radio" type="button">Public</button></div><div class="mt-2 px-space-sm py-1.5 rounded-lg bg-surface-container-low flex items-center gap-2"><span class="material-symbols-outlined text-primary text-[16px]">favorite</span><div class="truncate"><p class="font-label-sm text-label-sm text-on-surface font-semibold truncate">Aarav &amp; Meera's Wedding</p><p class="font-body-sm text-body-sm text-on-surface-variant truncate">250 Confirmed Guests</p></div></div></div><nav aria-label="Primary Navigation" class="px-space-sm mt-2 flex flex-col gap-0.5" data-active-classes="bg-primary-container text-on-primary font-semibold"><a aria-current="page" class="flex items-center px-space-sm py-2 rounded-lg transition-colors bg-primary-container text-on-primary font-semibold" data-path="overview-dashboard" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">dashboard</span>Overview Dashboard</a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="budget-tracker" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">account_balance_wallet</span>Budget Tracker</a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="timeline-and-run-sheet" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">schedule</span>Timeline &amp; Run-Sheet</a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="vendor-checklists" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">checklist</span>Vendor Checklists</a><a class="flex items-center px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="personalized-ideas-studio" href="#"><span class="material-symbols-outlined mr-space-sm text-[20px]">palette</span>Personalized Ideas Studio</a><a class="flex items-center justify-between px-space-sm py-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-colors font-label-md text-label-md" data-path="automated-test-suite-and-diagnostics" href="#"><div class="flex items-center"><span class="material-symbols-outlined mr-space-sm text-[20px]">verified</span>Diagnostics</div><span class="px-1.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[10px] font-bold">12/12</span></a></nav></div><div class="p-space-sm border-t border-outline-variant flex flex-col gap-2 bg-surface-container-lowest"><div class="flex items-center justify-between px-1"><label class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5 cursor-pointer" for="high-contrast-toggle"><span class="material-symbols-outlined text-[16px]">contrast</span>Contrast AA</label><input class="w-4 h-4 rounded text-primary focus:ring-primary" id="high-contrast-toggle" type="checkbox"/></div><div class="flex items-center justify-between px-1"><label class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5 cursor-pointer" for="privacy-mask-toggle"><span class="material-symbols-outlined text-[16px]">lock</span>Privacy Mask</label><input class="w-4 h-4 rounded text-primary focus:ring-primary" id="privacy-mask-toggle" type="checkbox"/></div><button class="w-full mt-1 flex items-center justify-center gap-1.5 h-10 px-space-sm rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-semibold hover:bg-primary transition-colors focus:ring-2 focus:ring-primary focus:ring-offset-2" type="button"><span class="material-symbols-outlined text-[18px]">add</span>New Event Wizard</button></div></aside><div class="pl-[250px]"><header class="fixed top-0 left-[250px] right-0 h-16 bg-surface-container-lowest/95 backdrop-blur border-b border-outline-variant z-40 px-space-lg flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm truncate"><div class="flex items-center gap-2"><span class="font-headline-md text-headline-sm font-bold text-on-surface truncate">Aarav &amp; Meera's Wedding</span></div><span class="hidden xl:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px]">calendar_today</span>Nov 18, 2026 • 45 Days Left</span><span class="hidden 2xl:inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px]">location_on</span>Grand Hyatt Udaipur</span><span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm"><span class="material-symbols-outlined text-[14px]">group</span>250 Guests</span></div><div class="flex items-center gap-2 shrink-0"><button class="hidden sm:inline-flex items-center gap-1 h-9 px-space-sm rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-label-sm text-label-sm hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">simulation</span>Simulator</button><button class="hidden md:inline-flex items-center gap-1 h-9 px-space-sm rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-label-sm text-label-sm hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-secondary text-[16px]">check_circle</span>Self-Tests</button><button class="hidden lg:inline-flex items-center gap-1 h-9 px-space-sm rounded-lg border border-outline-variant bg-surface-container-lowest text-on-surface font-label-sm text-label-sm hover:bg-surface-container-low transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">print</span>Export</button><button class="inline-flex items-center gap-1.5 h-9 px-space-sm rounded-lg bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold hover:bg-surface-container-highest transition-colors" type="button"><span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>AI Co-Pilot</button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-16 bg-surface min-h-screen px-space-lg py-space-lg w-full"><div class="flex flex-col w-full">
+<div class="flex flex-col xl:flex-row items-start gap-space-lg w-full">
+<!-- MAIN CENTER WORKSPACE -->
+<div class="flex-1 min-w-0 w-full flex flex-col gap-space-lg">
+<!-- 1. TOP KPI SUMMARY ROW (4 Bento Cards) -->
+<section aria-label="Executive Performance Summary" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
+<!-- KPI 1: Budget Health -->
+<article class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Budget Health</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">$18,400</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">/ $25,000</span>
+</div>
+<p class="font-mono-data text-mono-data text-secondary mt-0.5 font-semibold">$6,600 unallocated reserve</p>
+</div>
+<div class="mt-4">
+<div aria-label="Budget consumption rate" aria-valuemax="100" aria-valuemin="0" aria-valuenow="73.6" class="w-full bg-surface-container h-2 rounded-full overflow-hidden flex" role="progressbar">
+<div class="bg-primary-container h-full transition-all duration-500" style="width: 73.6%;"></div>
+<div class="bg-secondary-fixed-dim h-full transition-all duration-500" style="width: 26.4%;"></div>
+</div>
+<div class="flex items-center justify-between mt-2 pt-1">
+<span class="inline-flex items-center gap-1 font-label-sm text-label-sm px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> On Track (73.6%)
+              </span>
+<span class="font-mono-data text-mono-data text-on-surface-variant">26.4% Safe</span>
+</div>
+</div>
+</article>
+<!-- KPI 2: Timeline Milestones -->
+<article class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Timeline Progress</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-1.5">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">18 / 26</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Tasks (69%)</span>
+</div>
+<p class="font-mono-data text-mono-data text-on-surface-variant mt-0.5">8 active deliverables pending</p>
+</div>
+<div class="mt-4">
+<div aria-label="Overall timeline milestone completion" aria-valuemax="100" aria-valuemin="0" aria-valuenow="69" class="w-full bg-surface-container h-2 rounded-full overflow-hidden" role="progressbar">
+<div class="bg-primary-container h-full rounded-full transition-all duration-500" style="width: 69%;"></div>
+</div>
+<div class="flex items-center gap-1.5 mt-2 pt-1 font-label-sm text-label-sm text-tertiary-container truncate">
+<span class="material-symbols-outlined text-[14px] shrink-0 text-tertiary">alarm</span>
+<span class="truncate font-medium">Next: Finalize Catering (in 3 days)</span>
+</div>
+</div>
+</article>
+<!-- KPI 3: Vendor Checklists -->
+<article class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Vendor Management</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">fact_check</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-1">
+<span class="font-headline-lg text-headline-lg text-on-surface tracking-tight font-bold">11</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Active Partners</span>
+</div>
+<p class="font-mono-data text-mono-data text-on-surface-variant mt-0.5">100% compliance certified</p>
+</div>
+<div class="flex items-center gap-1.5 mt-4 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[12px]">check</span> 6 Booked
+            </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">
+              3 Shortlisted
+            </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm font-semibold">
+              2 Pending
+            </span>
+</div>
+</article>
+<!-- KPI 4: AI Engine & Cache Status -->
+<article class="bg-surface-container-lowest p-space-md rounded-xl shadow-sm flex flex-col justify-between relative overflow-hidden group">
+<div class="flex items-center justify-between gap-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">AI Efficiency &amp; Cache</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center text-primary-container shrink-0">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-md text-headline-md text-on-surface font-bold tracking-tight">Gemini 2.5 Flash</span>
+</div>
+<p class="font-mono-data text-mono-data text-secondary font-semibold mt-0.5 flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span> 42ms response latency
+            </p>
+</div>
+<div class="flex items-center gap-1.5 mt-4 flex-wrap">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">verified</span> 98% Schema
+            </span>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-label-sm font-semibold">
+<span class="material-symbols-outlined text-[13px]">lock</span> PII Shield
+            </span>
+</div>
+</article>
+</section>
+<!-- 2. MIDDLE ROW (Split Bento Layout: 58% Left / 42% Right) -->
+<section aria-label="Financials and Production Milestones" class="grid grid-cols-1 lg:grid-cols-12 gap-space-lg w-full">
+<!-- LEFT 58%: Interactive Budget Breakdown Table -->
+<div class="lg:col-span-7 bg-surface-container-lowest p-space-md sm:p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-space-md">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Budget Breakdown &amp; Cost Caps</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Real-time variance tracking against guaranteed initial caps</p>
+</div>
+<button class="inline-flex items-center gap-1.5 h-10 px-3.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-primary-container font-label-md text-label-md font-semibold transition-colors focus:ring-2 focus:ring-primary focus:outline-none shrink-0 self-start sm:self-auto" type="button">
+<span class="material-symbols-outlined text-[16px]">auto_fix_high</span>
+<span>AI Rebalance</span>
+</button>
+</div>
+<!-- Accessible Table Wrapper -->
+<div class="w-full overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm border-collapse min-w-[560px]">
+<caption class="sr-only">Celebration categorized budget caps, quoted commitments, payments disbursed, and variance</caption>
+<thead>
+<tr class="bg-surface-container-low text-on-surface font-label-sm text-label-sm">
+<th class="py-2.5 px-3 rounded-l-lg font-semibold" scope="col">Category</th>
+<th class="py-2.5 px-3 font-semibold text-right" scope="col">Allocated</th>
+<th class="py-2.5 px-3 font-semibold text-right" scope="col">Quoted / Act.</th>
+<th class="py-2.5 px-3 font-semibold text-right" scope="col">Paid</th>
+<th class="py-2.5 px-3 font-semibold text-center" scope="col">Variance Status</th>
+<th class="py-2.5 px-3 rounded-r-lg font-semibold text-right" scope="col">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-3 font-label-md text-label-md text-on-surface font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                      Venue &amp; Facilities
+                    </td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface font-medium">$8,000</td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface font-medium">$7,800</td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface-variant">$5,000</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[12px]">check</span> -$200
+                      </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button aria-label="Review Venue details" class="text-on-surface-variant hover:text-primary p-1 rounded hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-3 font-label-md text-label-md text-on-surface font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+                      Catering &amp; Bar
+                    </td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface font-medium">$7,000</td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-tertiary-container font-bold">$7,200</td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface-variant">$3,500</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[12px]">warning</span> +$200
+                      </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button aria-label="Review Catering details" class="text-on-surface-variant hover:text-primary p-1 rounded hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-3 font-label-md text-label-md text-on-surface font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                      Decor &amp; Florals
+                    </td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface font-medium">$4,000</td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface font-medium">$3,800</td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface-variant">$2,000</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[12px]">check</span> -$200
+                      </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button aria-label="Review Decor details" class="text-on-surface-variant hover:text-primary p-1 rounded hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-3 font-label-md text-label-md text-on-surface font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                      Photography &amp; Cinema
+                    </td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface font-medium">$3,000</td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface font-medium">$3,000</td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface-variant">$1,500</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-label-sm text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[12px]">remove</span> On Cap
+                      </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button aria-label="Review Photography details" class="text-on-surface-variant hover:text-primary p-1 rounded hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-3 font-label-md text-label-md text-on-surface font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary-container"></span>
+                      Entertainment &amp; Sound
+                    </td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface font-medium">$1,800</td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface font-medium">$1,600</td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface-variant">$1,600</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[12px]">check</span> -$200
+                      </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button aria-label="Review Entertainment details" class="text-on-surface-variant hover:text-primary p-1 rounded hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-3 px-3 font-label-md text-label-md text-on-surface font-semibold flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                      Logistics &amp; Guest Transit
+                    </td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface font-medium">$1,200</td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface font-medium">$1,200</td>
+<td class="py-3 px-3 text-right font-mono-data text-mono-data text-on-surface-variant">$600</td>
+<td class="py-3 px-3 text-center">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-surface-container text-on-surface font-label-sm text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[12px]">remove</span> On Cap
+                      </span>
+</td>
+<td class="py-3 px-3 text-right">
+<button aria-label="Review Logistics details" class="text-on-surface-variant hover:text-primary p-1 rounded hover:bg-surface-container transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Table Footer Summary -->
+<div class="mt-4 pt-3 bg-surface-container-low rounded-lg p-3 flex flex-col sm:flex-row items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-[20px]">savings</span>
+<span class="font-label-md text-label-md text-on-surface font-semibold">Net Consolidated Surplus: $400 under initial ceiling</span>
+</div>
+<div class="flex items-center gap-4 text-right">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Allocated: <strong class="text-on-surface font-mono-data">$25,000</strong></span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Actual: <strong class="text-primary-container font-mono-data">$24,600</strong></span>
+</div>
+</div>
+</div>
+<!-- RIGHT 42%: Chronological Timeline & Run-Sheet -->
+<div class="lg:col-span-5 bg-surface-container-lowest p-space-md sm:p-space-lg rounded-xl shadow-sm flex flex-col">
+<div class="flex items-center justify-between gap-2 pb-space-sm">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Chronological Timeline</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Critical countdown path to Nov 18, 2026</p>
+</div>
+<button class="inline-flex items-center gap-1 h-9 px-3 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-primary-container font-label-sm text-label-sm font-semibold transition-colors focus:ring-2 focus:ring-primary focus:outline-none shrink-0" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span> Task
+            </button>
+</div>
+<!-- Phase Tabs (Accessible) -->
+<div aria-label="Timeline Phases" class="flex items-center gap-1 overflow-x-auto py-2 border-b border-surface-container" role="tablist">
+<button aria-selected="false" class="px-2.5 py-1 text-center font-label-sm text-label-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors whitespace-nowrap" role="tab">6+ Mos</button>
+<button aria-selected="false" class="px-2.5 py-1 text-center font-label-sm text-label-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors whitespace-nowrap" role="tab">3 Mos</button>
+<button aria-selected="true" class="px-2.5 py-1 text-center font-label-sm text-label-sm rounded-lg bg-primary-container text-on-primary font-bold shadow-sm whitespace-nowrap" role="tab">1 Mo (Active)</button>
+<button aria-selected="false" class="px-2.5 py-1 text-center font-label-sm text-label-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors whitespace-nowrap" role="tab">Week Of</button>
+<button aria-selected="false" class="px-2.5 py-1 text-center font-label-sm text-label-sm rounded-lg text-on-surface-variant hover:bg-surface-container transition-colors whitespace-nowrap" role="tab">Day-Of</button>
+</div>
+<!-- Milestone Task List -->
+<div class="mt-3 flex flex-col gap-2.5 overflow-y-auto max-h-[380px] pr-1">
+<!-- Item 1: Done -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-start justify-between gap-3 opacity-75">
+<div class="flex items-start gap-2.5 min-w-0">
+<input checked="" class="w-4 h-4 mt-0.5 rounded text-primary focus:ring-primary shrink-0" disabled="" id="task-1" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface line-through font-medium truncate" for="task-1">
+                  Venue Site Walkthrough &amp; Acoustical Check
+                  <span class="block font-mono-data text-[11px] text-on-surface-variant mt-0.5 no-underline">T-90 Days • Verified Grand Hyatt Udaipur</span>
+</label>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-[10px] font-bold uppercase">Done</span>
+</div>
+<!-- Item 2: Done -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-start justify-between gap-3 opacity-75">
+<div class="flex items-start gap-2.5 min-w-0">
+<input checked="" class="w-4 h-4 mt-0.5 rounded text-primary focus:ring-primary shrink-0" disabled="" id="task-2" type="checkbox"/>
+<label class="font-body-sm text-body-sm text-on-surface line-through font-medium truncate" for="task-2">
+                  Tasting Session with Udaipur Royal Caterers
+                  <span class="block font-mono-data text-[11px] text-on-surface-variant mt-0.5 no-underline">T-60 Days • 6-course Rajasthani Tasting</span>
+</label>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-[10px] font-bold uppercase">Done</span>
+</div>
+<!-- Item 3: Active Priority (Due in 3 days) -->
+<div class="p-3 rounded-lg bg-surface-container-lowest shadow-sm flex flex-col gap-2 ring-1 ring-tertiary-container/30">
+<div class="flex items-start justify-between gap-2">
+<div class="flex items-start gap-2.5 min-w-0">
+<input class="w-4 h-4 mt-0.5 rounded text-primary focus:ring-primary shrink-0 cursor-pointer" id="task-3" type="checkbox"/>
+<div>
+<label class="font-label-md text-label-md text-on-surface font-bold cursor-pointer" for="task-3">
+                      Finalize Catering Menu &amp; Dietary Matrix
+                    </label>
+<p class="font-mono-data text-[11px] text-tertiary-container font-semibold mt-0.5 flex items-center gap-1">
+<span class="material-symbols-outlined text-[13px]">alarm</span> Due in 3 days • T-45 Days Offset
+                    </p>
+</div>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label-sm text-[10px] font-bold uppercase">High Pri</span>
+</div>
+<div class="flex items-center justify-between gap-2 pt-1 border-t border-surface-container">
+<span class="font-body-sm text-[11px] text-on-surface-variant">218 / 250 dietary responses</span>
+<button class="inline-flex items-center gap-1 text-[11px] font-label-sm text-primary hover:underline font-semibold" type="button">
+                  Send Survey <span class="material-symbols-outlined text-[13px]">send</span>
+</button>
+</div>
+</div>
+<!-- Item 4: Up Next -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-start justify-between gap-2">
+<div class="flex items-start gap-2.5 min-w-0">
+<input class="w-4 h-4 mt-0.5 rounded text-primary focus:ring-primary shrink-0 cursor-pointer" id="task-4" type="checkbox"/>
+<div>
+<label class="font-body-sm text-body-sm text-on-surface font-medium cursor-pointer" for="task-4">
+                    Sound &amp; Sangeet Lighting Rehearsal
+                  </label>
+<p class="font-mono-data text-[11px] text-on-surface-variant mt-0.5">T-30 Days • Prism Sound AV</p>
+</div>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-[10px] font-semibold uppercase">Medium</span>
+</div>
+<!-- Item 5: Distribution -->
+<div class="p-3 rounded-lg bg-surface-container-low flex items-start justify-between gap-2">
+<div class="flex items-start gap-2.5 min-w-0">
+<input class="w-4 h-4 mt-0.5 rounded text-primary focus:ring-primary shrink-0 cursor-pointer" id="task-5" type="checkbox"/>
+<div>
+<label class="font-body-sm text-body-sm text-on-surface font-medium cursor-pointer" for="task-5">
+                    Distribute Final Run-Sheet to Wedding Party
+                  </label>
+<p class="font-mono-data text-[11px] text-on-surface-variant mt-0.5">T-14 Days • 22 designated key holders</p>
+</div>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded bg-surface-container text-on-surface-variant font-label-sm text-[10px] font-semibold uppercase">Low</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. BOTTOM SPLIT ROW (50% / 50% Grid) -->
+<section aria-label="Vendor Verification and Ideas Studio" class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg w-full">
+<!-- LEFT 50%: Vendor Checklist Module -->
+<div class="bg-surface-container-lowest p-space-md sm:p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-space-sm">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Vendor Checklists &amp; Deliverables</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Contract execution, payment milestones, and safety verifications</p>
+</div>
+<button class="inline-flex items-center gap-1.5 h-9 px-3 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm font-semibold transition-colors focus:ring-2 focus:ring-primary shrink-0 self-start sm:self-auto" type="button">
+<span class="material-symbols-outlined text-[16px]">mail</span> AI Draft Inquiry
+              </button>
+</div>
+<!-- Vendor Cards List -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-3">
+<!-- Card 1 -->
+<article class="p-3.5 rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-label-md text-label-md font-bold text-on-surface leading-tight">Udaipur Royal Caterers</h3>
+<span class="font-mono-data text-[11px] font-bold text-primary-container shrink-0">$7,000 Cap</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Catering &amp; Beverage</p>
+</div>
+<div class="mt-3 flex flex-col gap-1.5 font-body-sm text-[11px]">
+<span class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Contract Signed
+                  </span>
+<span class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Deposit Paid ($3,500)
+                  </span>
+<span class="flex items-center gap-1.5 text-tertiary-container font-semibold">
+<span class="material-symbols-outlined text-[14px]">pending</span> Final Headcount Pending
+                  </span>
+</div>
+</article>
+<!-- Card 2 -->
+<article class="p-3.5 rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-label-md text-label-md font-bold text-on-surface leading-tight">Marigold Bloom Artisans</h3>
+<span class="font-mono-data text-[11px] font-bold text-primary-container shrink-0">$4,000 Cap</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Floral &amp; Mandap Decor</p>
+</div>
+<div class="mt-3 flex flex-col gap-1.5 font-body-sm text-[11px]">
+<span class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Contract Signed
+                  </span>
+<span class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Deposit Paid ($2,000)
+                  </span>
+<span class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Rain Backup Plan Staged
+                  </span>
+</div>
+</article>
+<!-- Card 3 -->
+<article class="p-3.5 rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-label-md text-label-md font-bold text-on-surface leading-tight">Prism Sound &amp; AV</h3>
+<span class="font-mono-data text-[11px] font-bold text-primary-container shrink-0">$1,800 Cap</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Sound, Lighting &amp; DJ</p>
+</div>
+<div class="mt-3 flex flex-col gap-1.5 font-body-sm text-[11px]">
+<span class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Contract Signed
+                  </span>
+<span class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Paid in Full ($1,600)
+                  </span>
+<span class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Generator Backup Verified
+                  </span>
+</div>
+</article>
+<!-- Card 4 -->
+<article class="p-3.5 rounded-lg bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-start justify-between gap-1">
+<h3 class="font-label-md text-label-md font-bold text-on-surface leading-tight">City Event Safety &amp; Fire</h3>
+<span class="font-mono-data text-[11px] font-bold text-primary-container shrink-0">$500 Cap</span>
+</div>
+<p class="font-body-sm text-[12px] text-on-surface-variant mt-0.5">Municipal Permits</p>
+</div>
+<div class="mt-3 flex flex-col gap-1.5 font-body-sm text-[11px]">
+<span class="flex items-center gap-1.5 text-secondary font-medium">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Application Filed
+                  </span>
+<span class="flex items-center gap-1.5 text-tertiary-container font-semibold">
+<span class="material-symbols-outlined text-[14px]">pending</span> Marshall Walkthrough Booked
+                  </span>
+<span class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">info</span> Acoustical Limits 10 PM
+                  </span>
+</div>
+</article>
+</div>
+</div>
+<div class="mt-4 pt-2 flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span>Overall Verification Readiness</span>
+<span class="font-mono-data text-mono-data font-bold text-secondary">10 of 12 Checks Cleared (83%)</span>
+</div>
+</div>
+<!-- RIGHT 50%: Personalized Ideas Studio Module -->
+<div class="bg-surface-container-lowest p-space-md sm:p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-space-sm">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Personalized Ideas Studio</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Contextual GenAI recommendations for 250 guests in Udaipur</p>
+</div>
+<button class="inline-flex items-center gap-1 h-9 px-3 rounded-lg bg-surface-container text-on-surface hover:bg-surface-container-high font-label-sm text-label-sm font-semibold transition-colors focus:ring-2 focus:ring-primary shrink-0 self-start sm:self-auto" type="button">
+<span class="material-symbols-outlined text-[16px]">sync</span> Refresh
+              </button>
+</div>
+<!-- Tailored Inspiration Cards -->
+<div class="flex flex-col gap-3 mt-3">
+<!-- Idea 1 -->
+<article class="p-3.5 rounded-lg bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-3 group hover:bg-surface-container transition-colors">
+<div class="space-y-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Royal Marigold Courtyard Decor</h3>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[10px] font-semibold">Saffron &amp; Gold</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-[10px] font-semibold">Local Sourcing</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Swap imported stems with fragrant local Udaipur marigold garlands, reducing transit costs.</p>
+<p class="font-mono-data text-[12px] text-secondary font-semibold">Impact: -$300 variance savings</p>
+</div>
+<button class="inline-flex items-center justify-center gap-1 h-8 px-3 rounded-lg bg-surface-container-highest hover:bg-primary-container hover:text-on-primary text-primary-container font-label-sm text-label-sm font-semibold transition-colors shrink-0" type="button">
+<span class="material-symbols-outlined text-[14px]">add</span> Add
+                </button>
+</article>
+<!-- Idea 2 -->
+<article class="p-3.5 rounded-lg bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-3 group hover:bg-surface-container transition-colors">
+<div class="space-y-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Live Chaat &amp; Fusion Station</h3>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label-sm text-[10px] font-semibold">Nut-Free / Vegan</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-[10px] font-semibold">High Engagement</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Chef-driven street food counter with customized allergen tagging for 42 dietary requests.</p>
+<p class="font-mono-data text-[12px] text-tertiary-container font-semibold">Impact: +$450 catering add-on</p>
+</div>
+<button class="inline-flex items-center justify-center gap-1 h-8 px-3 rounded-lg bg-surface-container-highest hover:bg-primary-container hover:text-on-primary text-primary-container font-label-sm text-label-sm font-semibold transition-colors shrink-0" type="button">
+<span class="material-symbols-outlined text-[14px]">add</span> Add
+                </button>
+</article>
+<!-- Idea 3 -->
+<article class="p-3.5 rounded-lg bg-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-3 group hover:bg-surface-container transition-colors">
+<div class="space-y-1 min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Zero-Waste Terracotta Jasmine Gifts</h3>
+<span class="px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[10px] font-semibold">Eco-Friendly</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-primary font-label-sm text-[10px] font-semibold">Light Weight</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-1">Living potted jasmine plants hand-packaged in artisanal terracotta pots by local potters.</p>
+<p class="font-mono-data text-[12px] text-secondary font-semibold">Impact: -$150 favor gift budget</p>
+</div>
+<button class="inline-flex items-center justify-center gap-1 h-8 px-3 rounded-lg bg-surface-container-highest hover:bg-primary-container hover:text-on-primary text-primary-container font-label-sm text-label-sm font-semibold transition-colors shrink-0" type="button">
+<span class="material-symbols-outlined text-[14px]">add</span> Add
+                </button>
+</article>
+</div>
+</div>
+<p class="mt-4 pt-2 font-body-sm text-[11px] text-on-surface-variant flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary">psychology</span>
+            Generated using Udaipur vendor inventory models &amp; Rajasthani seasonal harvest schedules.
+          </p>
+</div>
+</section>
+</div>
+<!-- RIGHT DOCKED AI CO-PILOT DRAWER -->
+<aside aria-label="CelebrationOS AI Co-Pilot Assistant" class="w-full xl:w-[340px] shrink-0 bg-surface-container-lowest p-space-md rounded-2xl shadow-sm space-y-4 self-start sticky top-6">
+<!-- Drawer Header -->
+<div class="flex items-center justify-between pb-3 border-b border-surface-container">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-primary-container text-on-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]">smart_toy</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface leading-none">AI Co-Pilot</h2>
+<span class="font-mono-data text-[11px] text-on-surface-variant">Autonomous Orchestrator</span>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label-sm text-[10px] font-bold">
+<span class="material-symbols-outlined text-[12px]">security</span> PII Masked
+        </span>
+</div>
+<!-- Active Conversation Thread -->
+<div class="space-y-3">
+<!-- User prompt message bubble -->
+<div class="flex flex-col items-end">
+<div class="bg-primary-container text-on-primary p-3 rounded-xl rounded-tr-xs max-w-[90%] shadow-sm">
+<p class="font-body-sm text-body-sm">Cut $2,000 from the wedding budget without reducing guest count or food quality.</p>
+</div>
+<span class="font-mono-data text-[10px] text-on-surface-variant mt-1 mr-1">Today at 10:42 AM</span>
+</div>
+<!-- AI Response message card -->
+<div class="bg-surface-container-low p-3.5 rounded-xl rounded-tl-xs space-y-3">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[16px]">auto_awesome</span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Optimization Plan</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Analyzed Udaipur vendor rates, seasonal floral availability, and print vs digital costs. Here is an optimized plan to save <strong>$2,000</strong>:
+          </p>
+<!-- Proposal Chip 1 -->
+<div class="bg-surface-container-lowest p-2.5 rounded-lg space-y-1.5 shadow-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Floral Seasonality Swap</span>
+<span class="font-mono-data text-mono-data font-bold text-secondary">-$1,100</span>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant">Swap imported orchids for local Marigold &amp; Mogra garlands across 14 tables.</p>
+<button class="w-full py-1 text-center font-label-sm text-[11px] rounded bg-surface-container hover:bg-surface-container-high text-primary font-semibold transition-colors" type="button">
+              Apply Item (-$1,100)
+            </button>
+</div>
+<!-- Proposal Chip 2 -->
+<div class="bg-surface-container-lowest p-2.5 rounded-lg space-y-1.5 shadow-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Digital WhatsApp Invites</span>
+<span class="font-mono-data text-mono-data font-bold text-secondary">-$900</span>
+</div>
+<p class="font-body-sm text-[11px] text-on-surface-variant">Replace luxury card stock with personalized RSVP web microsites + QR badges.</p>
+<button class="w-full py-1 text-center font-label-sm text-[11px] rounded bg-surface-container hover:bg-surface-container-high text-primary font-semibold transition-colors" type="button">
+              Apply Item (-$900)
+            </button>
+</div>
+<!-- Primary CTA Button -->
+<button class="w-full h-11 flex items-center justify-center gap-2 rounded-lg bg-primary-container text-on-primary font-label-md text-label-md font-semibold hover:bg-primary transition-all duration-200 shadow-sm focus:ring-2 focus:ring-primary focus:outline-none" type="button">
+<span class="material-symbols-outlined text-[18px]">bolt</span> Apply All Recommendations (-$2,000)
+          </button>
+</div>
+</div>
+<!-- Quick Action Chips -->
+<div class="pt-2">
+<span class="font-label-sm text-[11px] text-on-surface-variant uppercase tracking-wider font-semibold block mb-2">Suggested Inquiries</span>
+<div class="flex flex-wrap gap-1.5">
+<button class="px-2.5 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-[11px] transition-colors" type="button">
+            Optimize Budget
+          </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-[11px] transition-colors" type="button">
+            Day-Of Run Sheet
+          </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-[11px] transition-colors" type="button">
+            Draft Vendor Email
+          </button>
+<button class="px-2.5 py-1 rounded-full bg-surface-container hover:bg-surface-container-high text-on-surface font-label-sm text-[11px] transition-colors" type="button">
+            Accessible Venue Ideas
+          </button>
+</div>
+</div>
+<!-- Prompt Input Box -->
+<form class="pt-2" onsubmit="event.preventDefault();">
+<label class="sr-only" for="ai-prompt-input">Ask CelebrationOS AI or generate custom schedules</label>
+<div class="relative flex items-center">
+<input class="w-full h-11 pl-3 pr-10 rounded-lg bg-surface-container-low text-on-surface placeholder:text-on-surface-variant font-body-sm text-body-sm focus:bg-surface-container-lowest focus:ring-2 focus:ring-primary focus:outline-none transition-all" id="ai-prompt-input" placeholder="Ask AI or generate schedules..." type="text"/>
+<button aria-label="Send prompt to AI Co-Pilot" class="absolute right-1 w-8 h-8 rounded-md bg-primary-container text-on-primary flex items-center justify-center hover:bg-primary transition-colors focus:ring-2 focus:ring-primary focus:outline-none" type="submit">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+</button>
+</div>
+</form>
+</aside>
+</div>
+</div></main></div></body></html>
