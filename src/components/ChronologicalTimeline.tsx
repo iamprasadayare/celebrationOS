@@ -85,15 +85,15 @@ export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
   };
 
   return (
-    <div className="bg-[#ffffff] p-4 sm:p-6 rounded-2xl border border-[#e5ddcf] shadow-[0_2px_12px_rgba(255,94,20,0.03)] flex flex-col justify-between">
+    <div className="bg-[#ffffff] dark:bg-[#151024] p-4 sm:p-6 rounded-2xl border border-[#e5ddcf] dark:border-[#2d2442] shadow-[0_2px_12px_rgba(255,94,20,0.03)] flex flex-col justify-between w-full">
       <div>
         {/* Header */}
         <div className="flex items-center justify-between gap-2 pb-3">
           <div>
-            <h2 className="text-lg font-bold text-[#18122b] font-headline">
-              Chronological Timeline
+            <h2 className="text-lg font-bold text-[#18122b] dark:text-[#f5f3ff] font-headline">
+              Chronological Timeline & Run-Sheet
             </h2>
-            <p className="text-xs text-[#544c60] mt-0.5">
+            <p className="text-xs text-[#544c60] dark:text-[#a8a1b7] mt-0.5">
               Critical countdown path to {masterDateFormatted}
             </p>
           </div>
@@ -104,10 +104,10 @@ export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
                 type="button"
                 onClick={onExportIcs}
                 aria-label="Export all timeline milestones to .ics file for Google Calendar or Apple Calendar"
-                className="inline-flex items-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-xl border border-[#d1fae5] bg-[#f0fdf4] hover:bg-[#dcfce7] text-[#166534] text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#00875a]"
+                className="inline-flex items-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-xl border border-[#d1fae5] dark:border-[#047857] bg-[#f0fdf4] dark:bg-[#064e3b] hover:bg-[#dcfce7] dark:hover:bg-[#065f46] text-[#166534] dark:text-[#a7f3d0] text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#00875a]"
                 title="Download .ics for Google/Apple Calendar"
               >
-                <Calendar className="w-3.5 h-3.5 text-[#00875a]" />
+                <Calendar className="w-3.5 h-3.5 text-[#00875a] dark:text-[#10b981]" />
                 <span className="hidden sm:inline">Export .ics</span>
               </button>
             )}
@@ -116,7 +116,7 @@ export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
               type="button"
               onClick={onTriggerRunSheetAI}
               aria-label="Generate AI Hourly Run-Sheet"
-              className="inline-flex items-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-xl border border-[#fed7aa] bg-[#fff1eb] hover:bg-[#fed7aa] text-[#c2410c] text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14]"
+              className="inline-flex items-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-xl border border-[#fed7aa] dark:border-[#7c2d12] bg-[#fff1eb] dark:bg-[#3d1704] hover:bg-[#fed7aa] dark:hover:bg-[#521e06] text-[#c2410c] dark:text-[#ffbc99] text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14]"
               title="AI Run-Sheet Generator"
             >
               <Sparkles className="w-3.5 h-3.5 text-[#ff5e14]" />
@@ -139,7 +139,7 @@ export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
         <div
           role="tablist"
           aria-label="Timeline Phases"
-          className="flex items-center gap-1 overflow-x-auto py-2 border-b border-[#f0eae1]"
+          className="flex items-center gap-1 overflow-x-auto py-2 border-b border-[#f0eae1] dark:border-[#2d2442]"
         >
           <button
             type="button"
@@ -149,7 +149,7 @@ export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
             className={`px-3 py-1 text-center text-xs rounded-xl transition-all whitespace-nowrap font-bold ${
               selectedPhase === 'all'
                 ? 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white shadow-xs'
-                : 'text-[#544c60] hover:bg-[#fff1eb] hover:text-[#ff5e14]'
+                : 'text-[#544c60] dark:text-[#a8a1b7] hover:bg-[#fff1eb] dark:hover:bg-[#281f3d] hover:text-[#ff5e14] dark:hover:text-[#ff8a00]'
             }`}
           >
             All
@@ -162,7 +162,7 @@ export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
             className={`px-3 py-1 text-center text-xs rounded-xl transition-all whitespace-nowrap font-bold ${
               selectedPhase === '6_months_out'
                 ? 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white shadow-xs'
-                : 'text-[#544c60] hover:bg-[#fff1eb] hover:text-[#ff5e14]'
+                : 'text-[#544c60] dark:text-[#a8a1b7] hover:bg-[#fff1eb] dark:hover:bg-[#281f3d] hover:text-[#ff5e14] dark:hover:text-[#ff8a00]'
             }`}
           >
             6+ Mos
@@ -175,7 +175,7 @@ export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
             className={`px-3 py-1 text-center text-xs rounded-xl transition-all whitespace-nowrap font-bold ${
               selectedPhase === '3_months_out'
                 ? 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white shadow-xs'
-                : 'text-[#544c60] hover:bg-[#fff1eb] hover:text-[#ff5e14]'
+                : 'text-[#544c60] dark:text-[#a8a1b7] hover:bg-[#fff1eb] dark:hover:bg-[#281f3d] hover:text-[#ff5e14] dark:hover:text-[#ff8a00]'
             }`}
           >
             3 Mos
@@ -188,7 +188,7 @@ export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
             className={`px-3 py-1 text-center text-xs rounded-xl transition-all whitespace-nowrap font-bold ${
               selectedPhase === '1_month_out'
                 ? 'bg-gradient-to-r from-[#ff5e14] to-[#ff8a00] text-white shadow-xs'
-                : 'text-[#544c60] hover:bg-[#fff1eb] hover:text-[#ff5e14]'
+                : 'text-[#544c60] dark:text-[#a8a1b7] hover:bg-[#fff1eb] dark:hover:bg-[#281f3d] hover:text-[#ff5e14] dark:hover:text-[#ff8a00]'
             }`}
           >
             1 Mo (Active)
@@ -237,10 +237,10 @@ export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
                   key={task.id}
                   className={`p-3.5 rounded-xl transition-all border ${
                     task.completed
-                      ? 'bg-[#f8f4ed] border-[#e5ddcf] opacity-80'
+                      ? 'bg-[#f8f4ed] dark:bg-[#1a142c] border-[#e5ddcf] dark:border-[#2d2442] opacity-80'
                       : isUrgent
-                      ? 'bg-[#ffffff] shadow-xs border-[#fed7aa] ring-2 ring-[#ff5e14]/20'
-                      : 'bg-[#f8f4ed] border-[#e5ddcf]'
+                      ? 'bg-[#ffffff] dark:bg-[#1c1630] shadow-xs border-[#fed7aa] dark:border-[#7c2d12] ring-2 ring-[#ff5e14]/20'
+                      : 'bg-[#f8f4ed] dark:bg-[#1a142c] border-[#e5ddcf] dark:border-[#2d2442]'
                   }`}
                 >
                   <div className="flex items-start justify-between gap-2.5">
@@ -256,17 +256,17 @@ export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
                       <div className="min-w-0">
                         <label
                           htmlFor={`task-${task.id}`}
-                          className={`text-xs text-[#18122b] cursor-pointer block leading-snug ${
-                            task.completed ? 'line-through text-[#544c60]' : isUrgent ? 'font-bold' : 'font-semibold'
+                          className={`text-xs text-[#18122b] dark:text-[#f5f3ff] cursor-pointer block leading-snug ${
+                            task.completed ? 'line-through text-[#544c60] dark:text-[#a8a1b7]' : isUrgent ? 'font-bold' : 'font-semibold'
                           }`}
                         >
                           {task.title}
                         </label>
 
                         {/* Metadata line */}
-                        <div className="font-mono-data text-[11px] text-[#544c60] mt-0.5 flex items-center gap-1.5 flex-wrap">
+                        <div className="font-mono-data text-[11px] text-[#544c60] dark:text-[#a8a1b7] mt-0.5 flex items-center gap-1.5 flex-wrap">
                           {task.dueTimeOfDay ? (
-                            <span className="text-[#6d28d9] font-bold bg-[#ede9fe] px-1.5 py-0.2 rounded">{task.dueTimeOfDay}</span>
+                            <span className="text-[#6d28d9] dark:text-[#c4b5fd] font-bold bg-[#ede9fe] dark:bg-[#2e1065] px-1.5 py-0.2 rounded">{task.dueTimeOfDay}</span>
                           ) : (
                             <span className="font-semibold">T-{task.daysBeforeEvent} Days</span>
                           )}

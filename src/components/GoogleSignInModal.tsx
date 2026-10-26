@@ -197,12 +197,12 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
       aria-labelledby="google-signin-title"
       className="fixed inset-0 z-50 bg-[#1e1b4b]/60 backdrop-blur-xs flex items-center justify-center p-4"
     >
-      <div className="bg-white rounded-2xl border border-[#eedfd6] shadow-2xl w-full max-w-md p-6 animate-in fade-in zoom-in-95 duration-150">
+      <div className="bg-white dark:bg-[#1a1429] rounded-2xl border border-[#eedfd6] dark:border-[#2d2442] shadow-2xl w-full max-w-md p-6 animate-in fade-in zoom-in-95 duration-150">
         {/* Header */}
-        <div className="flex items-center justify-between pb-3 border-b border-[#f3eae4]">
+        <div className="flex items-center justify-between pb-3 border-b border-[#f3eae4] dark:border-[#2d2442]">
           <div className="flex items-center gap-2.5">
             {/* Google Multi-Color G Icon */}
-            <div className="w-8 h-8 rounded-lg bg-white border border-[#e5ddcf] shadow-xs flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-white dark:bg-[#231a38] border border-[#e5ddcf] dark:border-[#382d54] shadow-xs flex items-center justify-center">
               <svg className="w-4 h-4" viewBox="0 0 24 24">
                 <path
                   fill="#4285F4"
@@ -223,10 +223,10 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
               </svg>
             </div>
             <div>
-              <h2 id="google-signin-title" className="text-base font-bold text-[#1f2421] font-headline">
+              <h2 id="google-signin-title" className="text-base font-bold text-[#1f2421] dark:text-[#f5f3ff] font-headline">
                 {step === 1 ? 'Sign in with Google' : '2-Step Verification'}
               </h2>
-              <p className="text-xs text-[#6e726e]">
+              <p className="text-xs text-[#6e726e] dark:text-[#a09bb5]">
                 {step === 1 ? 'Connect your Gmail account to CelebrationOS' : 'Confirm your credentials & role'}
               </p>
             </div>
@@ -235,7 +235,7 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
             type="button"
             onClick={onClose}
             aria-label="Close dialog"
-            className="text-[#6e726e] hover:text-[#1f2421] p-1.5 rounded-lg hover:bg-[#fbf9f5] transition-colors"
+            className="text-[#6e726e] dark:text-[#a09bb5] hover:text-[#1f2421] dark:hover:text-[#f5f3ff] p-1.5 rounded-lg hover:bg-[#fbf9f5] dark:hover:bg-[#231a38] transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -245,12 +245,12 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
         <div className="flex items-center gap-2 my-4">
           <div
             className={`flex-1 h-1.5 rounded-full transition-all ${
-              step >= 1 ? 'bg-[#ff5e14]' : 'bg-[#e5ddcf]'
+              step >= 1 ? 'bg-[#ff5e14]' : 'bg-[#e5ddcf] dark:bg-[#2d2442]'
             }`}
           />
           <div
             className={`flex-1 h-1.5 rounded-full transition-all ${
-              step === 2 ? 'bg-[#00875a]' : 'bg-[#e5ddcf]'
+              step === 2 ? 'bg-[#00875a]' : 'bg-[#e5ddcf] dark:bg-[#2d2442]'
             }`}
           />
         </div>
@@ -262,16 +262,16 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
             <div id="g_id_signin_container" className="flex justify-center empty:hidden" />
 
             <div className="relative flex py-1 items-center">
-              <div className="flex-grow border-t border-[#eedfd6]" />
-              <span className="shrink-0 mx-3 text-[11px] font-semibold text-[#6e726e] uppercase tracking-wider">
+              <div className="flex-grow border-t border-[#eedfd6] dark:border-[#2d2442]" />
+              <span className="shrink-0 mx-3 text-[11px] font-semibold text-[#6e726e] dark:text-[#a09bb5] uppercase tracking-wider">
                 Gmail Account Credentials
               </span>
-              <div className="flex-grow border-t border-[#eedfd6]" />
+              <div className="flex-grow border-t border-[#eedfd6] dark:border-[#2d2442]" />
             </div>
 
             {/* Quick Evaluator Presets */}
             <div className="space-y-1.5">
-              <span className="text-[11px] font-semibold text-[#6e726e]">Quick Select Account:</span>
+              <span className="text-[11px] font-semibold text-[#6e726e] dark:text-[#a09bb5]">Quick Select Account:</span>
               <div className="grid grid-cols-2 gap-2">
                 <button
                   type="button"
@@ -280,12 +280,12 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
                   }
                   className={`p-2 text-left rounded-xl border text-xs transition-all ${
                     email === 'prasadayare1996@gmail.com'
-                      ? 'bg-[#fff1eb] border-[#ff5e14] text-[#c2410c] font-bold shadow-xs'
-                      : 'bg-[#fbf9f5] border-[#eedfd6] text-[#1f2421] hover:border-[#ff5e14]/50'
+                      ? 'bg-[#fff1eb] dark:bg-[#3d1808] border-[#ff5e14] text-[#c2410c] dark:text-[#fb923c] font-bold shadow-xs'
+                      : 'bg-[#fbf9f5] dark:bg-[#231a38] border-[#eedfd6] dark:border-[#2d2442] text-[#1f2421] dark:text-[#f5f3ff] hover:border-[#ff5e14]/50'
                   }`}
                 >
                   <p className="truncate font-semibold">Prasad Ayare</p>
-                  <p className="text-[10px] text-[#6e726e] truncate">prasadayare1996@gmail.com</p>
+                  <p className="text-[10px] text-[#6e726e] dark:text-[#a09bb5] truncate">prasadayare1996@gmail.com</p>
                 </button>
 
                 <button
@@ -295,19 +295,19 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
                   }
                   className={`p-2 text-left rounded-xl border text-xs transition-all ${
                     email === 'aarav.sharma@gmail.com'
-                      ? 'bg-[#fff1eb] border-[#ff5e14] text-[#c2410c] font-bold shadow-xs'
-                      : 'bg-[#fbf9f5] border-[#eedfd6] text-[#1f2421] hover:border-[#ff5e14]/50'
+                      ? 'bg-[#fff1eb] dark:bg-[#3d1808] border-[#ff5e14] text-[#c2410c] dark:text-[#fb923c] font-bold shadow-xs'
+                      : 'bg-[#fbf9f5] dark:bg-[#231a38] border-[#eedfd6] dark:border-[#2d2442] text-[#1f2421] dark:text-[#f5f3ff] hover:border-[#ff5e14]/50'
                   }`}
                 >
                   <p className="truncate font-semibold">Aarav Sharma</p>
-                  <p className="text-[10px] text-[#6e726e] truncate">aarav.sharma@gmail.com</p>
+                  <p className="text-[10px] text-[#6e726e] dark:text-[#a09bb5] truncate">aarav.sharma@gmail.com</p>
                 </button>
               </div>
             </div>
 
             {/* Full Name */}
             <div>
-              <label htmlFor="user-fullname" className="block text-xs font-semibold text-[#1f2421] mb-1">
+              <label htmlFor="user-fullname" className="block text-xs font-semibold text-[#1f2421] dark:text-[#f5f3ff] mb-1">
                 Full Name
               </label>
               <input
@@ -317,13 +317,13 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="e.g. Prasad Ayare"
-                className="w-full h-10 px-3.5 text-xs rounded-xl border border-[#eedfd6] bg-white text-[#1f2421] focus:outline-none focus:ring-2 focus:ring-[#ff5e14]"
+                className="w-full h-10 px-3.5 text-xs rounded-xl border border-[#eedfd6] dark:border-[#2d2442] bg-white dark:bg-[#120e22] text-[#1f2421] dark:text-[#f5f3ff] focus:outline-none focus:ring-2 focus:ring-[#ff5e14]"
               />
             </div>
 
             {/* Gmail Address */}
             <div>
-              <label htmlFor="user-gmail" className="block text-xs font-semibold text-[#1f2421] mb-1">
+              <label htmlFor="user-gmail" className="block text-xs font-semibold text-[#1f2421] dark:text-[#f5f3ff] mb-1">
                 Gmail Address (@gmail.com)
               </label>
               <div className="relative">
@@ -334,7 +334,7 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="yourname@gmail.com"
-                  className="w-full h-10 pl-3.5 pr-8 text-xs rounded-xl border border-[#eedfd6] bg-white text-[#1f2421] focus:outline-none focus:ring-2 focus:ring-[#ff5e14]"
+                  className="w-full h-10 pl-3.5 pr-8 text-xs rounded-xl border border-[#eedfd6] dark:border-[#2d2442] bg-white dark:bg-[#120e22] text-[#1f2421] dark:text-[#f5f3ff] focus:outline-none focus:ring-2 focus:ring-[#ff5e14]"
                 />
                 <Mail className="w-4 h-4 text-[#ff5e14] absolute right-3 top-3 pointer-events-none" />
               </div>
@@ -342,14 +342,14 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
 
             {/* Role in Celebration */}
             <div>
-              <label htmlFor="user-role" className="block text-xs font-semibold text-[#1f2421] mb-1">
+              <label htmlFor="user-role" className="block text-xs font-semibold text-[#1f2421] dark:text-[#f5f3ff] mb-1">
                 Planner Role
               </label>
               <select
                 id="user-role"
                 value={role}
                 onChange={(e) => setRole(e.target.value)}
-                className="w-full h-10 px-3 text-xs rounded-xl border border-[#eedfd6] bg-white text-[#1f2421] focus:outline-none focus:ring-2 focus:ring-[#ff5e14]"
+                className="w-full h-10 px-3 text-xs rounded-xl border border-[#eedfd6] dark:border-[#2d2442] bg-white dark:bg-[#120e22] text-[#1f2421] dark:text-[#f5f3ff] focus:outline-none focus:ring-2 focus:ring-[#ff5e14]"
               >
                 <option value="Lead Event Director">Lead Event Director</option>
                 <option value="Host & Groom / Bride">Host (Groom / Bride)</option>
@@ -360,7 +360,7 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
             </div>
 
             {errorMsg && (
-              <p className="text-xs text-[#b91c1c] bg-[#fef2f2] p-2 rounded-lg border border-[#fecaca]">
+              <p className="text-xs text-[#b91c1c] dark:text-[#f87171] bg-[#fef2f2] dark:bg-[#450a0a] p-2 rounded-lg border border-[#fecaca] dark:border-[#7f1d1d]">
                 {errorMsg}
               </p>
             )}
@@ -381,37 +381,37 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
         {/* STEP 2: 2-STEP CONFIRMATION & GOOGLE SECURITY VERIFICATION */}
         {step === 2 && (
           <form onSubmit={handleStep2Verify} className="space-y-4">
-            <div className="p-3.5 bg-[#f0fdf4] rounded-xl border border-[#86efac] flex items-start gap-3">
-              <ShieldCheck className="w-5 h-5 text-[#00875a] shrink-0 mt-0.5" />
+            <div className="p-3.5 bg-[#f0fdf4] dark:bg-[#072418] rounded-xl border border-[#86efac] dark:border-[#0f533a] flex items-start gap-3">
+              <ShieldCheck className="w-5 h-5 text-[#00875a] dark:text-[#4ade80] shrink-0 mt-0.5" />
               <div className="min-w-0">
-                <p className="text-xs font-bold text-[#166534]">Google Security Verification</p>
-                <p className="text-[11px] text-[#15803d] mt-0.5">
+                <p className="text-xs font-bold text-[#166534] dark:text-[#4ade80]">Google Security Verification</p>
+                <p className="text-[11px] text-[#15803d] dark:text-[#86efac] mt-0.5">
                   Authenticated as <strong>{name}</strong> (<span className="truncate">{email}</span>).
                 </p>
               </div>
             </div>
 
-            <div className="bg-[#fbf9f5] p-3.5 rounded-xl border border-[#eedfd6] space-y-2">
+            <div className="bg-[#fbf9f5] dark:bg-[#231a38] p-3.5 rounded-xl border border-[#eedfd6] dark:border-[#2d2442] space-y-2">
               <div className="flex items-center justify-between text-xs">
-                <span className="text-[#6e726e]">Celebration Lead:</span>
-                <span className="font-bold text-[#1f2421]">{name}</span>
+                <span className="text-[#6e726e] dark:text-[#a09bb5]">Celebration Lead:</span>
+                <span className="font-bold text-[#1f2421] dark:text-[#f5f3ff]">{name}</span>
               </div>
               <div className="flex items-center justify-between text-xs">
-                <span className="text-[#6e726e]">Gmail Account:</span>
-                <span className="font-mono text-[#1f2421] font-semibold truncate max-w-[200px]">
+                <span className="text-[#6e726e] dark:text-[#a09bb5]">Gmail Account:</span>
+                <span className="font-mono text-[#1f2421] dark:text-[#f5f3ff] font-semibold truncate max-w-[200px]">
                   {email}
                 </span>
               </div>
               <div className="flex items-center justify-between text-xs">
-                <span className="text-[#6e726e]">Planner Role:</span>
-                <span className="px-2 py-0.5 rounded-md bg-[#fff7ed] text-[#c2410c] font-semibold text-[11px]">
+                <span className="text-[#6e726e] dark:text-[#a09bb5]">Planner Role:</span>
+                <span className="px-2 py-0.5 rounded-md bg-[#fff7ed] dark:bg-[#3d1808] text-[#c2410c] dark:text-[#fb923c] font-semibold text-[11px]">
                   {role}
                 </span>
               </div>
             </div>
 
             <div>
-              <label htmlFor="verify-code" className="block text-xs font-semibold text-[#1f2421] mb-1">
+              <label htmlFor="verify-code" className="block text-xs font-semibold text-[#1f2421] dark:text-[#f5f3ff] mb-1">
                 2-Step Verification Code (Simulated Instant G-Code)
               </label>
               <div className="relative">
@@ -422,17 +422,17 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
                   required
                   value={verificationCode}
                   onChange={(e) => setVerificationCode(e.target.value)}
-                  className="w-full h-10 pl-3.5 pr-8 text-center text-sm tracking-widest font-mono font-bold rounded-xl border border-[#eedfd6] bg-white text-[#1f2421] focus:outline-none focus:ring-2 focus:ring-[#00875a]"
+                  className="w-full h-10 pl-3.5 pr-8 text-center text-sm tracking-widest font-mono font-bold rounded-xl border border-[#eedfd6] dark:border-[#2d2442] bg-white dark:bg-[#120e22] text-[#1f2421] dark:text-[#f5f3ff] focus:outline-none focus:ring-2 focus:ring-[#00875a]"
                 />
-                <KeyRound className="w-4 h-4 text-[#00875a] absolute right-3 top-3 pointer-events-none" />
+                <KeyRound className="w-4 h-4 text-[#00875a] dark:text-[#4ade80] absolute right-3 top-3 pointer-events-none" />
               </div>
-              <span className="text-[10px] text-[#6e726e] block mt-1">
+              <span className="text-[10px] text-[#6e726e] dark:text-[#a09bb5] block mt-1">
                 A 6-digit verification code has been confirmed for your Gmail session.
               </span>
             </div>
 
             {errorMsg && (
-              <p className="text-xs text-[#b91c1c] bg-[#fef2f2] p-2 rounded-lg border border-[#fecaca]">
+              <p className="text-xs text-[#b91c1c] dark:text-[#f87171] bg-[#fef2f2] dark:bg-[#450a0a] p-2 rounded-lg border border-[#fecaca] dark:border-[#7f1d1d]">
                 {errorMsg}
               </p>
             )}
@@ -441,7 +441,7 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
               <button
                 type="button"
                 onClick={() => setStep(1)}
-                className="h-10 px-4 rounded-xl border border-[#eedfd6] text-xs font-semibold text-[#6e726e] hover:bg-[#fbf9f5] transition-colors"
+                className="h-10 px-4 rounded-xl border border-[#eedfd6] dark:border-[#2d2442] text-xs font-semibold text-[#6e726e] dark:text-[#a09bb5] hover:bg-[#fbf9f5] dark:hover:bg-[#231a38] transition-colors"
               >
                 Back
               </button>
@@ -467,8 +467,8 @@ export const GoogleSignInModal: React.FC<GoogleSignInModalProps> = ({
         )}
 
         {/* Footer Guarantee */}
-        <div className="flex items-center justify-center gap-1.5 pt-3 mt-3 border-t border-[#f3eae4] text-[11px] text-[#6e726e]">
-          <Lock className="w-3 h-3 text-[#00875a]" />
+        <div className="flex items-center justify-center gap-1.5 pt-3 mt-3 border-t border-[#f3eae4] dark:border-[#2d2442] text-[11px] text-[#6e726e] dark:text-[#a09bb5]">
+          <Lock className="w-3 h-3 text-[#00875a] dark:text-[#4ade80]" />
           <span>OAuth 2.0 & Gmail Identity Verified • Client Session Stored Locally</span>
         </div>
       </div>

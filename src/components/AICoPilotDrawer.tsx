@@ -64,54 +64,63 @@ export const AICoPilotDrawer: React.FC<AICoPilotDrawerProps> = ({
   const totalSavings = proposals.reduce((acc, p) => acc + p.amount, 0);
 
   return (
-    <aside
-      aria-label="CelebrationOS AI Co-Pilot Assistant"
-      className="w-full xl:w-[340px] shrink-0 bg-[#ffffff] p-4 rounded-2xl border border-[#e5ddcf] shadow-[0_4px_24px_rgba(255,94,20,0.06)] space-y-4 self-start sticky top-20 z-30"
-    >
-      {/* Drawer Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-[#f0eae1]">
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#ff5e14] to-[#7c3aed] text-white flex items-center justify-center shadow-xs">
-            <Bot className="w-4 h-4" />
+    <>
+      {/* Backdrop for mobile / tablet */}
+      <div
+        className="fixed inset-0 bg-black/40 backdrop-blur-xs z-40 xl:hidden animate-in fade-in"
+        onClick={onClose}
+        aria-hidden="true"
+      />
+      
+      <aside
+        aria-label="CelebrationOS AI Co-Pilot Assistant"
+        className="fixed right-0 top-16 bottom-0 w-full sm:w-[420px] md:w-[440px] bg-[#ffffff] dark:bg-[#151024] p-4 border-l border-[#e5ddcf] dark:border-[#2d2442] shadow-[0_4px_30px_rgba(0,0,0,0.25)] space-y-4 z-50 flex flex-col justify-between overflow-y-auto animate-in slide-in-from-right duration-200"
+      >
+        <div>
+          {/* Drawer Header */}
+          <div className="flex items-center justify-between pb-3 border-b border-[#f0eae1] dark:border-[#2d2442]">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#ff5e14] to-[#7c3aed] text-white flex items-center justify-center shadow-xs">
+                <Bot className="w-4 h-4" />
+              </div>
+              <div>
+                <h2 className="text-sm font-bold text-[#18122b] dark:text-[#f5f3ff] leading-none font-headline">
+                  AI Co-Pilot
+                </h2>
+                <span className="font-mono-data text-[11px] text-[#544c60] dark:text-[#a8a1b7]">
+                  Autonomous Orchestrator
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-1.5">
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#d1fae5] dark:bg-[#064e3b] text-[#065f46] dark:text-[#a7f3d0] border border-[#a7f3d0] dark:border-[#047857] text-[10px] font-bold">
+                <ShieldCheck className="w-3 h-3 text-[#059669] dark:text-[#10b981]" />
+                <span>PII Masked</span>
+              </span>
+              <button
+                type="button"
+                onClick={onClose}
+                aria-label="Close AI Co-Pilot drawer"
+                className="text-[#544c60] dark:text-[#a8a1b7] hover:text-[#18122b] dark:hover:text-white p-1 rounded-lg hover:bg-[#fff1eb] dark:hover:bg-[#281f3d]"
+              >
+                <X className="w-4 h-4" />
+              </button>
+            </div>
           </div>
-          <div>
-            <h2 className="text-sm font-bold text-[#18122b] leading-none font-headline">
-              AI Co-Pilot
-            </h2>
-            <span className="font-mono-data text-[11px] text-[#544c60]">
-              Autonomous Orchestrator
+
+          {/* Latency & Cache Status */}
+          <div className="flex items-center justify-between text-[11px] text-[#544c60] dark:text-[#a8a1b7] px-1 py-2 font-mono-data">
+            <span className="flex items-center gap-1 text-[#00875a] dark:text-[#10b981] font-bold">
+              <Zap className="w-3.5 h-3.5 text-[#ff5e14]" />
+              <span>{latencyMs}ms latency</span>
             </span>
+            {servedFromCache && (
+              <span className="px-2 py-0.5 rounded-full bg-[#ede9fe] dark:bg-[#2e1065] text-[#581c87] dark:text-[#d8b4fe] border border-[#ddd6fe] dark:border-[#581c87] font-bold text-[10px]">
+                ⚡ Served from Cache
+              </span>
+            )}
           </div>
-        </div>
-
-        <div className="flex items-center gap-1.5">
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#d1fae5] text-[#065f46] border border-[#a7f3d0] text-[10px] font-bold">
-            <ShieldCheck className="w-3 h-3 text-[#059669]" />
-            <span>PII Masked</span>
-          </span>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close AI Co-Pilot drawer"
-            className="text-[#544c60] hover:text-[#18122b] p-1 rounded-lg hover:bg-[#fff1eb]"
-          >
-            <X className="w-4 h-4" />
-          </button>
-        </div>
-      </div>
-
-      {/* Latency & Cache Status */}
-      <div className="flex items-center justify-between text-[11px] text-[#544c60] px-1 font-mono-data">
-        <span className="flex items-center gap-1 text-[#00875a] font-bold">
-          <Zap className="w-3.5 h-3.5 text-[#ff5e14]" />
-          <span>{latencyMs}ms latency</span>
-        </span>
-        {servedFromCache && (
-          <span className="px-2 py-0.5 rounded-full bg-[#ede9fe] text-[#581c87] border border-[#ddd6fe] font-bold text-[10px]">
-            ⚡ Served from Cache
-          </span>
-        )}
-      </div>
 
       {/* Active Conversation Thread */}
       <div className="space-y-3">
@@ -200,45 +209,46 @@ export const AICoPilotDrawer: React.FC<AICoPilotDrawerProps> = ({
         ) : null}
       </div>
 
-      {/* Suggested Inquiries */}
-      <div className="pt-1">
-        <span className="text-[11px] text-[#544c60] uppercase tracking-wider font-bold block mb-2">
-          Suggested Inquiries
-        </span>
-        <div className="flex flex-wrap gap-1.5">
-          <button
-            type="button"
-            onClick={() => handleChipClick('Optimize Budget')}
-            className="px-2.5 py-1 rounded-full bg-[#f8f4ed] hover:bg-[#fff1eb] text-[#18122b] text-[11px] font-semibold transition-colors border border-[#e5ddcf]"
-          >
-            Optimize Budget (₹)
-          </button>
-          <button
-            type="button"
-            onClick={() => handleChipClick('Day-Of Run Sheet')}
-            className="px-2.5 py-1 rounded-full bg-[#f8f4ed] hover:bg-[#fff1eb] text-[#18122b] text-[11px] font-semibold transition-colors border border-[#e5ddcf]"
-          >
-            Shaadi Run Sheet
-          </button>
-          <button
-            type="button"
-            onClick={() => handleChipClick('Draft Vendor Email')}
-            className="px-2.5 py-1 rounded-full bg-[#f8f4ed] hover:bg-[#fff1eb] text-[#18122b] text-[11px] font-semibold transition-colors border border-[#e5ddcf]"
-          >
-            Draft Vendor Terms
-          </button>
-          <button
-            type="button"
-            onClick={() => handleChipClick('Accessible Venue Ideas')}
-            className="px-2.5 py-1 rounded-full bg-[#f8f4ed] hover:bg-[#fff1eb] text-[#18122b] text-[11px] font-semibold transition-colors border border-[#e5ddcf]"
-          >
-            Mandap & Decor Ideas
-          </button>
+        {/* Suggested Inquiries */}
+        <div className="pt-2">
+          <span className="text-[11px] text-[#544c60] dark:text-[#a8a1b7] uppercase tracking-wider font-bold block mb-2">
+            Suggested Inquiries
+          </span>
+          <div className="flex flex-wrap gap-1.5">
+            <button
+              type="button"
+              onClick={() => handleChipClick('Optimize Budget')}
+              className="px-2.5 py-1 rounded-full bg-[#f8f4ed] dark:bg-[#1f1738] hover:bg-[#fff1eb] dark:hover:bg-[#2e2354] text-[#18122b] dark:text-[#f5f3ff] text-[11px] font-semibold transition-colors border border-[#e5ddcf] dark:border-[#382d54]"
+            >
+              Optimize Budget (₹)
+            </button>
+            <button
+              type="button"
+              onClick={() => handleChipClick('Day-Of Run Sheet')}
+              className="px-2.5 py-1 rounded-full bg-[#f8f4ed] dark:bg-[#1f1738] hover:bg-[#fff1eb] dark:hover:bg-[#2e2354] text-[#18122b] dark:text-[#f5f3ff] text-[11px] font-semibold transition-colors border border-[#e5ddcf] dark:border-[#382d54]"
+            >
+              Shaadi Run Sheet
+            </button>
+            <button
+              type="button"
+              onClick={() => handleChipClick('Draft Vendor Email')}
+              className="px-2.5 py-1 rounded-full bg-[#f8f4ed] dark:bg-[#1f1738] hover:bg-[#fff1eb] dark:hover:bg-[#2e2354] text-[#18122b] dark:text-[#f5f3ff] text-[11px] font-semibold transition-colors border border-[#e5ddcf] dark:border-[#382d54]"
+            >
+              Draft Vendor Terms
+            </button>
+            <button
+              type="button"
+              onClick={() => handleChipClick('Accessible Venue Ideas')}
+              className="px-2.5 py-1 rounded-full bg-[#f8f4ed] dark:bg-[#1f1738] hover:bg-[#fff1eb] dark:hover:bg-[#2e2354] text-[#18122b] dark:text-[#f5f3ff] text-[11px] font-semibold transition-colors border border-[#e5ddcf] dark:border-[#382d54]"
+            >
+              Mandap & Decor Ideas
+            </button>
+          </div>
         </div>
       </div>
 
       {/* Prompt Input Box */}
-      <form onSubmit={handleSubmit} className="pt-1">
+      <form onSubmit={handleSubmit} className="pt-2">
         <label htmlFor="ai-prompt-input" className="sr-only">
           Ask CelebrationOS AI or generate custom schedules
         </label>
@@ -249,7 +259,7 @@ export const AICoPilotDrawer: React.FC<AICoPilotDrawerProps> = ({
             value={userInput}
             onChange={(e) => setUserInput(e.target.value)}
             placeholder="Ask AI or optimize ₹ kharcha..."
-            className="w-full h-11 pl-3 pr-10 rounded-xl bg-[#f8f4ed] text-[#18122b] placeholder:text-[#544c60] text-xs border border-[#e5ddcf] focus:bg-white focus:ring-2 focus:ring-[#ff5e14] focus:outline-none transition-all"
+            className="w-full h-11 pl-3 pr-10 rounded-xl bg-[#f8f4ed] dark:bg-[#1c1630] text-[#18122b] dark:text-[#f5f3ff] placeholder:text-[#544c60] dark:placeholder:text-[#a8a1b7] text-xs border border-[#e5ddcf] dark:border-[#382d54] focus:bg-white dark:focus:bg-[#161028] focus:ring-2 focus:ring-[#ff5e14] focus:outline-none transition-all"
           />
           <button
             type="submit"
@@ -262,5 +272,6 @@ export const AICoPilotDrawer: React.FC<AICoPilotDrawerProps> = ({
         </div>
       </form>
     </aside>
+  </>
   );
 };

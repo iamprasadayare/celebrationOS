@@ -106,15 +106,15 @@ export const BudgetBreakdownTable: React.FC<BudgetBreakdownTableProps> = ({
   ];
 
   return (
-    <div className="bg-[#ffffff] p-4 sm:p-6 rounded-2xl border border-[#e5ddcf] shadow-[0_2px_12px_rgba(255,94,20,0.03)] flex flex-col justify-between">
+    <div className="bg-[#ffffff] dark:bg-[#151024] p-4 sm:p-6 rounded-2xl border border-[#e5ddcf] dark:border-[#2d2442] shadow-[0_2px_12px_rgba(255,94,20,0.03)] flex flex-col justify-between w-full">
       <div>
         {/* Table Header & AI Controls */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4">
           <div>
-            <h2 className="text-lg font-bold text-[#18122b] font-headline">
+            <h2 className="text-lg font-bold text-[#18122b] dark:text-[#f5f3ff] font-headline">
               Budget & Kharcha Breakdown
             </h2>
-            <p className="text-xs text-[#544c60] mt-0.5">
+            <p className="text-xs text-[#544c60] dark:text-[#a8a1b7] mt-0.5">
               Real-time variance tracking against guaranteed initial caps
             </p>
           </div>
@@ -127,7 +127,7 @@ export const BudgetBreakdownTable: React.FC<BudgetBreakdownTableProps> = ({
               className={`inline-flex items-center gap-1.5 h-9 px-3 rounded-xl text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] ${
                 showSlider
                   ? 'bg-gradient-to-r from-[#ff5e14] to-[#ff8a00] text-white shadow-xs'
-                  : 'bg-[#f8f4ed] text-[#18122b] border border-[#e5ddcf] hover:bg-[#fff1eb] hover:border-[#fed7aa]'
+                  : 'bg-[#f8f4ed] dark:bg-[#1c1630] text-[#18122b] dark:text-[#f5f3ff] border border-[#e5ddcf] dark:border-[#382d54] hover:bg-[#fff1eb] dark:hover:bg-[#281f3d] hover:border-[#fed7aa]'
               }`}
             >
               <Users className="w-3.5 h-3.5" />
@@ -138,7 +138,7 @@ export const BudgetBreakdownTable: React.FC<BudgetBreakdownTableProps> = ({
               type="button"
               onClick={() => setShowAddModal(true)}
               aria-label="Add new budget line item"
-              className="inline-flex items-center gap-1 h-9 px-3 rounded-xl border border-[#e5ddcf] bg-[#ffffff] hover:bg-[#f8f4ed] text-[#18122b] text-xs font-bold transition-colors focus-visible:ring-2 focus-visible:ring-[#6d28d9]"
+              className="inline-flex items-center gap-1 h-9 px-3 rounded-xl border border-[#e5ddcf] dark:border-[#382d54] bg-[#ffffff] dark:bg-[#1c1630] hover:bg-[#f8f4ed] dark:hover:bg-[#281f3d] text-[#18122b] dark:text-[#f5f3ff] text-xs font-bold transition-colors focus-visible:ring-2 focus-visible:ring-[#6d28d9]"
             >
               <Plus className="w-3.5 h-3.5 text-[#ff5e14]" />
               <span>Add Line</span>
@@ -148,7 +148,7 @@ export const BudgetBreakdownTable: React.FC<BudgetBreakdownTableProps> = ({
               type="button"
               onClick={onTriggerRebalance}
               aria-label="Trigger AI Budget Rebalance & Optimization"
-              className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl bg-gradient-to-r from-[#fff1eb] to-[#fef3c7] hover:from-[#fed7aa] hover:to-[#fde68a] text-[#c2410c] border border-[#fed7aa] text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] shadow-xs"
+              className="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-xl bg-gradient-to-r from-[#fff1eb] to-[#fef3c7] dark:from-[#3d1704] dark:to-[#451a03] hover:from-[#fed7aa] hover:to-[#fde68a] text-[#c2410c] dark:text-[#ffbc99] border border-[#fed7aa] dark:border-[#7c2d12] text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] shadow-xs"
             >
               <Sparkles className="w-4 h-4 text-[#ff5e14]" />
               <span>AI Rebalance</span>
@@ -158,15 +158,15 @@ export const BudgetBreakdownTable: React.FC<BudgetBreakdownTableProps> = ({
 
         {/* What-If Guest Scaler Slider */}
         {showSlider && (
-          <div className="mb-4 p-4 bg-gradient-to-r from-[#fff1eb]/60 to-[#fef3c7]/60 border border-[#fed7aa] rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="mb-4 p-4 bg-gradient-to-r from-[#fff1eb]/60 to-[#fef3c7]/60 dark:from-[#321708]/60 dark:to-[#381f0a]/60 border border-[#fed7aa] dark:border-[#7c2d12] rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div className="min-w-0">
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4 text-[#ff5e14]" />
-                <span className="text-xs font-bold text-[#18122b]">
+                <span className="text-xs font-bold text-[#18122b] dark:text-[#f5f3ff]">
                   What-If Guest Scaler: <strong className="text-[#ff5e14] font-headline">{guestCount} Guests</strong>
                 </span>
               </div>
-              <p className="text-[11px] text-[#544c60] mt-0.5">
+              <p className="text-[11px] text-[#544c60] dark:text-[#a8a1b7] mt-0.5">
                 Scales variable catering and favor expenses while preserving fixed venue caps.
               </p>
             </div>
@@ -181,7 +181,7 @@ export const BudgetBreakdownTable: React.FC<BudgetBreakdownTableProps> = ({
                 aria-label="Simulated guest count slider"
                 className="w-full accent-[#ff5e14] cursor-pointer"
               />
-              <span className="font-mono-data text-xs font-bold text-[#18122b] w-12 text-right">
+              <span className="font-mono-data text-xs font-bold text-[#18122b] dark:text-[#f5f3ff] w-12 text-right">
                 {guestCount}
               </span>
             </div>
@@ -195,7 +195,7 @@ export const BudgetBreakdownTable: React.FC<BudgetBreakdownTableProps> = ({
               Celebration categorized budget caps, quoted commitments, payments disbursed, and variance in Indian Rupees
             </caption>
             <thead>
-              <tr className="bg-[#f8f4ed] text-[#18122b] text-[11px] font-bold border-b border-[#e5ddcf]">
+              <tr className="bg-[#f8f4ed] dark:bg-[#1c1630] text-[#18122b] dark:text-[#f5f3ff] text-[11px] font-bold border-b border-[#e5ddcf] dark:border-[#2d2442]">
                 <th scope="col" className="py-2.5 px-3 rounded-l-xl">Category & Item</th>
                 <th scope="col" className="py-2.5 px-3 text-right">Allocated</th>
                 <th scope="col" className="py-2.5 px-3 text-right">Quoted / Act.</th>
@@ -204,7 +204,7 @@ export const BudgetBreakdownTable: React.FC<BudgetBreakdownTableProps> = ({
                 <th scope="col" className="py-2.5 px-3 rounded-r-xl text-right">Action</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-[#f0eae1]">
+            <tbody className="divide-y divide-[#f0eae1] dark:divide-[#2d2442]">
               {items.map((item, idx) => {
                 const variance = item.allocated - item.quotedOrActual;
                 const dotColor = dotColors[idx % dotColors.length];
@@ -212,43 +212,43 @@ export const BudgetBreakdownTable: React.FC<BudgetBreakdownTableProps> = ({
                 return (
                   <tr
                     key={item.id}
-                    className="hover:bg-[#fff1eb]/40 transition-colors group"
+                    className="hover:bg-[#fff1eb]/40 dark:hover:bg-[#281f3d]/50 transition-colors group"
                   >
-                    <td className="py-3 px-3 text-[#18122b] font-semibold">
+                    <td className="py-3 px-3 text-[#18122b] dark:text-[#f5f3ff] font-semibold">
                       <div className="flex items-center gap-2.5">
                         <span className={`w-2.5 h-2.5 rounded-full ${dotColor} shrink-0 shadow-xs`} />
                         <div className="truncate">
-                          <p className="truncate font-bold text-[#18122b]">{item.name}</p>
-                          <span className="text-[10px] text-[#544c60] font-medium">{item.category}</span>
+                          <p className="truncate font-bold text-[#18122b] dark:text-[#f5f3ff]">{item.name}</p>
+                          <span className="text-[10px] text-[#544c60] dark:text-[#a8a1b7] font-medium">{item.category}</span>
                         </div>
                       </div>
                     </td>
-                    <td className="py-3 px-3 text-right font-mono-data text-[#18122b] font-medium">
+                    <td className="py-3 px-3 text-right font-mono-data text-[#18122b] dark:text-[#f5f3ff] font-medium">
                       {formatCurrency(item.allocated, currencySymbol, privacyMask)}
                     </td>
                     <td className={`py-3 px-3 text-right font-mono-data font-semibold ${
-                      item.status === 'over_budget' ? 'text-[#c2410c] font-bold' : 'text-[#18122b]'
+                      item.status === 'over_budget' ? 'text-[#c2410c] dark:text-[#ff8a00] font-bold' : 'text-[#18122b] dark:text-[#f5f3ff]'
                     }`}>
                       {formatCurrency(item.quotedOrActual, currencySymbol, privacyMask)}
                     </td>
-                    <td className="py-3 px-3 text-right font-mono-data text-[#544c60]">
+                    <td className="py-3 px-3 text-right font-mono-data text-[#544c60] dark:text-[#a8a1b7]">
                       {formatCurrency(item.paid, currencySymbol, privacyMask)}
                     </td>
                     <td className="py-3 px-3 text-center">
                       {variance > 0 && (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#d1fae5] text-[#065f46] border border-[#a7f3d0] text-[11px] font-bold">
-                          <Check className="w-3 h-3 text-[#059669]" />
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#d1fae5] dark:bg-[#064e3b] text-[#065f46] dark:text-[#a7f3d0] border border-[#a7f3d0] dark:border-[#047857] text-[11px] font-bold">
+                          <Check className="w-3 h-3 text-[#059669] dark:text-[#10b981]" />
                           <span>-{formatCurrency(variance, currencySymbol, privacyMask)}</span>
                         </span>
                       )}
                       {variance < 0 && (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#ffe4e6] text-[#9f1239] border border-[#fecdd3] text-[11px] font-bold">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#ffe4e6] dark:bg-[#4c0519] text-[#9f1239] dark:text-[#fecdd3] border border-[#fecdd3] dark:border-[#9f1239] text-[11px] font-bold">
                           <AlertTriangle className="w-3 h-3" />
                           <span>+{formatCurrency(Math.abs(variance), currencySymbol, privacyMask)}</span>
                         </span>
                       )}
                       {variance === 0 && (
-                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#f8f4ed] text-[#544c60] border border-[#e5ddcf] text-[11px] font-bold">
+                        <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#f8f4ed] dark:bg-[#1c1630] text-[#544c60] dark:text-[#a8a1b7] border border-[#e5ddcf] dark:border-[#2d2442] text-[11px] font-bold">
                           <Minus className="w-3 h-3" />
                           <span>On Cap</span>
                         </span>
@@ -260,7 +260,7 @@ export const BudgetBreakdownTable: React.FC<BudgetBreakdownTableProps> = ({
                           type="button"
                           onClick={() => setEditingItem(item)}
                           aria-label={`Edit ${item.name}`}
-                          className="text-[#544c60] hover:text-[#ff5e14] p-1 rounded-lg hover:bg-[#fff1eb] transition-colors focus-visible:ring-2 focus-visible:ring-[#ff5e14]"
+                          className="text-[#544c60] dark:text-[#a8a1b7] hover:text-[#ff5e14] dark:hover:text-[#ff8a00] p-1 rounded-lg hover:bg-[#fff1eb] dark:hover:bg-[#281f3d] transition-colors focus-visible:ring-2 focus-visible:ring-[#ff5e14]"
                         >
                           <Edit2 className="w-3.5 h-3.5" />
                         </button>
@@ -293,41 +293,41 @@ export const BudgetBreakdownTable: React.FC<BudgetBreakdownTableProps> = ({
           </span>
         </div>
         <div className="flex items-center gap-4 text-right">
-          <span className="text-xs text-[#544c60]">
-            Allocated: <strong className="text-[#18122b] font-mono-data font-bold">{formatCurrency(summary.totalAllocated, currencySymbol, privacyMask)}</strong>
+          <span className="text-xs text-[#544c60] dark:text-[#a8a1b7]">
+            Allocated: <strong className="text-[#18122b] dark:text-[#f5f3ff] font-mono-data font-bold">{formatCurrency(summary.totalAllocated, currencySymbol, privacyMask)}</strong>
           </span>
-          <span className="text-xs text-[#544c60]">
-            Actual: <strong className="text-[#6d28d9] font-mono-data font-bold">{formatCurrency(summary.totalQuotedOrActual, currencySymbol, privacyMask)}</strong>
+          <span className="text-xs text-[#544c60] dark:text-[#a8a1b7]">
+            Actual: <strong className="text-[#6d28d9] dark:text-[#c4b5fd] font-mono-data font-bold">{formatCurrency(summary.totalQuotedOrActual, currencySymbol, privacyMask)}</strong>
           </span>
         </div>
       </div>
 
       {/* Add Item Modal */}
       {showAddModal && (
-        <div className="fixed inset-0 z-50 bg-[#18122b]/50 backdrop-blur-xs flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl border border-[#e5ddcf] shadow-xl w-full max-w-md p-6 animate-in fade-in zoom-in-95 duration-150">
-            <h3 className="text-base font-bold text-[#18122b] font-headline">Add Budget Line Item</h3>
-            <p className="text-xs text-[#544c60] mt-0.5">Create a newly tracked expense in Indian Rupees (₹).</p>
+        <div className="fixed inset-0 z-50 bg-[#18122b]/50 dark:bg-black/70 backdrop-blur-xs flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#1a142c] rounded-2xl border border-[#e5ddcf] dark:border-[#382d54] shadow-xl w-full max-w-md p-6 animate-in fade-in zoom-in-95 duration-150">
+            <h3 className="text-base font-bold text-[#18122b] dark:text-[#f5f3ff] font-headline">Add Budget Line Item</h3>
+            <p className="text-xs text-[#544c60] dark:text-[#a8a1b7] mt-0.5">Create a newly tracked expense in Indian Rupees (₹).</p>
 
             <form onSubmit={handleSaveNewItem} className="mt-4 space-y-3">
               <div>
-                <label className="block text-xs font-bold text-[#18122b] mb-1">Item Title</label>
+                <label className="block text-xs font-bold text-[#18122b] dark:text-[#f5f3ff] mb-1">Item Title</label>
                 <input
                   type="text"
                   required
                   value={newItemName}
                   onChange={(e) => setNewItemName(e.target.value)}
                   placeholder="e.g. Shehnai Troupe for Varmala Arrival"
-                  className="w-full h-10 px-3 text-xs rounded-xl border border-[#e5ddcf] focus:ring-2 focus:ring-[#ff5e14] focus:outline-none"
+                  className="w-full h-10 px-3 text-xs rounded-xl border border-[#e5ddcf] dark:border-[#382d54] bg-white dark:bg-[#120e22] text-[#18122b] dark:text-[#f5f3ff] focus:ring-2 focus:ring-[#ff5e14] focus:outline-none"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#18122b] mb-1">Category</label>
+                <label className="block text-xs font-bold text-[#18122b] dark:text-[#f5f3ff] mb-1">Category</label>
                 <select
                   value={newItemCategory}
                   onChange={(e) => setNewItemCategory(e.target.value)}
-                  className="w-full h-10 px-3 text-xs rounded-xl border border-[#e5ddcf] focus:ring-2 focus:ring-[#ff5e14] focus:outline-none bg-white font-medium"
+                  className="w-full h-10 px-3 text-xs rounded-xl border border-[#e5ddcf] dark:border-[#382d54] bg-white dark:bg-[#120e22] text-[#18122b] dark:text-[#f5f3ff] focus:ring-2 focus:ring-[#ff5e14] focus:outline-none font-medium"
                 >
                   <option value="Venue & Facilities">Venue & Facilities</option>
                   <option value="Catering & Bar">Catering & Bar</option>

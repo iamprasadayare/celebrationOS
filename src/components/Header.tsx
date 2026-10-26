@@ -18,6 +18,8 @@ import {
   ChevronDown,
   Mail,
   UserCheck,
+  Sun,
+  Moon,
 } from 'lucide-react';
 
 interface HeaderProps {
@@ -31,6 +33,8 @@ interface HeaderProps {
   user?: UserProfile | null;
   onOpenSignInModal: () => void;
   onSignOut: () => void;
+  theme?: 'light' | 'dark';
+  onToggleTheme?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -44,6 +48,8 @@ export const Header: React.FC<HeaderProps> = ({
   user,
   onOpenSignInModal,
   onSignOut,
+  theme = 'light',
+  onToggleTheme,
 }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -74,30 +80,30 @@ export const Header: React.FC<HeaderProps> = ({
   });
 
   return (
-    <header className="fixed top-0 left-0 lg:left-[250px] right-0 h-16 bg-[#ffffff]/95 backdrop-blur border-b border-[#e5ddcf] z-40 px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-3 shadow-[0_1px_8px_rgba(255,94,20,0.04)]">
+    <header className="fixed top-0 left-0 lg:left-[250px] right-0 h-16 bg-[#ffffff]/95 dark:bg-[#120e22]/95 backdrop-blur border-b border-[#e5ddcf] dark:border-[#2d2442] z-40 px-3 sm:px-6 flex items-center justify-between gap-2 sm:gap-3 shadow-[0_1px_8px_rgba(255,94,20,0.04)]">
       {/* Event Title & Festive Badges */}
       <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-        <h1 className="text-sm sm:text-base md:text-lg font-bold text-[#18122b] truncate font-headline" title={activeEvent.title}>
+        <h1 className="text-sm sm:text-base md:text-lg font-bold text-[#18122b] dark:text-[#f5f3ff] truncate font-headline" title={activeEvent.title}>
           {activeEvent.title}
         </h1>
 
-        <span className="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#fef3c7] text-[#92400e] border border-[#fde68a] text-xs font-semibold">
-          <Calendar className="w-3.5 h-3.5 text-[#b45309]" />
+        <span className="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#fef3c7] dark:bg-[#451a03] text-[#92400e] dark:text-[#fde68a] border border-[#fde68a] dark:border-[#78350f] text-xs font-semibold">
+          <Calendar className="w-3.5 h-3.5 text-[#b45309] dark:text-[#f59e0b]" />
           <span>{dateFormatted} • {diffDays} Days Left</span>
         </span>
 
-        <span className="hidden 2xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#fff1eb] text-[#c2410c] border border-[#fed7aa] text-xs font-semibold truncate max-w-[210px]">
+        <span className="hidden 2xl:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#fff1eb] dark:bg-[#3d1704] text-[#c2410c] dark:text-[#ffbc99] border border-[#fed7aa] dark:border-[#7c2d12] text-xs font-semibold truncate max-w-[210px]">
           <MapPin className="w-3.5 h-3.5 text-[#ff5e14]" />
           <span className="truncate">{activeEvent.location}</span>
         </span>
 
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#d1fae5] text-[#065f46] border border-[#a7f3d0] text-xs font-bold shrink-0">
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#d1fae5] dark:bg-[#064e3b] text-[#065f46] dark:text-[#a7f3d0] border border-[#a7f3d0] dark:border-[#047857] text-xs font-bold shrink-0">
           <Users className="w-3.5 h-3.5" />
           <span>{activeEvent.guestCount} Guests</span>
         </span>
 
         {privacyMask && (
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#ffe4e6] text-[#9f1239] border border-[#fecdd3] text-[11px] font-bold">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#ffe4e6] dark:bg-[#4c0519] text-[#9f1239] dark:text-[#fecdd3] border border-[#fecdd3] dark:border-[#9f1239] text-[11px] font-bold">
             <ShieldCheck className="w-3 h-3" />
             <span>₹ Masked</span>
           </span>
@@ -106,11 +112,26 @@ export const Header: React.FC<HeaderProps> = ({
 
       {/* Action Controls & Google User Bar */}
       <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        {/* Dark / Light Mode Toggle */}
+        <button
+          type="button"
+          onClick={onToggleTheme}
+          aria-label={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          title={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          className="p-2 h-9 w-9 flex items-center justify-center rounded-xl border border-[#e5ddcf] dark:border-[#382d54] bg-[#ffffff] dark:bg-[#1a142c] text-[#544c60] dark:text-[#c4b5fd] hover:text-[#ff5e14] dark:hover:text-[#ff8a00] hover:bg-[#fff1eb] dark:hover:bg-[#281f3d] transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] shadow-xs"
+        >
+          {theme === 'dark' ? (
+            <Sun className="w-4 h-4 text-[#f59e0b]" />
+          ) : (
+            <Moon className="w-4 h-4 text-[#6d28d9]" />
+          )}
+        </button>
+
         <button
           type="button"
           onClick={onOpenSimulator}
           aria-label="Open What-If Guest & Budget Simulator"
-          className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-[#e5ddcf] bg-[#ffffff] text-[#18122b] text-xs font-semibold hover:bg-[#fff1eb] hover:border-[#ff5e14]/40 transition-colors focus-visible:ring-2 focus-visible:ring-[#ff5e14]"
+          className="hidden sm:inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-[#e5ddcf] dark:border-[#382d54] bg-[#ffffff] dark:bg-[#1a142c] text-[#18122b] dark:text-[#f5f3ff] text-xs font-semibold hover:bg-[#fff1eb] dark:hover:bg-[#281f3d] hover:border-[#ff5e14]/40 transition-colors focus-visible:ring-2 focus-visible:ring-[#ff5e14]"
         >
           <Sliders className="w-3.5 h-3.5 text-[#ff5e14]" />
           <span>Simulator</span>
@@ -120,9 +141,9 @@ export const Header: React.FC<HeaderProps> = ({
           type="button"
           onClick={onOpenDiagnostics}
           aria-label="Run automated unit and integration self-tests"
-          className="hidden md:inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-[#e5ddcf] bg-[#ffffff] text-[#18122b] text-xs font-semibold hover:bg-[#d1fae5] hover:border-[#10b981]/40 transition-colors focus-visible:ring-2 focus-visible:ring-[#10b981]"
+          className="hidden md:inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-[#e5ddcf] dark:border-[#382d54] bg-[#ffffff] dark:bg-[#1a142c] text-[#18122b] dark:text-[#f5f3ff] text-xs font-semibold hover:bg-[#d1fae5] dark:hover:bg-[#064e3b] hover:border-[#10b981]/40 transition-colors focus-visible:ring-2 focus-visible:ring-[#10b981]"
         >
-          <CheckCircle2 className="w-3.5 h-3.5 text-[#00875a]" />
+          <CheckCircle2 className="w-3.5 h-3.5 text-[#00875a] dark:text-[#10b981]" />
           <span>Self-Tests</span>
         </button>
 
@@ -130,9 +151,9 @@ export const Header: React.FC<HeaderProps> = ({
           type="button"
           onClick={onExport}
           aria-label="Export or print event summary report"
-          className="hidden lg:inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-[#e5ddcf] bg-[#ffffff] text-[#18122b] text-xs font-semibold hover:bg-[#f8f4ed] transition-colors focus-visible:ring-2 focus-visible:ring-[#6d28d9]"
+          className="hidden lg:inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-[#e5ddcf] dark:border-[#382d54] bg-[#ffffff] dark:bg-[#1a142c] text-[#18122b] dark:text-[#f5f3ff] text-xs font-semibold hover:bg-[#f8f4ed] dark:hover:bg-[#281f3d] transition-colors focus-visible:ring-2 focus-visible:ring-[#6d28d9]"
         >
-          <Printer className="w-3.5 h-3.5 text-[#544c60]" />
+          <Printer className="w-3.5 h-3.5 text-[#544c60] dark:text-[#c4b5fd]" />
           <span>Export</span>
         </button>
 
@@ -143,7 +164,7 @@ export const Header: React.FC<HeaderProps> = ({
           className={`inline-flex items-center gap-1.5 h-9 px-3 sm:px-3.5 rounded-xl text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14] ${
             isCopilotOpen
               ? 'bg-gradient-to-r from-[#6d28d9] to-[#4f46e5] text-white shadow-sm'
-              : 'bg-[#fff1eb] text-[#c2410c] hover:bg-[#fed7aa] border border-[#fed7aa]'
+              : 'bg-[#fff1eb] dark:bg-[#3d1704] text-[#c2410c] dark:text-[#ffbc99] hover:bg-[#fed7aa] dark:hover:bg-[#521e06] border border-[#fed7aa] dark:border-[#7c2d12]'
           }`}
         >
           <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
@@ -159,7 +180,7 @@ export const Header: React.FC<HeaderProps> = ({
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               aria-label="User Account Menu"
               aria-expanded={isMenuOpen}
-              className="flex items-center gap-1.5 p-1 sm:px-2.5 sm:py-1 rounded-xl border border-[#eedfd6] bg-white hover:bg-[#fbf9f5] transition-all shadow-xs"
+              className="flex items-center gap-1.5 p-1 sm:px-2.5 sm:py-1 rounded-xl border border-[#eedfd6] dark:border-[#382d54] bg-white dark:bg-[#1a142c] hover:bg-[#fbf9f5] dark:hover:bg-[#281f3d] transition-all shadow-xs"
             >
               {user.picture ? (
                 <img
@@ -197,8 +218,8 @@ export const Header: React.FC<HeaderProps> = ({
                     </div>
                   )}
                   <div className="min-w-0">
-                    <p className="text-xs font-bold text-[#1f2421] truncate">{user.name}</p>
-                    <p className="text-[11px] text-[#6e726e] truncate flex items-center gap-1">
+                    <p className="text-xs font-bold text-[#1f2421] dark:text-[#f5f3ff] truncate">{user.name}</p>
+                    <p className="text-[11px] text-[#6e726e] dark:text-[#a8a1b7] truncate flex items-center gap-1">
                       <Mail className="w-3 h-3 text-[#ff5e14]" />
                       <span>{user.email}</span>
                     </p>
@@ -206,27 +227,27 @@ export const Header: React.FC<HeaderProps> = ({
                 </div>
 
                 <div className="py-2 space-y-1 text-xs">
-                  <div className="flex items-center justify-between text-[11px] px-1 py-1 rounded bg-[#fbf9f5]">
-                    <span className="text-[#6e726e]">Role:</span>
-                    <span className="font-semibold text-[#c2410c]">{user.role || 'Host Lead'}</span>
+                  <div className="flex items-center justify-between text-[11px] px-1 py-1 rounded bg-[#fbf9f5] dark:bg-[#120e22]">
+                    <span className="text-[#6e726e] dark:text-[#a8a1b7]">Role:</span>
+                    <span className="font-semibold text-[#c2410c] dark:text-[#ffbc99]">{user.role || 'Host Lead'}</span>
                   </div>
                   <div className="flex items-center justify-between text-[11px] px-1 py-1">
-                    <span className="text-[#6e726e]">Status:</span>
-                    <span className="text-[#00875a] font-bold flex items-center gap-1">
-                      <span className="w-1.5 h-1.5 rounded-full bg-[#00875a] animate-pulse" />
+                    <span className="text-[#6e726e] dark:text-[#a8a1b7]">Status:</span>
+                    <span className="text-[#00875a] dark:text-[#10b981] font-bold flex items-center gap-1">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#00875a] dark:bg-[#10b981] animate-pulse" />
                       Google Connected
                     </span>
                   </div>
                 </div>
 
-                <div className="pt-2 border-t border-[#f3eae4] space-y-1">
+                <div className="pt-2 border-t border-[#f3eae4] dark:border-[#2d2442] space-y-1">
                   <button
                     type="button"
                     onClick={() => {
                       setIsMenuOpen(false);
                       onOpenSignInModal();
                     }}
-                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#1f2421] hover:bg-[#fbf9f5] transition-colors"
+                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#1f2421] dark:text-[#f5f3ff] hover:bg-[#fbf9f5] dark:hover:bg-[#281f3d] transition-colors"
                   >
                     <UserCheck className="w-3.5 h-3.5 text-[#ff5e14]" />
                     <span>Switch / Re-authenticate</span>
@@ -238,7 +259,7 @@ export const Header: React.FC<HeaderProps> = ({
                       setIsMenuOpen(false);
                       onSignOut();
                     }}
-                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#b91c1c] hover:bg-[#fef2f2] transition-colors"
+                    className="w-full flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-medium text-[#b91c1c] dark:text-[#fb7185] hover:bg-[#fef2f2] dark:hover:bg-[#4c0519] transition-colors"
                   >
                     <LogOut className="w-3.5 h-3.5" />
                     <span>Sign Out</span>
@@ -253,7 +274,7 @@ export const Header: React.FC<HeaderProps> = ({
             type="button"
             onClick={onOpenSignInModal}
             aria-label="Sign in with Google or Gmail account"
-            className="inline-flex items-center gap-2 h-9 px-3 sm:px-3.5 rounded-xl border border-[#eedfd6] bg-white hover:bg-[#fbf9f5] text-[#1f2421] text-xs font-bold transition-all shadow-xs hover:shadow-sm focus-visible:ring-2 focus-visible:ring-[#4285F4]"
+            className="inline-flex items-center gap-2 h-9 px-3 sm:px-3.5 rounded-xl border border-[#eedfd6] dark:border-[#382d54] bg-white dark:bg-[#1a142c] hover:bg-[#fbf9f5] dark:hover:bg-[#281f3d] text-[#1f2421] dark:text-[#f5f3ff] text-xs font-bold transition-all shadow-xs hover:shadow-sm focus-visible:ring-2 focus-visible:ring-[#4285F4]"
           >
             {/* Google Multi-Color G Icon */}
             <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">

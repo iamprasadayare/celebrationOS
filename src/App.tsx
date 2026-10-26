@@ -57,10 +57,24 @@ export default function App() {
   });
   const [showSignInModal, setShowSignInModal] = useState<boolean>(false);
 
+  // Theme (Dark / Light Mode)
+  const [theme, setTheme] = useState<'light' | 'dark'>(() => {
+    try {
+      const stored = localStorage.getItem('celebrationos_theme');
+      if (stored === 'dark' || stored === 'light') return stored;
+      return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    } catch {
+      return 'light';
+    }
+  });
+
+  // Section Highlighting for Navigation
+  const [highlightedSection, setHighlightedSection] = useState<string | null>(null);
+
   // Accessibility & UI Toggles
   const [highContrast, setHighContrast] = useState<boolean>(false);
   const [privacyMask, setPrivacyMask] = useState<boolean>(false);
-  const [isCopilotOpen, setIsCopilotOpen] = useState<boolean>(true);
+  const [isCopilotOpen, setIsCopilotOpen] = useState<boolean>(false);
   const [ariaLiveMessage, setAriaLiveMessage] = useState<string>('');
 
   // AI Co-Pilot State
@@ -112,6 +126,81 @@ export default function App() {
   const budgetSummary = useMemo(() => {
     return calculateBudgetSummary(activeEvent.budgetItems, activeEvent.baselineBudgetCap);
   }, [activeEvent.budgetItems, activeEvent.baselineBudgetCap]);
+
+  // Synchronize Dark / Light Mode with HTML documentElement
+  useEffect(() => {
+    if (theme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    try {
+      localStorage.setItem('celebrationos_theme', theme);
+    } catch (err) {
+      console.warn('Failed to save theme setting:', err);
+    }
+  }, [theme]);
+
+  const handleToggleTheme = useCallback(() => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  }, []);
+
+  // Smooth Scroll and Highlight Handler for Section Navigation
+  const handleNavigateToSection = useCallback(
+    (tab: ActiveTab) => {
+      if (tab === 'diagnostics') {
+        setActiveTab('diagnostics');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setAriaLiveMessage('Navigated to Diagnostics and Self-Tests suite.');
+        return;
+      }
+
+      // If currently on diagnostics, return to overview dashboard view first
+      if (activeTab === 'diagnostics') {
+        setActiveTab(tab);
+      } else {
+        setActiveTab(tab);
+      }
+
+      // Allow DOM to render or switch views if coming from diagnostics
+      setTimeout(() => {
+        const targetElement = document.getElementById(`section-${tab}`);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setHighlightedSection(tab);
+          setAriaLiveMessage(`Navigated and focused on ${tab} section.`);
+
+          // Reset highlight glow after 2.4 seconds
+          setTimeout(() => {
+            setHighlightedSection(null);
+          }, 2400);
+        }
+      }, 50);
+    },
+    [activeTab]
+  );
+
+  // Auto-detect active section during manual page scroll
+  useEffect(() => {
+    if (activeTab === 'diagnostics') return;
+    const sectionIds: ActiveTab[] = ['overview', 'budget', 'timeline', 'vendors', 'ideas'];
+    const onScroll = () => {
+      const scrollPosition = window.scrollY + 180;
+      for (const id of sectionIds) {
+        const el = document.getElementById(`section-${id}`);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPosition >= top && scrollPosition < top + height) {
+            setActiveTab(id);
+            break;
+          }
+        }
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, [activeTab]);
 
   // Apply high-contrast mode class
   useEffect(() => {
@@ -456,7 +545,7 @@ export default function App() {
   );
 
   return (
-    <div className="bg-[#fbf9f5] min-h-screen text-[#1f2421] antialiased selection:bg-[#ff5e14] selection:text-white">
+    <div className="bg-[#fbf9f5] dark:bg-[#0b0816] min-h-screen text-[#1f2421] dark:text-[#f5f3ff] antialiased selection:bg-[#ff5e14] selection:text-white transition-colors duration-300">
       {/* Screen-reader Live Announcer */}
       <div aria-live="polite" aria-atomic="true" className="sr-only">
         {ariaLiveMessage}
@@ -465,7 +554,7 @@ export default function App() {
       {/* Global Sidebar Navigation */}
       <Sidebar
         activeTab={activeTab}
-        onSelectTab={setActiveTab}
+        onSelectTab={handleNavigateToSection}
         activeEvent={activeEvent}
         onSelectEventType={handleSelectEventType}
         highContrast={highContrast}
@@ -473,6 +562,8 @@ export default function App() {
         privacyMask={privacyMask}
         onTogglePrivacyMask={() => setPrivacyMask(!privacyMask)}
         onOpenNewEventWizard={() => setShowNewEventWizard(true)}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
       />
 
       {/* Main App Content Area */}
@@ -481,7 +572,7 @@ export default function App() {
         <Header
           activeEvent={activeEvent}
           onOpenSimulator={() => setShowSimulatorModal(true)}
-          onOpenDiagnostics={() => setActiveTab('diagnostics')}
+          onOpenDiagnostics={() => handleNavigateToSection('diagnostics')}
           onToggleCopilot={() => setIsCopilotOpen(!isCopilotOpen)}
           isCopilotOpen={isCopilotOpen}
           privacyMask={privacyMask}
@@ -489,33 +580,47 @@ export default function App() {
           user={user}
           onOpenSignInModal={() => setShowSignInModal(true)}
           onSignOut={handleSignOut}
+          theme={theme}
+          onToggleTheme={handleToggleTheme}
         />
 
         {/* Primary Page Container */}
         <main className="relative pt-20 px-4 sm:px-6 py-6 w-full max-w-[1600px] mx-auto min-h-screen">
           {/* VIEW: Diagnostics Suite */}
           {activeTab === 'diagnostics' ? (
-            <DiagnosticsView onBackToDashboard={() => setActiveTab('overview')} />
+            <DiagnosticsView onBackToDashboard={() => handleNavigateToSection('overview')} />
           ) : (
-            <div className="flex flex-col xl:flex-row items-start gap-6 w-full">
-              {/* CENTER WORKSPACE (Cards & Tables) */}
-              <div className="flex-1 min-w-0 w-full flex flex-col gap-6">
-                {/* Fallback Resilience Notification Banner */}
-                {copilotResponse?.isFallback && (
-                  <div className="p-3.5 bg-[#f0fdf4] border border-[#86efac] rounded-xl flex items-center justify-between gap-3 text-xs shadow-xs animate-in fade-in">
-                    <div className="flex items-center gap-2 min-w-0">
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#00875a] animate-pulse shrink-0" />
-                      <span className="text-[#166534] font-semibold truncate">
-                        {copilotResponse.fallbackNotice}
-                      </span>
-                    </div>
-                    <span className="shrink-0 px-2.5 py-0.5 rounded-full bg-[#dcfce7] text-[#166534] font-bold text-[11px] border border-[#bbf7d0]">
-                      Deterministic Mode
+            <div className="w-full flex flex-col gap-8">
+              {/* Fallback Resilience Notification Banner */}
+              {copilotResponse?.isFallback && (
+                <div className="p-3.5 bg-[#f0fdf4] dark:bg-[#064e3b]/40 border border-[#86efac] dark:border-[#047857] rounded-xl flex items-center justify-between gap-3 text-xs shadow-xs animate-in fade-in">
+                  <div className="flex items-center gap-2 min-w-0">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#00875a] dark:bg-[#10b981] animate-pulse shrink-0" />
+                    <span className="text-[#166534] dark:text-[#a7f3d0] font-semibold truncate">
+                      {copilotResponse.fallbackNotice}
                     </span>
                   </div>
-                )}
+                  <span className="shrink-0 px-2.5 py-0.5 rounded-full bg-[#dcfce7] dark:bg-[#064e3b] text-[#166534] dark:text-[#a7f3d0] font-bold text-[11px] border border-[#bbf7d0] dark:border-[#047857]">
+                    Deterministic Mode
+                  </span>
+                </div>
+              )}
 
-                {/* 1. TOP KPI SUMMARY ROW (4 Bento Cards) */}
+              {/* 1. TOP KPI SUMMARY ROW (Overview Section) */}
+              <section
+                id="section-overview"
+                aria-label="Overview KPI Summary"
+                className={`w-full scroll-mt-24 transition-all duration-500 relative rounded-2xl ${
+                  highlightedSection === 'overview'
+                    ? 'ring-4 ring-[#ff5e14] shadow-[0_0_35px_rgba(255,94,20,0.35)] scale-[1.002]'
+                    : ''
+                }`}
+              >
+                {highlightedSection === 'overview' && (
+                  <div className="absolute -top-3.5 right-6 z-20 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#ff5e14] to-[#ff8a00] text-white text-[11px] font-bold shadow-md flex items-center gap-1 animate-pulse">
+                    <span>✦ Active: Overview</span>
+                  </div>
+                )}
                 <BudgetHealthCards
                   budgetSummary={budgetSummary}
                   tasks={activeEvent.timelineTasks}
@@ -525,72 +630,132 @@ export default function App() {
                   aiLatencyMs={aiLatencyMs}
                   lastAiSource={lastAiSource}
                 />
+              </section>
 
-                {/* 2. MIDDLE SPLIT ROW: Budget Table (58%) & Chronological Timeline (42%) */}
-                <section aria-label="Financials and Production Milestones" className="grid grid-cols-1 lg:grid-cols-12 gap-6 w-full">
-                  <div className="lg:col-span-7">
-                    <BudgetBreakdownTable
-                      items={activeEvent.budgetItems}
-                      summary={budgetSummary}
-                      currencySymbol={activeEvent.currencySymbol}
-                      privacyMask={privacyMask}
-                      onTriggerRebalance={() => handleCopilotPrompt('Cut ₹2,00,000 from current budget without sacrificing guest hospitality', 'optimization')}
-                      onAddItem={handleAddBudgetItem}
-                      onDeleteItem={handleDeleteBudgetItem}
-                      onUpdateItem={handleUpdateBudgetItem}
-                      guestCount={activeEvent.guestCount}
-                      onGuestCountChange={handleGuestCountChange}
-                    />
+              {/* 2. BUDGET & KHARCHA SECTION: Full width to right */}
+              <section
+                id="section-budget"
+                aria-label="Budget and Kharcha Breakdown"
+                className={`w-full scroll-mt-24 transition-all duration-500 relative rounded-2xl ${
+                  highlightedSection === 'budget'
+                    ? 'ring-4 ring-[#ff5e14] shadow-[0_0_35px_rgba(255,94,20,0.35)] scale-[1.002]'
+                    : ''
+                }`}
+              >
+                {highlightedSection === 'budget' && (
+                  <div className="absolute -top-3.5 right-6 z-20 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#ff5e14] to-[#ff8a00] text-white text-[11px] font-bold shadow-md flex items-center gap-1 animate-pulse">
+                    <span>✦ Active: Budget & Kharcha</span>
                   </div>
+                )}
+                <BudgetBreakdownTable
+                  items={activeEvent.budgetItems}
+                  summary={budgetSummary}
+                  currencySymbol={activeEvent.currencySymbol}
+                  privacyMask={privacyMask}
+                  onTriggerRebalance={() =>
+                    handleCopilotPrompt('Cut ₹2,00,000 from current budget without sacrificing guest hospitality', 'optimization')
+                  }
+                  onAddItem={handleAddBudgetItem}
+                  onDeleteItem={handleDeleteBudgetItem}
+                  onUpdateItem={handleUpdateBudgetItem}
+                  guestCount={activeEvent.guestCount}
+                  onGuestCountChange={handleGuestCountChange}
+                />
+              </section>
 
-                  <div className="lg:col-span-5">
-                    <ChronologicalTimeline
-                      tasks={activeEvent.timelineTasks}
-                      targetDate={activeEvent.targetDate}
-                      onToggleTask={handleToggleTask}
-                      onAddTask={handleAddTimelineTask}
-                      onTriggerRunSheetAI={() => handleCopilotPrompt('Generate detailed day-of hourly run-sheet for all ceremonies', 'run_sheet')}
-                      onExportIcs={handleExportIcs}
-                    />
+              {/* 3. CHRONOLOGICAL TIMELINE SECTION: Brought below Budget & Kharcha, full width */}
+              <section
+                id="section-timeline"
+                aria-label="Production Milestones and Run-Sheet"
+                className={`w-full scroll-mt-24 transition-all duration-500 relative rounded-2xl ${
+                  highlightedSection === 'timeline'
+                    ? 'ring-4 ring-[#ff5e14] shadow-[0_0_35px_rgba(255,94,20,0.35)] scale-[1.002]'
+                    : ''
+                }`}
+              >
+                {highlightedSection === 'timeline' && (
+                  <div className="absolute -top-3.5 right-6 z-20 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#ff5e14] to-[#ff8a00] text-white text-[11px] font-bold shadow-md flex items-center gap-1 animate-pulse">
+                    <span>✦ Active: Timeline & Run-Sheet</span>
                   </div>
-                </section>
+                )}
+                <ChronologicalTimeline
+                  tasks={activeEvent.timelineTasks}
+                  targetDate={activeEvent.targetDate}
+                  onToggleTask={handleToggleTask}
+                  onAddTask={handleAddTimelineTask}
+                  onTriggerRunSheetAI={() =>
+                    handleCopilotPrompt('Generate detailed day-of hourly run-sheet for all ceremonies', 'run_sheet')
+                  }
+                  onExportIcs={handleExportIcs}
+                />
+              </section>
 
-                {/* 3. BOTTOM SPLIT ROW: Vendor Checklists (50%) & Personalized Ideas Studio (50%) */}
-                <section aria-label="Vendor Verification and Ideas Studio" className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full">
-                  <VendorChecklists
-                    vendors={activeEvent.vendors}
-                    currencySymbol={activeEvent.currencySymbol}
-                    privacyMask={privacyMask}
-                    onOpenEmailDrafter={handleOpenEmailDrafter}
-                    onToggleChecklistItem={handleToggleVendorChecklistItem}
-                  />
+              {/* 4. VENDOR CHECKLISTS SECTION: Expanded size, full width */}
+              <section
+                id="section-vendors"
+                aria-label="Vendor Due-Diligence and Deliverables"
+                className={`w-full scroll-mt-24 transition-all duration-500 relative rounded-2xl ${
+                  highlightedSection === 'vendors'
+                    ? 'ring-4 ring-[#ff5e14] shadow-[0_0_35px_rgba(255,94,20,0.35)] scale-[1.002]'
+                    : ''
+                }`}
+              >
+                {highlightedSection === 'vendors' && (
+                  <div className="absolute -top-3.5 right-6 z-20 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#ff5e14] to-[#ff8a00] text-white text-[11px] font-bold shadow-md flex items-center gap-1 animate-pulse">
+                    <span>✦ Active: Vendor Checklists</span>
+                  </div>
+                )}
+                <VendorChecklists
+                  vendors={activeEvent.vendors}
+                  currencySymbol={activeEvent.currencySymbol}
+                  privacyMask={privacyMask}
+                  onOpenEmailDrafter={handleOpenEmailDrafter}
+                  onToggleChecklistItem={handleToggleVendorChecklistItem}
+                />
+              </section>
 
-                  <PersonalizedIdeasStudio
-                    ideas={activeEvent.personalizedIdeas}
-                    eventTitle={activeEvent.title}
-                    location={activeEvent.location}
-                    guestCount={activeEvent.guestCount}
-                    onAddIdeaToPlan={handleAddIdeaToPlan}
-                    onRefreshIdeas={() => handleCopilotPrompt('Generate fresh personalized ideas for theme, food, entertainment, and eco-swaps', 'ideas')}
-                    isLoading={isLoadingAi}
-                  />
-                </section>
-              </div>
-
-              {/* DOCKED RIGHT AI CO-PILOT ASSISTANT */}
-              <AICoPilotDrawer
-                isOpen={isCopilotOpen}
-                onClose={() => setIsCopilotOpen(false)}
-                copilotResponse={copilotResponse}
-                isLoading={isLoadingAi}
-                onSubmitPrompt={handleCopilotPrompt}
-                onApplySingleProposal={handleApplySingleProposal}
-                onApplyAllProposals={handleApplyAllProposals}
-                latencyMs={aiLatencyMs}
-                servedFromCache={lastAiSource === 'cache'}
-              />
+              {/* 5. PERSONALIZED IDEAS SECTION: Brought below Vendor Checklists, full width */}
+              <section
+                id="section-ideas"
+                aria-label="Personalized Ideas Studio"
+                className={`w-full scroll-mt-24 transition-all duration-500 relative rounded-2xl ${
+                  highlightedSection === 'ideas'
+                    ? 'ring-4 ring-[#ff5e14] shadow-[0_0_35px_rgba(255,94,20,0.35)] scale-[1.002]'
+                    : ''
+                }`}
+              >
+                {highlightedSection === 'ideas' && (
+                  <div className="absolute -top-3.5 right-6 z-20 px-3 py-0.5 rounded-full bg-gradient-to-r from-[#ff5e14] to-[#ff8a00] text-white text-[11px] font-bold shadow-md flex items-center gap-1 animate-pulse">
+                    <span>✦ Active: Personalized Ideas Studio</span>
+                  </div>
+                )}
+                <PersonalizedIdeasStudio
+                  ideas={activeEvent.personalizedIdeas}
+                  eventTitle={activeEvent.title}
+                  location={activeEvent.location}
+                  guestCount={activeEvent.guestCount}
+                  onAddIdeaToPlan={handleAddIdeaToPlan}
+                  onRefreshIdeas={() =>
+                    handleCopilotPrompt('Generate fresh personalized ideas for theme, food, entertainment, and eco-swaps', 'ideas')
+                  }
+                  isLoading={isLoadingAi}
+                />
+              </section>
             </div>
           )}
+
+          {/* DOCKED RIGHT AI CO-PILOT ASSISTANT (Slide-Over Panel) */}
+          <AICoPilotDrawer
+            isOpen={isCopilotOpen}
+            onClose={() => setIsCopilotOpen(false)}
+            copilotResponse={copilotResponse}
+            isLoading={isLoadingAi}
+            onSubmitPrompt={handleCopilotPrompt}
+            onApplySingleProposal={handleApplySingleProposal}
+            onApplyAllProposals={handleApplyAllProposals}
+            latencyMs={aiLatencyMs}
+            servedFromCache={lastAiSource === 'cache'}
+          />
         </main>
       </div>
 
