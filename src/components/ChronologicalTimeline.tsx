@@ -22,6 +22,7 @@ interface ChronologicalTimelineProps {
   onToggleTask: (taskId: string) => void;
   onAddTask: (task: Omit<TimelineTask, 'id'>) => void;
   onTriggerRunSheetAI: () => void;
+  onExportIcs?: () => void;
 }
 
 export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
@@ -30,6 +31,7 @@ export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
   onToggleTask,
   onAddTask,
   onTriggerRunSheetAI,
+  onExportIcs,
 }) => {
   const [selectedPhase, setSelectedPhase] = useState<TaskBucket | 'all'>('1_month_out');
   const [priorityFilter, setPriorityFilter] = useState<'all' | PriorityLevel>('all');
@@ -96,12 +98,25 @@ export const ChronologicalTimeline: React.FC<ChronologicalTimelineProps> = ({
             </p>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5 sm:gap-2">
+            {onExportIcs && (
+              <button
+                type="button"
+                onClick={onExportIcs}
+                aria-label="Export all timeline milestones to .ics file for Google Calendar or Apple Calendar"
+                className="inline-flex items-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-xl border border-[#d1fae5] bg-[#f0fdf4] hover:bg-[#dcfce7] text-[#166534] text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#00875a]"
+                title="Download .ics for Google/Apple Calendar"
+              >
+                <Calendar className="w-3.5 h-3.5 text-[#00875a]" />
+                <span className="hidden sm:inline">Export .ics</span>
+              </button>
+            )}
+
             <button
               type="button"
               onClick={onTriggerRunSheetAI}
               aria-label="Generate AI Hourly Run-Sheet"
-              className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-[#fed7aa] bg-[#fff1eb] hover:bg-[#fed7aa] text-[#c2410c] text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14]"
+              className="inline-flex items-center gap-1.5 h-9 px-2.5 sm:px-3 rounded-xl border border-[#fed7aa] bg-[#fff1eb] hover:bg-[#fed7aa] text-[#c2410c] text-xs font-bold transition-all focus-visible:ring-2 focus-visible:ring-[#ff5e14]"
               title="AI Run-Sheet Generator"
             >
               <Sparkles className="w-3.5 h-3.5 text-[#ff5e14]" />

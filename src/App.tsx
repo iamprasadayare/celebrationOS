@@ -13,9 +13,11 @@ import {
   PersonalizedIdea,
   AICoPilotResponse,
   CopilotOptimizationItem,
+  UserProfile,
 } from './types/event';
 import { WEDDING_EVENT, BIRTHDAY_EVENT, COMMUNITY_EVENT } from './data/mockEvents';
 import { calculateBudgetSummary, scaleBudgetByGuestCount } from './utils/budgetMath';
+import { downloadTimelineIcs } from './utils/calendarIcs';
 import { queryCelebrationOSAI } from './services/geminiService';
 
 import { Header } from './components/Header';
@@ -31,6 +33,7 @@ import { NewEventWizardModal } from './components/NewEventWizardModal';
 import { VendorEmailModal } from './components/VendorEmailModal';
 import { GuestSimulatorModal } from './components/GuestSimulatorModal';
 import { ExportSummaryModal } from './components/ExportSummaryModal';
+import { GoogleSignInModal } from './components/GoogleSignInModal';
 
 export default function App() {
   // Master Event Repositories
@@ -42,6 +45,17 @@ export default function App() {
 
   const [activeEventId, setActiveEventId] = useState<string>('wedding');
   const [activeTab, setActiveTab] = useState<ActiveTab>('overview');
+
+  // User Profile & Authentication State (Persisted in localStorage)
+  const [user, setUser] = useState<UserProfile | null>(() => {
+    try {
+      const stored = localStorage.getItem('celebrationos_user');
+      return stored ? (JSON.parse(stored) as UserProfile) : null;
+    } catch {
+      return null;
+    }
+  });
+  const [showSignInModal, setShowSignInModal] = useState<boolean>(false);
 
   // Accessibility & UI Toggles
   const [highContrast, setHighContrast] = useState<boolean>(false);
@@ -116,11 +130,39 @@ export default function App() {
         setShowEmailModal(false);
         setShowSimulatorModal(false);
         setShowExportModal(false);
+        setShowSignInModal(false);
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
+
+  // Authentication Handlers
+  const handleSignIn = useCallback((profile: UserProfile) => {
+    setUser(profile);
+    try {
+      localStorage.setItem('celebrationos_user', JSON.stringify(profile));
+    } catch (err) {
+      console.warn('Failed to save user session:', err);
+    }
+    setAriaLiveMessage(`Welcome, ${profile.name}! Signed in with Gmail.`);
+  }, []);
+
+  const handleSignOut = useCallback(() => {
+    setUser(null);
+    try {
+      localStorage.removeItem('celebrationos_user');
+    } catch (err) {
+      console.warn('Failed to remove user session:', err);
+    }
+    setAriaLiveMessage('Signed out of Google account.');
+  }, []);
+
+  // .ics Calendar Export Handler
+  const handleExportIcs = useCallback(() => {
+    downloadTimelineIcs(activeEvent);
+    setAriaLiveMessage(`Exported ${activeEvent.title} timeline milestones to .ics file.`);
+  }, [activeEvent]);
 
   // Mode Switcher handler
   const handleSelectEventType = useCallback((type: EventType) => {
@@ -444,6 +486,9 @@ export default function App() {
           isCopilotOpen={isCopilotOpen}
           privacyMask={privacyMask}
           onExport={() => setShowExportModal(true)}
+          user={user}
+          onOpenSignInModal={() => setShowSignInModal(true)}
+          onSignOut={handleSignOut}
         />
 
         {/* Primary Page Container */}
@@ -505,6 +550,7 @@ export default function App() {
                       onToggleTask={handleToggleTask}
                       onAddTask={handleAddTimelineTask}
                       onTriggerRunSheetAI={() => handleCopilotPrompt('Generate detailed day-of hourly run-sheet for all ceremonies', 'run_sheet')}
+                      onExportIcs={handleExportIcs}
                     />
                   </div>
                 </section>
@@ -549,6 +595,13 @@ export default function App() {
       </div>
 
       {/* MODALS */}
+      <GoogleSignInModal
+        isOpen={showSignInModal}
+        onClose={() => setShowSignInModal(false)}
+        onSignIn={handleSignIn}
+        currentUser={user}
+      />
+
       <NewEventWizardModal
         isOpen={showNewEventWizard}
         onClose={() => setShowNewEventWizard(false)}

@@ -6,7 +6,8 @@
 import React, { useState } from 'react';
 import { EventPlan, BudgetSummary } from '../types/event';
 import { formatCurrency } from '../utils/budgetMath';
-import { Printer, Copy, Check, X, FileText } from 'lucide-react';
+import { downloadTimelineIcs } from '../utils/calendarIcs';
+import { Printer, Copy, Check, X, FileText, Calendar } from 'lucide-react';
 
 interface ExportSummaryModalProps {
   isOpen: boolean;
@@ -124,14 +125,26 @@ export const ExportSummaryModal: React.FC<ExportSummaryModalProps> = ({
         </div>
 
         <div className="flex items-center justify-between pt-4 mt-2 border-t border-[#f3eae4]">
-          <button
-            type="button"
-            onClick={handlePrint}
-            className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-[#eedfd6] text-xs font-semibold text-[#1f2421] hover:bg-[#fbf9f5] transition-colors"
-          >
-            <Printer className="w-3.5 h-3.5 text-[#ff5e14]" />
-            <span>Print View</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={handlePrint}
+              className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-[#eedfd6] text-xs font-semibold text-[#1f2421] hover:bg-[#fbf9f5] transition-colors"
+            >
+              <Printer className="w-3.5 h-3.5 text-[#ff5e14]" />
+              <span>Print View</span>
+            </button>
+
+            <button
+              type="button"
+              onClick={() => downloadTimelineIcs(activeEvent)}
+              className="inline-flex items-center gap-1.5 h-9 px-3 rounded-xl border border-[#d1fae5] bg-[#f0fdf4] text-xs font-semibold text-[#166534] hover:bg-[#dcfce7] transition-colors"
+              title="Download .ics file for Google Calendar and Apple Calendar"
+            >
+              <Calendar className="w-3.5 h-3.5 text-[#00875a]" />
+              <span>Download .ics Calendar</span>
+            </button>
+          </div>
 
           <div className="flex items-center gap-2">
             <button

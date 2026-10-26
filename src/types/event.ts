@@ -163,3 +163,15 @@ export interface TestResult {
   expected: string;
   received: string;
 }
+
+export interface UserProfile {
+  id: string;
+  name: string;
+  email: string;
+  picture?: string;
+  role?: string;
+  verifiedEmail: boolean;
+  provider: 'google' | 'gmail_manual';
+  authTimestamp: string;
+}
+
