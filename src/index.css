@@ -5,6 +5,8 @@
 
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
     /* Popping, Trending Indian Festive Editorial Palette */
@@ -100,9 +102,12 @@
     transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  .dark body, body.dark {
-    background-color: #0b0816;
-    color: #f5f3ff;
+  html.dark,
+  html.dark body,
+  .dark body,
+  body.dark {
+    background-color: #0b0816 !important;
+    color: #f5f3ff !important;
     background-image: 
       radial-gradient(at 10% 10%, rgba(255, 107, 43, 0.07) 0px, transparent 50%),
       radial-gradient(at 90% 15%, rgba(168, 85, 247, 0.08) 0px, transparent 50%),

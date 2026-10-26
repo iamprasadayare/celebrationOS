@@ -1,128 +1,112 @@
-# CelebrationOS — 3-Minute Demo Video Guide & Transcript
-**Presenter**: Prasad Ayare  
-**Project**: CelebrationOS (GenAI Event Planning Orchestrator)  
-**Target Duration**: 3:00 Minutes (180 Seconds)  
-**Live URL**: https://ais-pre-pxlpmigu4wwc62pz2ovpte-321321364173.asia-southeast1.run.app  
-**Repository**: https://github.com/iamprasadayare/celebrationOS  
+# 🎬 CelebrationOS — 3-Minute Demo Video Recording Guide & Voiceover Script
+
+**Video Title:** CelebrationOS: AI-Powered Event & Kharcha Planner  
+**Target Duration:** Exactly 3:00 Minutes (180 Seconds)  
+**Presenter:** Prasad Ayare (`prasadayare1996@gmail.com`)  
+**Live Demo URL:** `https://ais-pre-pxlpmigu4wwc62pz2ovpte-321321364173.asia-southeast1.run.app`  
 
 ---
 
-## 🎬 Quick Recording Checklist (Before You Hit Record)
-1. **Resolution**: Record at 1080p (1920x1080) at 60fps or 30fps with 100% browser zoom (`Ctrl + 0`).
-2. **Audio**: Quiet room, USB mic/headset close to mouth, steady natural voice (~135 words/minute).
-3. **Browser**: Open in full-screen (`F11`), close unnecessary browser tabs and bookmarks bar.
-4. **Initial State**: Start signed out on the **Wedding ("Shaadi") Mode** tab with the top-right "Sign in with Google" button visible.
+## 📌 Video Structure Overview
+| Segment | Timecode | Focus Area | Key Visual Action |
+|---|---|---|---|
+| **1. Hook & Introduction** | 0:00 – 0:30 (30s) | Problem, Vision & Google Sign-In | Open landing page, show Google sign-in badge, switch Dark/Light mode |
+| **2. Budget & Kharcha Hub** | 0:30 – 1:05 (35s) | Full-width Budget Table & Live Math | Click sidebar "Budget", watch smooth scroll glow, add/edit a line item |
+| **3. Timeline & Vendor Tracker** | 1:05 – 1:40 (35s) | Chronological Milestones & Vendor Cards | Scroll to Timeline, click Vendor Checklists, open Vendor Email modal |
+| **4. Personalized Ideas Studio** | 1:40 – 2:05 (25s) | Cultural Inspiration & Guest Simulator | Filter themes, open "Simulate Guests" modal to adjust RSVP count |
+| **5. AI Co-Pilot & Export** | 2:05 – 2:40 (35s) | Gemini Event Assistant & One-Click Brief | Slide open AI Drawer, ask Gemini for advice, trigger Export Plan |
+| **6. Conclusion & Call-to-Action** | 2:40 – 3:00 (20s) | Wrap-up & Next Steps | Show full responsive stack, share link, closing remark |
 
 ---
 
-## ⏱️ Scene-by-Scene Video Timeline (3:00 Minutes)
+## 🎙️ Scene-by-Scene Script & Recording Directions
 
-```
-0:00 - 0:30 (30s) | Introduction, Problem Statement & Indian Vertical Focus
-0:30 - 1:00 (30s) | Google Sign-In & Event Architecture
-1:00 - 1:35 (35s) | GenAI Services: Gemini 2.5 Flash Co-Pilot & Budget Elasticity
-1:35 - 2:05 (30s) | Chronological Timeline & 1-Click .ics Calendar Export
-2:05 - 2:30 (25s) | Vendor Due-Diligence & Cultural Ideas Studio
-2:30 - 3:00 (30s) | Automated Diagnostics, Security Shield & Closing
-```
-
----
-
-## 🎙️ Complete Video Script & Screen Directions
-
-### Scene 1: Introduction, Problem Statement & Indian Vertical
-**Time**: `0:00` – `0:30` (30 seconds)  
-**Screen Action**:
-- Show the CelebrationOS hero dashboard in full screen.
-- Move mouse smoothly over the vibrant Indian festive banner (Royal Violet, Marigold Saffron, and Gulabi Pink).
-- Hover over the INR currency cards (`₹25,00,000` Total Budget, Allocated, and Variance).
-
-**Voiceover Script**:
-> *"Hello evaluators! I'm Prasad Ayare, and welcome to **CelebrationOS**—an intelligent, production-ready event planning assistant engineered specifically for Indian celebrations.*
-> 
-> *Planning Indian weddings, milestone birthdays, and community utsavs is notorious for runaway budgets, multi-day ceremony clashes, and chaotic vendor coordination across Lakhs and Crores of rupees.*
-> 
-> *CelebrationOS solves this by combining deterministic mathematical precision with Google Gemini 2.5 Flash orchestration, delivered in an intuitive, culturally tailored interface with real INR currency formatting."*
+### **Scene 1: Hook & Introduction (0:00 – 0:30)**
+- **Screen Action:**
+  - Start on the CelebrationOS overview screen with browser in full-screen.
+  - Show the top header: click the Google Account button showing Prasad Ayare (`prasadayare1996@gmail.com`).
+  - Toggle the **Dark Mode / Light Mode** switch in the top right to showcase the dark purple/indigo luxury palette, then switch back or keep dark mode.
+- **Spoken Voiceover:**
+  > *"Planning a wedding, milestone birthday, or grand family celebration usually means juggling messy spreadsheets, chaotic WhatsApp chats, and untracked expenses.*
+  > 
+  > *Welcome to **CelebrationOS** — a smart, end-to-end event and Kharcha management platform powered by Google AI.*
+  > 
+  > *I'm logged in securely with my Google account, and with a single click, I can toggle between Light and a sleek Dark Mode. Everything in CelebrationOS is organized in an intuitive vertical workflow so you never lose context."*
 
 ---
 
-### Scene 2: Google Sign-In & Multi-Event Architecture
-**Time**: `0:30` – `1:00` (30 seconds)  
-**Screen Action**:
-- Click the **"Sign in with Google"** button in the top-right bar.
-- The 2-Step Gmail Login modal appears. Click on the preset **"Prasad Ayare (prasadayare1996@gmail.com)"**, select role **"Event Host / Planner"**, and click **"Continue with Gmail"**.
-- Enter or auto-fill the confirmation code and submit. Point to the top-right avatar showing the verified green shield.
-- Click the event switcher tabs: toggle from **"Aarav & Diya's Royal Wedding"** to **"Maya's 30th Birthday"** to show instant state re-hydration.
-
-**Voiceover Script**:
-> *"Let's sign in. We support official Google Identity Services with real JWT verification, alongside a seamless 2-step Gmail authentication modal. With one click, I sign in under my verified account as Event Host.*
-> 
-> *Our architecture instantly switches between multi-ceremony Indian Weddings, intimate 60-guest milestone birthdays, or large 500-person community festivals, keeping budgets, checklists, and run-sheets perfectly isolated."*
-
----
-
-### Scene 3: GenAI Services (Gemini 2.5 Flash) & Budget Elasticity
-**Time**: `1:00` – `1:35` (35 seconds)  
-**Screen Action**:
-- Scroll down to the **Budget Tracker**.
-- Drag the **Guest Count Slider** from 350 to 420 guests; show the per-head catering and decor figures recalculate dynamically in real time.
-- Click **"AI Budget Optimizer"** or open the **AI Co-Pilot Drawer**.
-- Show the response streaming in with structured recommendations generated by Gemini 2.5 Flash via our secure backend Express proxy.
-
-**Voiceover Script**:
-> *"Under the hood, we leverage **Google Gemini 2.5 Flash** server-side through structured JSON schemas. When adjusting our guest count slider from 350 to 420 guests, our deterministic pure-math engine instantly scales per-head catering and gifts while keeping fixed venue costs rock-solid.*
-> 
-> *When we tap the AI Co-Pilot, Gemini analyzes our ₹25 Lakh budget, identifies cost variances, and suggests culturally tailored reallocation—like booking Mehendi artists early to secure off-peak rates—all without ever exposing API keys to the client."*
+### **Scene 2: Navigation & Full-Width Budget / Kharcha Hub (0:30 – 1:05)**
+- **Screen Action:**
+  - In the left sidebar, click on **"Budget & Kharcha"**.
+  - Notice the page smoothly scrolls down and places an orange glowing focus ring with the `✦ Active Section` badge around the Budget section.
+  - Hover over the KPI cards: Total Budget (₹1,500,000), Spent, and Kharcha Pending.
+  - Click **"+ Add Item"** or quickly edit the allocated amount of an item (e.g. Venue & Mandap) to show instant recalculation of total variance and progress bar.
+- **Spoken Voiceover:**
+  > *"When I click any navigation button in the sidebar, CelebrationOS smoothly scrolls directly to the section and highlights it with a glowing focus ring.*
+  > 
+  > *Here is the **Budget & Kharcha Hub**, expanded to full width across the screen. At a glance, I can monitor my total budget, actual expenditures, and remaining contingency buffer.*
+  > 
+  > *Every category — from Catering and Decor to Photography — is fully editable with real-time math, ensuring zero surprise expenses on the big day."*
 
 ---
 
-### Scene 4: Chronological Timeline & 1-Click .ics Calendar Export
-**Time**: `1:35` – `2:05` (30 seconds)  
-**Screen Action**:
-- Switch to the **"Chronological Timeline"** tab.
-- Show the $T$-minus milestone cards (T-180 days down to T-0 Day-of Wedding Muhurat).
-- Click the **"Export .ics (Google/Apple Calendar)"** button.
-- Point to the downloaded `.ics` file in your browser's download bar.
-
-**Voiceover Script**:
-> *"Next is our **Chronological Timeline Engine**. Indian celebrations demand strict chronological sequencing—from booking caterers 180 days prior to the exact Day-of Muhurat run-sheet.*
-> 
-> *Best of all, we implemented an RFC 5545 compliant `.ics` generator. Clicking 'Export .ics' instantly compiles all scheduled milestones and ceremonial timings into a standard calendar file that imports seamlessly into Google Calendar, Outlook, or Apple Calendar on your phone."*
+### **Scene 3: Chronological Timeline & Vendor Checklists (1:05 – 1:40)**
+- **Screen Action:**
+  - Click **"Timeline"** in the sidebar. Watch it scroll and glow.
+  - Show the milestone cards ordered chronologically from "45 Days Before" down to "Celebration Day" and "Post-Event Wrap". Toggle a checkbox from 'In Progress' to 'Completed'.
+  - Click **"Vendor Checklists"** in the sidebar. Show the expanded 3-column vendor cards (Royal Palace Caterers, Shubh Decorators, etc.).
+  - Click **"Email Vendor"** on one card to bring up the pre-filled template with deposit and briefing details. Close the modal.
+- **Spoken Voiceover:**
+  > *"Moving right below the budget is our **Chronological Timeline**. Milestones are phased intelligently from 45 days prior, to 2 days before, to the event day itself. Updating any task updates our live readiness score.*
+  > 
+  > *Directly beneath the timeline is our expanded **Vendor Checklist & Contract Tracker**. Displayed in a responsive multi-column view, each vendor card tracks contract status, payment milestones, and provides instant one-click email and phone outreach."*
 
 ---
 
-### Scene 5: Vendor Checklists & Cultural Ideas Studio
-**Time**: `2:05` – `2:30` (25 seconds)  
-**Screen Action**:
-- Switch to the **"Vendor Due-Diligence"** tab. Click a checklist item (e.g., "FSSAI Food Safety Certificate" or "10 PM Sound Curfew Compliance").
-- Switch to the **"Ideas Studio"** tab. Show the cultural theme card ("Marigold Sunrise Sangeet") and click **"+ Add to Budget"** to demonstrate reactive state synchronization.
-
-**Voiceover Script**:
-> *"In the **Vendor Due-Diligence** tab, planners get mandatory regulatory checks: FSSAI food hygiene certifications, 10 PM sound curfew permits, and electrical backup guarantees.*
-> 
-> *In our **Cultural Ideas Studio**, Gemini brainstorms authentic decor and sustainable eco-swaps—like seed-paper invitations and brass marigold centerpieces—which can be added directly into the live budget and timeline with a single click."*
-
----
-
-### Scene 6: Diagnostics Suite, Security Shield & Closing
-**Time**: `2:30` – `3:00` (30 seconds)  
-**Screen Action**:
-- Click on the **"Testing & Diagnostics"** tab.
-- Click **"Run Self-Tests"**: watch the 12 unit/integration assertions flash green to **"12/12 Passing"**.
-- Type sample text into the interactive **PII Shield Sandbox**: e.g., `Call panditji at 9876543210 or email test@gmail.com <script>alert(1)</script>`.
-- Show the real-time sanitized output with `[REDACTED_PHONE]`, `[REDACTED_EMAIL]`, and stripped scripts.
-- Conclude on the clean dashboard.
-
-**Voiceover Script**:
-> *"Finally, engineering rigor: CelebrationOS includes an in-browser Diagnostics Suite running 12 automated unit tests across our math and date engines in microseconds.*
-> 
-> *Our client-side **PII Shield** and prompt injection sanitizer mask phone numbers and emails in real-time before any text is sent to Gemini, guaranteeing zero data leakage.*
-> 
-> *The entire codebase is under 1.5 megabytes, accessible with full ARIA landmarks, and available publicly on GitHub. Thank you!"*
+### **Scene 4: Personalized Ideas Studio & Guest Simulator (1:40 – 2:05)**
+- **Screen Action:**
+  - Scroll down to the **Personalized Ideas Studio**.
+  - Show the filter tags (*Decor Themes*, *Return Gifts*, *Guest Games*).
+  - Click the **"Simulate Guests"** button in the top action bar.
+  - Slide the guest counter slider from 250 to 350 guests and show the live estimated catering cost recalculating. Click "Apply Simulation".
+- **Spoken Voiceover:**
+  > *"Next is the **Personalized Ideas Studio**, where AI curates culturally relevant themes, handcrafted return gift concepts, and guest engagement games.*
+  > 
+  > *Need to adjust your guest list? With our interactive **Guest Budget Simulator**, you can drag the RSVP slider to instantly preview how a change from 250 to 350 guests impacts food catering, seating, and hall capacity in real time."*
 
 ---
 
-## 💡 Quick Tips for a Polished 3-Minute Take:
-- **Pacing**: Don't rush; speak with confidence and clarity. 135 words per minute is comfortable and finishes precisely at 2:50 - 2:55.
-- **Mouse movements**: Move the cursor deliberately to the button you're speaking about before clicking. Avoid rapid shaking or circles with the mouse.
-- **If you make a small stumble**: Pause for 2 seconds, repeat the sentence from the start of that scene, and trim the mistake in any basic free video editor (like CapCut, QuickTime, or Clipchamp).
+### **Scene 5: AI Event Co-Pilot & One-Click Plan Export (2:05 – 2:40)**
+- **Screen Action:**
+  - Click the floating or sidebar **"AI Co-Pilot"** button. The drawer slides in smoothly from the right without shifting the page layout.
+  - Click a suggestion chip: *"Suggest 3 cost-saving alternatives for catering without compromising quality"*.
+  - Show the streaming AI response from Gemini.
+  - Close drawer. Click the **"Export Briefing"** button in the header. Show the downloadable event master plan modal.
+- **Spoken Voiceover:**
+  > *"Whenever you need strategic advice, the **CelebrationOS AI Co-Pilot** slides out. Powered by Gemini, the co-pilot has full context of your budget, dates, and vendors.*
+  > 
+  > *You can ask it to draft vendor negotiations, identify scheduling bottlenecks, or recommend vegetarian menu pairings.*
+  > 
+  > *Finally, with one click on **Export Summary**, you get a complete printable and downloadable executive briefing packet to share with your family elders, venue managers, and committee leads."*
+
+---
+
+### **Scene 6: Conclusion & Wrap-Up (2:40 – 3:00)**
+- **Screen Action:**
+  - Smoothly scroll back to the top overview dashboard.
+  - Toggle Dark Mode once to show both themes look immaculate.
+  - Show your cursor over the live application URL.
+- **Spoken Voiceover:**
+  > *"CelebrationOS brings structure, financial peace of mind, and modern AI intelligence to every celebration.*
+  > 
+  > *Check out the live interactive link below to test the simulator, track your event kharcha, and plan your next milestone event.*
+  > 
+  > *Thank you for watching!"*
+
+---
+
+## 🛠️ Recording Tips for Best Quality:
+1. **Screen Resolution:** Record at `1920x1080` (1080p) or `2560x1440` (1440p) at 60 FPS using OBS Studio, Loom, or macOS QuickTime / Screen Studio.
+2. **Audio:** Use a dedicated headset or USB condenser mic in a quiet room. Speak at an enthusiastic, conversational, steady pace.
+3. **Pacing:** Each of the 6 sections above takes roughly 25 to 35 seconds. Allow 1-second pauses between scene transitions.
+4. **Browser Setup:** Hide browser bookmarks bar (`Ctrl+Shift+B` / `Cmd+Shift+B`) and set browser zoom to 100% or 90% for optimal density.

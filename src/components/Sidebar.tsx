@@ -239,23 +239,24 @@ export const Sidebar: React.FC<SidebarProps> = ({
       {/* Footer Settings & New Event Button with Popping Saffron */}
       <div className="p-3 border-t border-[#e5ddcf] dark:border-[#2d2442] flex flex-col gap-2.5 bg-[#ffffff] dark:bg-[#120e22]">
         {/* Dark / Light Mode Toggle */}
-        <div className="flex items-center justify-between px-1">
-          <label
-            htmlFor="theme-toggle-sidebar"
-            className="text-xs text-[#544c60] dark:text-[#a8a1b7] flex items-center gap-1.5 cursor-pointer font-semibold"
-          >
+        <button
+          type="button"
+          onClick={onToggleTheme}
+          aria-label={theme === 'dark' ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          className="w-full flex items-center justify-between px-2 py-1.5 rounded-xl text-xs font-semibold text-[#544c60] dark:text-[#a8a1b7] hover:bg-[#fff1eb] dark:hover:bg-[#281f3d] transition-all cursor-pointer"
+        >
+          <span className="flex items-center gap-1.5">
             {theme === 'dark' ? <Moon className="w-3.5 h-3.5 text-[#a855f7]" /> : <Sun className="w-3.5 h-3.5 text-[#ff8a00]" />}
-            <span>Dark Mode</span>
-          </label>
-          <input
-            id="theme-toggle-sidebar"
-            type="checkbox"
-            checked={theme === 'dark'}
-            onChange={onToggleTheme}
-            aria-label="Toggle Dark Mode Theme"
-            className="w-4 h-4 rounded text-[#ff5e14] focus:ring-[#ff5e14] cursor-pointer"
-          />
-        </div>
+            <span>{theme === 'dark' ? 'Dark Theme' : 'Light Theme'}</span>
+          </span>
+          <span
+            className={`w-9 h-5 flex items-center rounded-full p-0.5 transition-colors duration-200 ease-in-out ${
+              theme === 'dark' ? 'bg-[#7c3aed] justify-end' : 'bg-[#e5ddcf] justify-start'
+            }`}
+          >
+            <span className="w-4 h-4 rounded-full bg-white shadow-sm transition-all" />
+          </span>
+        </button>
 
         <div className="flex items-center justify-between px-1">
           <label

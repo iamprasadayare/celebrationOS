@@ -127,12 +127,18 @@ export default function App() {
     return calculateBudgetSummary(activeEvent.budgetItems, activeEvent.baselineBudgetCap);
   }, [activeEvent.budgetItems, activeEvent.baselineBudgetCap]);
 
-  // Synchronize Dark / Light Mode with HTML documentElement
+  // Synchronize Dark / Light Mode with HTML documentElement & document.body
   useEffect(() => {
+    const root = document.documentElement;
+    const body = document.body;
     if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+      root.classList.add('dark');
+      body.classList.add('dark');
+      root.setAttribute('data-theme', 'dark');
     } else {
-      document.documentElement.classList.remove('dark');
+      root.classList.remove('dark');
+      body.classList.remove('dark');
+      root.setAttribute('data-theme', 'light');
     }
     try {
       localStorage.setItem('celebrationos_theme', theme);
@@ -545,7 +551,7 @@ export default function App() {
   );
 
   return (
-    <div className="bg-[#fbf9f5] dark:bg-[#0b0816] min-h-screen text-[#1f2421] dark:text-[#f5f3ff] antialiased selection:bg-[#ff5e14] selection:text-white transition-colors duration-300">
+    <div className={`app-root ${theme === 'dark' ? 'dark' : ''} bg-[#fbf9f5] dark:bg-[#0b0816] min-h-screen text-[#1f2421] dark:text-[#f5f3ff] antialiased selection:bg-[#ff5e14] selection:text-white transition-colors duration-300`}>
       {/* Screen-reader Live Announcer */}
       <div aria-live="polite" aria-atomic="true" className="sr-only">
         {ariaLiveMessage}
